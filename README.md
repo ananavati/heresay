@@ -18,3 +18,8 @@ https://itunes.apple.com/us/app/firechat/id719829352?mt=8
 WhatsApp
 http://www.whatsapp.com/
 
+Facebook Messenger
+https://www.facebook.com/mobile/messenger
+
+Kik Messenger
+http://kik.com/
