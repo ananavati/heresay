@@ -10,4 +10,21 @@
 
 @interface User : NSObject
 
+// TODO: PFObject has this property already;
+// we should remove it when we turns models into PFObects.
+@property (strong, nonatomic) NSString *objectId;
+
+@property (strong, nonatomic) NSString *name;
+
+// TODO: PFObject has this property already;
+// we should remove it when we turns models into PFObects.
+@property (strong, nonatomic) NSString *createdAt;
+
+@property (strong, nonatomic) NSDate *creationDate;
+@property (strong, nonatomic) NSString *creationDatestamp;
+
+
+@property (strong, nonatomic) NSString *profileImageURL;
+
+
 @end

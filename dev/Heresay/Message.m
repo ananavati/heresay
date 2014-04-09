@@ -10,4 +10,50 @@
 
 @implementation Message
 
++ (NSMutableDictionary *)models {
+	static NSMutableDictionary *modelsDict = nil;
+	
+	// Initialize only once.
+	if (!modelsDict) {
+		modelsDict = [NSMutableDictionary dictionary];
+	}
+	
+	return modelsDict;
+}
+
+// TODO: This method may be obviated by Parse
++ (Message *)initWithJSON:(NSDictionary *)json {
+	Message *model = [Message models][json[@"objectId"]];
+	if (!model) {
+		model = [[Message alloc] init];
+		model.objectId = json[@"objectId"];
+		model.text = json[@"text"];
+		model.authorId = json[@"authorId"];
+		
+		model.createdAt = json[@"created_at"];
+		model.creationDate = [[Message longDateFormatter] dateFromString:model.createdAt];
+		model.creationDatestamp = [NSDateFormatter localizedStringFromDate:model.creationDate dateStyle:NSDateFormatterShortStyle timeStyle:NSDateFormatterShortStyle];
+		
+		[Message models][model.objectId] = model;
+	}
+	
+	return model;
+}
+
++ (NSDateFormatter *)longDateFormatter {
+	static NSDateFormatter *longDateFormatter;
+	
+	if (!longDateFormatter) {
+		longDateFormatter = [[NSDateFormatter alloc] init];
+		[longDateFormatter setTimeZone:[NSTimeZone timeZoneWithName:@"PST"]];
+		[longDateFormatter setDateFormat:@"yyyy'-'MM'-'dd'T'HH':'mm':'ss.SSS'Z'"];
+	}
+	
+	return longDateFormatter;
+}
+
+- (NSString *)description {
+	return [NSString stringWithFormat:@"<Message [%@]>", self.text];
+}
+
 @end
