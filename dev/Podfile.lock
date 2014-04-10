@@ -19,16 +19,22 @@ PODS:
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
   - Facebook-iOS-SDK (3.13.1)
+  - MHPrettyDate (1.1.1)
   - Parse (1.2.18):
     - Facebook-iOS-SDK (~> 3.11)
+  - SGNavigationProgress (1.2)
 
 DEPENDENCIES:
-  - AFNetworking
+  - AFNetworking (~> 2.0)
+  - MHPrettyDate
   - Parse
+  - SGNavigationProgress
 
 SPEC CHECKSUMS:
   AFNetworking: 0121f4b69be3fa58d1ab317866e036e12ac9651d
   Facebook-iOS-SDK: 0d121e16437981fabff9379e07bf646bd5ab245c
+  MHPrettyDate: 0486e5e1ddff296748b7a71cd78c9cc785a80cc5
   Parse: 6dd57f2af9f89dc6facc755cec4e96f8b739b1fb
+  SGNavigationProgress: 2655bbd72c8efee62ed258873c7beb3bbd0a5c76
 
 COCOAPODS: 0.29.0
