@@ -8,6 +8,11 @@
 
 #import "NewChatroomViewCell.h"
 
+@interface NewChatroomViewCell()
+
+
+@end
+
 @implementation NewChatroomViewCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier

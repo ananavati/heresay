@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ChatroomSelectorDelegate.h"
 
-@interface ChatroomListViewController : UIViewController
+@interface ChatroomListViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+
+@property (strong, nonatomic) id<ChatroomSelectorDelegate> delegate;
 
 @end

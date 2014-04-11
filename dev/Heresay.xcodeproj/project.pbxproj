@@ -19,6 +19,15 @@
 		CA105B6518ECFA6400F78D28 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA105B4D18ECFA6300F78D28 /* UIKit.framework */; };
 		CA105B6D18ECFA6400F78D28 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CA105B6B18ECFA6400F78D28 /* InfoPlist.strings */; };
 		CA105B6F18ECFA6400F78D28 /* HeresayTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CA105B6E18ECFA6400F78D28 /* HeresayTests.m */; };
+		CA5EDACF18F7A37F00C3A09B /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA5EDACD18F7A37F00C3A09B /* MainViewController.m */; };
+		CA5EDAD018F7A37F00C3A09B /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA5EDACE18F7A37F00C3A09B /* MainViewController.xib */; };
+		CA5EDAD218F7AEF000C3A09B /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA5EDAD118F7AEF000C3A09B /* MapKit.framework */; };
+		CA5EDAD618F7B1E800C3A09B /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CA5EDAD518F7B1E800C3A09B /* LocationManager.m */; };
+		CA5EDADA18F7B6CE00C3A09B /* IntroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA5EDAD818F7B6CE00C3A09B /* IntroViewController.m */; };
+		CA5EDADB18F7B6CE00C3A09B /* IntroViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA5EDAD918F7B6CE00C3A09B /* IntroViewController.xib */; };
+		CA5EDADE18F7C7CE00C3A09B /* ChatroomSelectorDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CA5EDADD18F7C7CE00C3A09B /* ChatroomSelectorDelegate.m */; };
+		CA5EDAE218F7CC9F00C3A09B /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA5EDAE018F7CC9F00C3A09B /* LoginViewController.m */; };
+		CA5EDAE318F7CC9F00C3A09B /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA5EDAE118F7CC9F00C3A09B /* LoginViewController.xib */; };
 		E9DB5C2E18EE81A9007B2C84 /* Chatroom.m in Sources */ = {isa = PBXBuildFile; fileRef = E9DB5C2D18EE81A9007B2C84 /* Chatroom.m */; };
 		E9DB5C3118EE81BE007B2C84 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = E9DB5C3018EE81BE007B2C84 /* User.m */; };
 		E9DB5C3418EE81CC007B2C84 /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = E9DB5C3318EE81CC007B2C84 /* Message.m */; };
@@ -74,6 +83,20 @@
 		CA105B6A18ECFA6400F78D28 /* HeresayTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "HeresayTests-Info.plist"; sourceTree = "<group>"; };
 		CA105B6C18ECFA6400F78D28 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		CA105B6E18ECFA6400F78D28 /* HeresayTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HeresayTests.m; sourceTree = "<group>"; };
+		CA5EDACC18F7A37F00C3A09B /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		CA5EDACD18F7A37F00C3A09B /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		CA5EDACE18F7A37F00C3A09B /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
+		CA5EDAD118F7AEF000C3A09B /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		CA5EDAD418F7B1E800C3A09B /* LocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationManager.h; sourceTree = "<group>"; };
+		CA5EDAD518F7B1E800C3A09B /* LocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationManager.m; sourceTree = "<group>"; };
+		CA5EDAD718F7B6CE00C3A09B /* IntroViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntroViewController.h; sourceTree = "<group>"; };
+		CA5EDAD818F7B6CE00C3A09B /* IntroViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntroViewController.m; sourceTree = "<group>"; };
+		CA5EDAD918F7B6CE00C3A09B /* IntroViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IntroViewController.xib; sourceTree = "<group>"; };
+		CA5EDADC18F7C7CE00C3A09B /* ChatroomSelectorDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatroomSelectorDelegate.h; sourceTree = "<group>"; };
+		CA5EDADD18F7C7CE00C3A09B /* ChatroomSelectorDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatroomSelectorDelegate.m; sourceTree = "<group>"; };
+		CA5EDADF18F7CC9F00C3A09B /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		CA5EDAE018F7CC9F00C3A09B /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		CA5EDAE118F7CC9F00C3A09B /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		E9DB5C2C18EE81A9007B2C84 /* Chatroom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Chatroom.h; sourceTree = "<group>"; };
 		E9DB5C2D18EE81A9007B2C84 /* Chatroom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Chatroom.m; sourceTree = "<group>"; };
 		E9DB5C2F18EE81BE007B2C84 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
@@ -117,6 +140,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA5EDAD218F7AEF000C3A09B /* MapKit.framework in Frameworks */,
 				CA105B4C18ECFA6300F78D28 /* CoreGraphics.framework in Frameworks */,
 				CA105B4E18ECFA6300F78D28 /* UIKit.framework in Frameworks */,
 				CA105B4A18ECFA6300F78D28 /* Foundation.framework in Frameworks */,
@@ -160,6 +184,7 @@
 		CA105B4818ECFA6300F78D28 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CA5EDAD118F7AEF000C3A09B /* MapKit.framework */,
 				CA105B4918ECFA6300F78D28 /* Foundation.framework */,
 				CA105B4B18ECFA6300F78D28 /* CoreGraphics.framework */,
 				CA105B4D18ECFA6300F78D28 /* UIKit.framework */,
@@ -172,6 +197,7 @@
 		CA105B4F18ECFA6300F78D28 /* Heresay */ = {
 			isa = PBXGroup;
 			children = (
+				CA5EDAD318F7B1D100C3A09B /* Controllers */,
 				E9DB5C2B18EE8179007B2C84 /* Views */,
 				E9DB5C2A18EE8158007B2C84 /* ViewControllers */,
 				E9DB5C2918EE8145007B2C84 /* Models */,
@@ -212,6 +238,17 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		CA5EDAD318F7B1D100C3A09B /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				CA5EDAD418F7B1E800C3A09B /* LocationManager.h */,
+				CA5EDAD518F7B1E800C3A09B /* LocationManager.m */,
+				CA5EDADC18F7C7CE00C3A09B /* ChatroomSelectorDelegate.h */,
+				CA5EDADD18F7C7CE00C3A09B /* ChatroomSelectorDelegate.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
 		E9DB5C2918EE8145007B2C84 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -240,6 +277,15 @@
 				E9DB5C4418EE82EE007B2C84 /* InviteUserViewController.h */,
 				E9DB5C4518EE82EE007B2C84 /* InviteUserViewController.m */,
 				E9DB5C4618EE82EE007B2C84 /* InviteUserViewController.xib */,
+				CA5EDACC18F7A37F00C3A09B /* MainViewController.h */,
+				CA5EDACD18F7A37F00C3A09B /* MainViewController.m */,
+				CA5EDACE18F7A37F00C3A09B /* MainViewController.xib */,
+				CA5EDAD718F7B6CE00C3A09B /* IntroViewController.h */,
+				CA5EDAD818F7B6CE00C3A09B /* IntroViewController.m */,
+				CA5EDAD918F7B6CE00C3A09B /* IntroViewController.xib */,
+				CA5EDADF18F7CC9F00C3A09B /* LoginViewController.h */,
+				CA5EDAE018F7CC9F00C3A09B /* LoginViewController.m */,
+				CA5EDAE118F7CC9F00C3A09B /* LoginViewController.xib */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -347,15 +393,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				E9DB5C3E18EE82B9007B2C84 /* ChatroomMapViewController.xib in Resources */,
+				CA5EDAD018F7A37F00C3A09B /* MainViewController.xib in Resources */,
 				CA105B5418ECFA6300F78D28 /* InfoPlist.strings in Resources */,
 				CA105B5C18ECFA6300F78D28 /* Images.xcassets in Resources */,
 				E9DB5C5C18EE84BA007B2C84 /* InviteListAccountViewCell.xib in Resources */,
+				CA5EDAE318F7CC9F00C3A09B /* LoginViewController.xib in Resources */,
 				E9DB5C3918EE81FB007B2C84 /* ChatroomListViewController.xib in Resources */,
 				E9DB5C4818EE82EE007B2C84 /* InviteUserViewController.xib in Resources */,
 				E9DB5C4318EE82D8007B2C84 /* SettingsViewController.xib in Resources */,
 				E9DB5C4D18EE8365007B2C84 /* ChatroomViewCell.xib in Resources */,
 				E9DB5C6618EE8680007B2C84 /* MessageViewCell.xib in Resources */,
 				E9DB5C6118EE8566007B2C84 /* NewChatroomViewCell.xib in Resources */,
+				CA5EDADB18F7B6CE00C3A09B /* IntroViewController.xib in Resources */,
 				E9DB5C5718EE8435007B2C84 /* InviteUserViewCell.xib in Resources */,
 				E9DB5C5218EE83E8007B2C84 /* UserListView.xib in Resources */,
 			);
@@ -412,14 +461,19 @@
 				E9DB5C3118EE81BE007B2C84 /* User.m in Sources */,
 				E9DB5C4718EE82EE007B2C84 /* InviteUserViewController.m in Sources */,
 				E9DB5C3818EE81FB007B2C84 /* ChatroomListViewController.m in Sources */,
+				CA5EDACF18F7A37F00C3A09B /* MainViewController.m in Sources */,
+				CA5EDAE218F7CC9F00C3A09B /* LoginViewController.m in Sources */,
 				E9DB5C2E18EE81A9007B2C84 /* Chatroom.m in Sources */,
 				E9DB5C5F18EE8551007B2C84 /* NewChatroomViewCell.m in Sources */,
 				E9DB5C4218EE82D8007B2C84 /* SettingsViewController.m in Sources */,
+				CA5EDADE18F7C7CE00C3A09B /* ChatroomSelectorDelegate.m in Sources */,
 				E9DB5C4B18EE8351007B2C84 /* ChatroomViewCell.m in Sources */,
+				CA5EDAD618F7B1E800C3A09B /* LocationManager.m in Sources */,
 				E9DB5C5018EE83D4007B2C84 /* UserListView.m in Sources */,
 				E9DB5C3418EE81CC007B2C84 /* Message.m in Sources */,
 				E9DB5C5518EE8418007B2C84 /* InviteUserViewCell.m in Sources */,
 				E9DB5C3D18EE82B9007B2C84 /* ChatroomMapViewController.m in Sources */,
+				CA5EDADA18F7B6CE00C3A09B /* IntroViewController.m in Sources */,
 				E9DB5C5A18EE8490007B2C84 /* InviteListAccountViewCell.m in Sources */,
 				E9DB5C6418EE8674007B2C84 /* MessageViewCell.m in Sources */,
 				CA105B5A18ECFA6300F78D28 /* AppDelegate.m in Sources */,

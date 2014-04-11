@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MapKit/MapKit.h>
+#import "ChatroomSelectorDelegate.h"
 
-@interface ChatroomMapViewController : UIViewController
+@interface ChatroomMapViewController : UIViewController <MKMapViewDelegate>
+
+@property (strong, nonatomic) id<ChatroomSelectorDelegate> delegate;
 
 @end
