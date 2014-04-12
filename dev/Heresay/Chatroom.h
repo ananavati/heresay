@@ -41,4 +41,6 @@
 @property (strong, nonatomic) NSMutableArray *activeUsers;
 @property (strong, nonatomic) NSMutableArray *nearbyUsers;
 
++ (Chatroom *)initWithJSON:(NSDictionary *)json;
+
 @end

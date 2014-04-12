@@ -8,6 +8,12 @@
 
 #import "ChatroomViewCell.h"
 
+@interface ChatroomViewCell ()
+
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+
+@end
+
 @implementation ChatroomViewCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -24,6 +30,10 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+
+- (void)initWithModel:(Chatroom *)chatroomModel {
+	self.nameLabel.text = chatroomModel.name;
 }
 
 @end

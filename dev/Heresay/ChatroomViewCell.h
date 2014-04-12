@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Chatroom.h"
 
 @interface ChatroomViewCell : UITableViewCell
+
+- (void)initWithModel:(Chatroom *)chatroomModel;
 
 @end

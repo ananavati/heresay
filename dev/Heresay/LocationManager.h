@@ -12,6 +12,8 @@
 
 @interface LocationManager : NSObject <CLLocationManagerDelegate>
 
+@property (strong, nonatomic) CLLocation *userLocation;
+
 + (LocationManager *)instance;
 
 /**

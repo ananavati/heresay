@@ -10,6 +10,7 @@
 #import "LocationManager.h"
 #import "NewChatroomViewCell.h"
 #import "ChatroomViewCell.h"
+#import "DummyDataProvider.h"
 
 @interface ChatroomListViewController ()
 
@@ -43,6 +44,10 @@
 	cellNib = [UINib nibWithNibName:@"ChatroomViewCell" bundle:nil];
 	[self.tableView registerNib:cellNib forCellReuseIdentifier:@"ChatroomViewCell"];
 	
+	[[DummyDataProvider instance] fetchChatroomsNearLocation:[[LocationManager instance] userLocation] withSuccess:^(NSArray *chatrooms) {
+		self.chatroomModels = chatrooms;
+		[self.tableView reloadData];
+	}];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -80,21 +85,19 @@
 		ChatroomViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ChatroomViewCell" forIndexPath:indexPath];
 //		cell.delegate = self;
 		if (self.chatroomModels && [self.chatroomModels count] > 0) {
-//				[cell initWithModel:[self.tweetModels objectAtIndex:[indexPath row]]];
+			[cell initWithModel:[self.chatroomModels objectAtIndex:[indexPath row]]];
 		}
 		return cell;
 	}
 	
 	return nil;
 }
-
+/*
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-	return 60;
-	/*
 	if (!self.chatroomModels || [self.chatroomModels count] == 0) { return 60; }
 	return [[self cellForMetrics] calcHeightWithModel:self.chatroomModels[[indexPath row]]];
-	*/
 }
+*/
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	/*
