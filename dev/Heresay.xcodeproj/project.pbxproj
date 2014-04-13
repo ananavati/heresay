@@ -12,6 +12,8 @@
 		17602A9118FB51FB0048B9E0 /* ChatroomTabBarController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17602A8F18FB51FB0048B9E0 /* ChatroomTabBarController.xib */; };
 		17602A9518FB52180048B9E0 /* MainSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17602A9318FB52180048B9E0 /* MainSettingsViewController.m */; };
 		17602A9618FB52180048B9E0 /* MainSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17602A9418FB52180048B9E0 /* MainSettingsViewController.xib */; };
+		17602A9918FB54190048B9E0 /* MessageApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 17602A9818FB54190048B9E0 /* MessageApi.m */; };
+		17602A9C18FB54250048B9E0 /* UserApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 17602A9B18FB54250048B9E0 /* UserApi.m */; };
 		CA105B4A18ECFA6300F78D28 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA105B4918ECFA6300F78D28 /* Foundation.framework */; };
 		CA105B4C18ECFA6300F78D28 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA105B4B18ECFA6300F78D28 /* CoreGraphics.framework */; };
 		CA105B4E18ECFA6300F78D28 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA105B4D18ECFA6300F78D28 /* UIKit.framework */; };
@@ -79,6 +81,10 @@
 		17602A9218FB52180048B9E0 /* MainSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainSettingsViewController.h; sourceTree = "<group>"; };
 		17602A9318FB52180048B9E0 /* MainSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainSettingsViewController.m; sourceTree = "<group>"; };
 		17602A9418FB52180048B9E0 /* MainSettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainSettingsViewController.xib; sourceTree = "<group>"; };
+		17602A9718FB54190048B9E0 /* MessageApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageApi.h; sourceTree = "<group>"; };
+		17602A9818FB54190048B9E0 /* MessageApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageApi.m; sourceTree = "<group>"; };
+		17602A9A18FB54250048B9E0 /* UserApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserApi.h; sourceTree = "<group>"; };
+		17602A9B18FB54250048B9E0 /* UserApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserApi.m; sourceTree = "<group>"; };
 		BFB991D905884E70B8F0661E /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		CA105B4618ECFA6300F78D28 /* Heresay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Heresay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA105B4918ECFA6300F78D28 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -179,6 +185,10 @@
 			children = (
 				17602A8A18FA416C0048B9E0 /* ChatRoomApi.h */,
 				17602A8B18FA416C0048B9E0 /* ChatRoomApi.m */,
+				17602A9718FB54190048B9E0 /* MessageApi.h */,
+				17602A9818FB54190048B9E0 /* MessageApi.m */,
+				17602A9A18FB54250048B9E0 /* UserApi.h */,
+				17602A9B18FB54250048B9E0 /* UserApi.m */,
 			);
 			name = api;
 			sourceTree = "<group>";
@@ -511,7 +521,9 @@
 				E9DB5C6418EE8674007B2C84 /* MessageViewCell.m in Sources */,
 				E99EA19B18FAFD9A0020F8EE /* ChatroomViewController.m in Sources */,
 				CA105B5A18ECFA6300F78D28 /* AppDelegate.m in Sources */,
+				17602A9918FB54190048B9E0 /* MessageApi.m in Sources */,
 				CA105B5618ECFA6300F78D28 /* main.m in Sources */,
+				17602A9C18FB54250048B9E0 /* UserApi.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
