@@ -7,7 +7,6 @@
 //
 
 #import "ChatRoomApi.h"
-#import <Parse/Parse.h>
 
 @interface ChatRoomApi ()
 
