@@ -28,18 +28,15 @@
 	
 	return modelsDict;
 }
-
-// TODO: This method may be obviated by Parse
-+ (User *)initWithJSON:(NSDictionary *)json {
-	User *model = [User models][json[@"objectId"]];
+// TODO:arpan dont need this method but leave it here for now
++ (User *)initWithJSON:(User *)user {
+	User *model = [User models][user[@"objectId"]];
     
 	if (!model) {
 		model = [[User alloc] init];
-		model.objectId = json[@"objectId"];
-		model.name = json[@"name"];
-		model.profileImageURL = json[@"profileImageURL"];
-		
-		[User models][model.objectId] = model;
+
+		model.name = user[@"name"];
+		model.profileImageURL = user[@"profileImageURL"];
 	}
 	
 	return model;

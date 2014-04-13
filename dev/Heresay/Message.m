@@ -29,17 +29,15 @@
 	return modelsDict;
 }
 
-// TODO: This method may be obviated by Parse
-+ (Message *)initWithJSON:(NSDictionary *)json {
-	Message *model = [Message models][json[@"objectId"]];
+// TODO:arpan dont need this method but leave it here for now
++ (Message *)initWithJSON:(Message *)message {
+	Message *model = [Message models][message[@"objectId"]];
 
 	if (!model) {
 		model = [[Message alloc] init];
-		model.objectId = json[@"objectId"];
-		model.text = json[@"text"];
-		model.authorId = json[@"authorId"];
-		
-        [Message models][model.objectId] = model;
+        
+		model.text = message[@"text"];
+		model.authorId = message[@"authorId"];
 	}
 	
 	return model;
