@@ -30,11 +30,11 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 	
-	self.chatroomTabBarController = [[ChatroomTabBarController alloc] init];
-	UINavigationController *mainNavigationController = [[UINavigationController alloc] initWithRootViewController:self.chatroomTabBarController];
     [Parse setApplicationId:PARSE_APP_ID clientKey:PARSE_CLIENT_KEY];
     [self registerParseSubClasses];
     
+	self.chatroomTabBarController = [[ChatroomTabBarController alloc] init];
+	UINavigationController *mainNavigationController = [[UINavigationController alloc] initWithRootViewController:self.chatroomTabBarController];
 	self.window.rootViewController = mainNavigationController;
 	
     self.window.backgroundColor = [UIColor whiteColor];

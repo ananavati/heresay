@@ -32,7 +32,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
 	if (self.chatroom) {
-		self.chatroomNameLabel.text = self.chatroom.name;
+		self.chatroomNameLabel.text = self.chatroom.chatRoomName;
 	} else {
 		self.chatroomNameLabel.text = @"New Chatroom";
 	}
