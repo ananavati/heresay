@@ -7,6 +7,7 @@
 //
 
 #import "LoginViewController.h"
+#import "ChatroomViewController.h"
 
 @interface LoginViewController ()
 
@@ -34,5 +35,11 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (IBAction)startChatroom:(id)sender {
+    ChatroomViewController *chatroomViewController = [[ChatroomViewController alloc] init];
+    [self.navigationController pushViewController:chatroomViewController animated:YES];
+}
+
 
 @end

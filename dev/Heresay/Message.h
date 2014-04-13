@@ -24,4 +24,9 @@
 @property (strong, nonatomic) NSDate *creationDate;
 @property (strong, nonatomic) NSString *creationDatestamp;
 
+
++ (Message *)initWithJSON:(NSDictionary *)json;
++ (NSDateFormatter *)longDateFormatter;
+- (NSString *)description;
+
 @end
