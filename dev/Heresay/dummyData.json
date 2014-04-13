@@ -48,6 +48,27 @@
 
 			}
 		}
-	]
+	],
+    "messages" : [
+        {
+            "objectId": "aEfG3HIJKE42",
+            "text": "Hello!!",
+            "authorId": "Georges Washington",
+            "created_at": "2014-04-07T23:00:00Z"
+        },
+        {
+            "objectId": "bEfG3HIJKE42",
+            "text": "What's up, Georges?",
+            "authorId": "Michael Jackson",
+            "created_at": "2014-04-07T23:00:01Z"
+        },
+        {
+            "objectId": "cEfG3HIJKE42",
+            "text": "Not much. Just chilin'",
+            "authorId": "Georges Washington",
+            "created_at": "2014-04-07T23:00:02Z"
+        }
+
+    ]
 
 }
