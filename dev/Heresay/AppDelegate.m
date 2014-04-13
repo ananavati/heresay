@@ -9,12 +9,16 @@
 #import "AppDelegate.h"
 #import "MainViewController.h"
 
+#import <Parse/Parse.h>
+
 @interface AppDelegate ()
 
 @property (strong, nonatomic) MainViewController *mainViewController;
 
 @end
 
+#define PARSE_APP_ID @"IN6rYCqD0rj7fHAYQgLZq8L6ZcYvmB2CmCUuJkdu"
+#define PARSE_CLIENT_KEY @"TtRImMMV88XMElru11arvlgRBYdkk6dUD3FsDw9P"
 
 @implementation AppDelegate
 
@@ -25,6 +29,7 @@
 	self.mainViewController = [[MainViewController alloc] init];
 	UINavigationController *mainNavigationController = [[UINavigationController alloc] initWithRootViewController:self.mainViewController];
 	self.window.rootViewController = mainNavigationController;
+    [Parse setApplicationId:PARSE_APP_ID clientKey:PARSE_CLIENT_KEY];
 	
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
