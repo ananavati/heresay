@@ -1,0 +1,74 @@
+{
+	"nearbyChatrooms": [
+		{
+			"objectId": "aBCdE1FGHI",
+			"name": "Beachside Chat",
+			"createdAt": "2014-04-01T03:00:00Z",
+			"radius": 100,
+			"placeName": "Beachside Cafe",
+			"latitude": 37.76045085019752,
+			"longitude": -122.50826099014375,
+			"users": {
+
+			}
+		},
+		{
+			"objectId": "bCDeF2GHIJ",
+			"name": "Java Chat Haus",
+			"createdAt": "2014-04-07T23:00:00Z",
+			"radius": 300,
+			"placeName": "Java Beach",
+			"latitude": 37.76046781415674,
+			"longitude": -122.50905492401216,
+			"users": {
+
+			}
+		},
+		{
+			"objectId": "cDEfG3HIJK",
+			"name": "Cleanup on Aisle Organic",
+			"createdAt": "2014-04-12T19:00:00Z",
+			"radius": 50,
+			"placeName": "Other Avenues Food Coop",
+			"latitude": 37.76065441745148,
+			"longitude": -122.50437715149019,
+			"users": {
+
+			}
+		},
+		{
+			"objectId": "dEFgH4IJKL",
+			"name": "Surf's Up",
+			"createdAt": "2014-04-03T05:00:00Z",
+			"radius": 150,
+			"placeName": "Mollusk Surf Shop",
+			"latitude": 37.76245257053061,
+			"longitude": -122.50630834198091,
+			"users": {
+
+			}
+		}
+	],
+    "messages" : [
+        {
+            "objectId": "aEfG3HIJKE42",
+            "text": "Hello!!",
+            "authorId": "Georges Washington",
+            "created_at": "2014-04-07T23:00:00Z"
+        },
+        {
+            "objectId": "bEfG3HIJKE42",
+            "text": "What's up, Georges?",
+            "authorId": "Michael Jackson",
+            "created_at": "2014-04-07T23:00:01Z"
+        },
+        {
+            "objectId": "cEfG3HIJKE42",
+            "text": "Not much. Just chilin'",
+            "authorId": "Georges Washington",
+            "created_at": "2014-04-07T23:00:02Z"
+        }
+
+    ]
+
+}

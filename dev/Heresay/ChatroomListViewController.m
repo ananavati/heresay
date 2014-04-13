@@ -35,7 +35,6 @@
     // UITableView setup
 	self.tableView.dataSource = self;
 	self.tableView.delegate = self;
-	self.tableView.separatorInset = UIEdgeInsetsZero;
 	self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 	
 	// Register cell nibs
@@ -48,6 +47,10 @@
 		self.chatroomModels = chatrooms;
 		[self.tableView reloadData];
 	}];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+	//
 }
 
 - (void)viewDidAppear:(BOOL)animated {

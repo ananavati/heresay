@@ -4,30 +4,24 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChatroomListViewController">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainSettingsViewController">
             <connections>
-                <outlet property="tableView" destination="Ica-ku-NRk" id="O6w-Pp-Khb"/>
-                <outlet property="view" destination="1" id="3"/>
+                <outlet property="tableView" destination="xLa-aL-lQD" id="A1w-U2-oWj"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="1">
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Ica-ku-NRk">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="xLa-aL-lQD">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
                 </tableView>
             </subviews>
-            <constraints>
-                <constraint firstItem="Ica-ku-NRk" firstAttribute="top" secondItem="1" secondAttribute="top" id="Osl-zT-WTa"/>
-                <constraint firstAttribute="bottom" secondItem="Ica-ku-NRk" secondAttribute="bottom" id="WwT-jR-fb9"/>
-                <constraint firstAttribute="trailing" secondItem="Ica-ku-NRk" secondAttribute="trailing" id="mUa-ex-mqg"/>
-                <constraint firstItem="Ica-ku-NRk" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="p46-WE-cb4"/>
-            </constraints>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>
