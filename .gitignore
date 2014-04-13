@@ -17,5 +17,7 @@ DerivedData
 *.DS_Store
 Pods
 *.xcuserstate
-
 *.pbxproj
+*.xcuserstate
+dev/Heresay.xcodeproj/xcuserdata/*
+*.xcscheme
