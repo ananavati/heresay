@@ -11,6 +11,10 @@
 
 #import <Parse/Parse.h>
 
+#import "User.h"
+#import "Chatroom.h"
+#import "Message.h"
+
 @interface AppDelegate ()
 
 @property (strong, nonatomic) MainViewController *mainViewController;
@@ -26,14 +30,22 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
+    [Parse setApplicationId:PARSE_APP_ID clientKey:PARSE_CLIENT_KEY];
+    [self registerParseSubClasses];
+    
 	self.mainViewController = [[MainViewController alloc] init];
 	UINavigationController *mainNavigationController = [[UINavigationController alloc] initWithRootViewController:self.mainViewController];
 	self.window.rootViewController = mainNavigationController;
-    [Parse setApplicationId:PARSE_APP_ID clientKey:PARSE_CLIENT_KEY];
 	
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;
+}
+
+- (void) registerParseSubClasses {
+    [User registerSubclass];
+    [Chatroom registerSubclass];
+    [Message registerSubclass];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

@@ -10,6 +10,14 @@
 
 @implementation User
 
+@synthesize name,
+            profileImageURL;
+
+// this is the collection/table_name
++ (NSString *)parseClassName {
+    return @"users";
+}
+
 + (NSMutableDictionary *)models {
 	static NSMutableDictionary *modelsDict = nil;
 	
@@ -24,15 +32,11 @@
 // TODO: This method may be obviated by Parse
 + (User *)initWithJSON:(NSDictionary *)json {
 	User *model = [User models][json[@"objectId"]];
+    
 	if (!model) {
 		model = [[User alloc] init];
 		model.objectId = json[@"objectId"];
 		model.name = json[@"name"];
-		
-		model.createdAt = json[@"created_at"];
-		model.creationDate = [[User longDateFormatter] dateFromString:model.createdAt];
-		model.creationDatestamp = [NSDateFormatter localizedStringFromDate:model.creationDate dateStyle:NSDateFormatterShortStyle timeStyle:NSDateFormatterShortStyle];
-		
 		model.profileImageURL = json[@"profileImageURL"];
 		
 		[User models][model.objectId] = model;

@@ -8,39 +8,31 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CLLocation.h>
+#import <Parse/PFObject+Subclass.h>
+#import <Parse/Parse.h>
 
-@interface Chatroom : NSObject
+@interface Chatroom : PFObject<PFSubclassing>
 
-// TODO: PFObject has this property already;
-// we should remove it when we turns models into PFObects.
-@property (strong, nonatomic) NSString *objectId;
++ (NSString *)parseClassName;
 
-@property (strong, nonatomic) NSString *name;
-
-// TODO: PFObject has this property already;
-// we should remove it when we turns models into PFObects.
-@property (strong, nonatomic) NSString *createdAt;
-
-@property (strong, nonatomic) NSDate *creationDate;
-@property (strong, nonatomic) NSString *creationDatestamp;
-
+@property (strong, nonatomic) NSString *chatRoomName;
 
 #pragma mark - Location-related properties
 @property (strong, nonatomic) NSNumber *radius;
 @property (strong, nonatomic) NSString *placeName;
 
 // TODO: Will need to convert to PFGeoPoint for de/serialization.
-@property (strong, nonatomic) CLLocation *location;
+@property (strong, nonatomic) PFGeoPoint *geolocation;
 
 
 #pragma mark - User-related properties
 // TODO: We'll probably use PFRelation to handle many-to-many relationships.
 // http://blog.parse.com/2012/05/17/new-many-to-many/
-@property (strong, nonatomic) NSMutableArray *users;
-@property (strong, nonatomic) NSMutableArray *admins;
-@property (strong, nonatomic) NSMutableArray *activeUsers;
-@property (strong, nonatomic) NSMutableArray *nearbyUsers;
+//@property (strong, nonatomic) NSMutableArray *users;
+//@property (strong, nonatomic) NSMutableArray *admins;
+//@property (strong, nonatomic) NSMutableArray *activeUsers;
+//@property (strong, nonatomic) NSMutableArray *nearbyUsers;
 
-+ (Chatroom *)initWithJSON:(NSDictionary *)json;
++ (Chatroom *)initWithJSON:(Chatroom *)json;
 
 @end

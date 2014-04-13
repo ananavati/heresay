@@ -10,7 +10,8 @@
 #import "LocationManager.h"
 #import "NewChatroomViewCell.h"
 #import "ChatroomViewCell.h"
-#import "DummyDataProvider.h"
+
+#import "ChatRoomApi.h"
 
 @interface ChatroomListViewController ()
 
@@ -24,9 +25,18 @@
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
 	self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
 	if (self) {
-		// Custom initialization
+		[self initialize];
 	}
 	return self;
+}
+
+- (void) initialize {
+    self.chatroomModels = [[NSMutableArray alloc] init];
+    
+    // this method should never be called from viewDidLoad
+    // viewDidLoad method could be called from different places multiple times
+    // TODO:arpan fetch more rooms pull down to refresh behavior needs to be added
+    [self fetchChatRooms];
 }
 
 - (void)viewDidLoad {
@@ -41,13 +51,9 @@
 	// Register cell nibs
 	UINib *cellNib = [UINib nibWithNibName:@"NewChatroomViewCell" bundle:nil];
 	[self.tableView registerNib:cellNib forCellReuseIdentifier:@"NewChatroomViewCell"];
-	cellNib = [UINib nibWithNibName:@"ChatroomViewCell" bundle:nil];
-	[self.tableView registerNib:cellNib forCellReuseIdentifier:@"ChatroomViewCell"];
 	
-	[[DummyDataProvider instance] fetchChatroomsNearLocation:[[LocationManager instance] userLocation] withSuccess:^(NSArray *chatrooms) {
-		self.chatroomModels = chatrooms;
-		[self.tableView reloadData];
-	}];
+    cellNib = [UINib nibWithNibName:@"ChatroomViewCell" bundle:nil];
+	[self.tableView registerNib:cellNib forCellReuseIdentifier:@"ChatroomViewCell"];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -59,6 +65,14 @@
 	// Dispose of any resources that can be recreated.
 }
 
+#pragma mark - parse backend api calls
+
+- (void)fetchChatRooms {
+    [[ChatRoomApi instance] fetchChatroomsNearLocation:[[LocationManager instance] userLocation] withSuccess:^(NSArray *chatrooms) {
+        self.chatroomModels = chatrooms;
+        [self.tableView reloadData];
+    }];
+}
 
 
 #pragma mark - UITableView protocol implementation

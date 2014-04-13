@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		17602A8C18FA416C0048B9E0 /* ChatRoomApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 17602A8B18FA416C0048B9E0 /* ChatRoomApi.m */; };
 		CA105B4A18ECFA6300F78D28 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA105B4918ECFA6300F78D28 /* Foundation.framework */; };
 		CA105B4C18ECFA6300F78D28 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA105B4B18ECFA6300F78D28 /* CoreGraphics.framework */; };
 		CA105B4E18ECFA6300F78D28 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA105B4D18ECFA6300F78D28 /* UIKit.framework */; };
@@ -68,6 +69,8 @@
 
 /* Begin PBXFileReference section */
 		0F5EC7052AFA41239E2BC3E5 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		17602A8A18FA416C0048B9E0 /* ChatRoomApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatRoomApi.h; sourceTree = "<group>"; };
+		17602A8B18FA416C0048B9E0 /* ChatRoomApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatRoomApi.m; sourceTree = "<group>"; };
 		BFB991D905884E70B8F0661E /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		CA105B4618ECFA6300F78D28 /* Heresay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Heresay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA105B4918ECFA6300F78D28 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -166,6 +169,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		17602A8918FA41350048B9E0 /* api */ = {
+			isa = PBXGroup;
+			children = (
+				17602A8A18FA416C0048B9E0 /* ChatRoomApi.h */,
+				17602A8B18FA416C0048B9E0 /* ChatRoomApi.m */,
+			);
+			name = api;
+			sourceTree = "<group>";
+		};
 		CA105B3D18ECFA6300F78D28 = {
 			isa = PBXGroup;
 			children = (
@@ -203,6 +215,7 @@
 			isa = PBXGroup;
 			children = (
 				CAD8814118F9C55000FC3646 /* dummyData.json */,
+				17602A8918FA41350048B9E0 /* api */,
 				CA5EDAD318F7B1D100C3A09B /* Controllers */,
 				E9DB5C2B18EE8179007B2C84 /* Views */,
 				E9DB5C2A18EE8158007B2C84 /* ViewControllers */,
@@ -470,6 +483,7 @@
 				E9DB5C3118EE81BE007B2C84 /* User.m in Sources */,
 				E9DB5C4718EE82EE007B2C84 /* InviteUserViewController.m in Sources */,
 				E9DB5C3818EE81FB007B2C84 /* ChatroomListViewController.m in Sources */,
+				17602A8C18FA416C0048B9E0 /* ChatRoomApi.m in Sources */,
 				CA5EDACF18F7A37F00C3A09B /* MainViewController.m in Sources */,
 				CAD8814018F9B09F00FC3646 /* DummyDataProvider.m in Sources */,
 				CA5EDAE218F7CC9F00C3A09B /* LoginViewController.m in Sources */,

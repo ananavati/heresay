@@ -10,6 +10,14 @@
 
 @implementation Message
 
+@synthesize text,
+            authorId;
+
+// this is the collection/table_name
++ (NSString *)parseClassName {
+    return @"messages";
+}
+
 + (NSMutableDictionary *)models {
 	static NSMutableDictionary *modelsDict = nil;
 	
@@ -24,17 +32,14 @@
 // TODO: This method may be obviated by Parse
 + (Message *)initWithJSON:(NSDictionary *)json {
 	Message *model = [Message models][json[@"objectId"]];
+
 	if (!model) {
 		model = [[Message alloc] init];
 		model.objectId = json[@"objectId"];
 		model.text = json[@"text"];
 		model.authorId = json[@"authorId"];
 		
-		model.createdAt = json[@"created_at"];
-		model.creationDate = [[Message longDateFormatter] dateFromString:model.createdAt];
-		model.creationDatestamp = [NSDateFormatter localizedStringFromDate:model.creationDate dateStyle:NSDateFormatterShortStyle timeStyle:NSDateFormatterShortStyle];
-		
-		[Message models][model.objectId] = model;
+        [Message models][model.objectId] = model;
 	}
 	
 	return model;

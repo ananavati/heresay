@@ -16,7 +16,7 @@
 + (DummyDataProvider *)instance;
 
 - (User *)getAuthenticatedUser;
-- (void)fetchChatroomsNearLocation:(CLLocation *)location withSuccess:(void (^)(NSArray *chatrooms))success;
+
 - (void)fetchMessagesForChatroomWithId:(NSString *)chatroomId withSuccess:(void (^)(NSArray *messages))success;
 
 @end

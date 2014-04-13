@@ -33,7 +33,7 @@
 }
 
 - (void)initWithModel:(Chatroom *)chatroomModel {
-	self.nameLabel.text = chatroomModel.name;
+	self.nameLabel.text = chatroomModel.chatRoomName;
 }
 
 @end

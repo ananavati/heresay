@@ -10,6 +10,16 @@
 
 @implementation Chatroom
 
+@synthesize radius,
+            chatRoomName,
+            placeName,
+            geolocation;
+
+// this is the collection/table_name
++ (NSString *)parseClassName {
+    return @"chat_rooms";
+}
+
 + (NSMutableDictionary *)models {
 	static NSMutableDictionary *modelsDict = nil;
 	
@@ -21,32 +31,22 @@
 	return modelsDict;
 }
 
-// TODO: This method may be obviated by Parse
-+ (Chatroom *)initWithJSON:(NSDictionary *)json {
-	Chatroom *model = [Chatroom models][json[@"objectId"]];
++ (Chatroom *)initWithJSON:(Chatroom *)chatRoom {
+	Chatroom *model = [Chatroom models][chatRoom[@"objectId"]];
 	if (!model) {
-		model = [[Chatroom alloc] init];
-		model.objectId = json[@"objectId"];
-		model.name = json[@"name"];
-		
-		model.createdAt = json[@"created_at"];
-		model.creationDate = [[Chatroom longDateFormatter] dateFromString:model.createdAt];
-		model.creationDatestamp = [NSDateFormatter localizedStringFromDate:model.creationDate dateStyle:NSDateFormatterShortStyle timeStyle:NSDateFormatterShortStyle];
-		
-		model.radius = json[@"radius"];
-		model.placeName = json[@"placeName"];
-		model.location = [[CLLocation alloc]
-						  initWithLatitude:[json[@"location"][@"latitude"] doubleValue]
-						  longitude:[json[@"location"][@"longitude"] doubleValue]];
-		
+        model = [Chatroom object];
+        
+        model.chatRoomName = chatRoom[@"chatRoomName"];
+		model.radius = chatRoom[@"radius"];
+		model.placeName = chatRoom[@"placeName"];
+        model.geolocation = [PFGeoPoint geoPointWithLatitude:[chatRoom[@"latitude"] doubleValue] longitude:[chatRoom[@"longitude"] doubleValue]];
+
 		// TODO: how will we store these on the client?
 		// As User models, PFRelations, ids...?
-		model.users = json[@"users"];
-		model.admins = json[@"admins"];
-		model.activeUsers = json[@"activeUsers"];
-		model.nearbyUsers = json[@"nearbyUsers"];
-		
-		[Chatroom models][model.objectId] = model;
+//		model.users = json[@"users"];
+//		model.admins = json[@"admins"];
+//		model.activeUsers = json[@"activeUsers"];
+//		model.nearbyUsers = json[@"nearbyUsers"];
 	}
 	
 	return model;
@@ -65,7 +65,7 @@
 }
 
 - (NSString *)description {
-	return [NSString stringWithFormat:@"<Chatroom [%@]>", self.name];
+	return [NSString stringWithFormat:@"<Chatroom [%@]>", self.chatRoomName];
 }
 
 @end

@@ -45,18 +45,6 @@
 	return nil;
 }
 
-- (void)fetchChatroomsNearLocation:(CLLocation *)location withSuccess:(void (^)(NSArray *chatrooms))success {
-	self.nearbyChatrooms = [[NSMutableArray alloc] init];
-	for (NSDictionary *chatroomData in self.dummyData[@"nearbyChatrooms"]) {
-		[self.nearbyChatrooms addObject:[Chatroom initWithJSON:chatroomData]];
-	}
-	
-	// call success block after delay to simulate asynchronicity
-	dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.5 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
-		success(self.nearbyChatrooms);
-	});
-}
-
 - (void)fetchMessagesForChatroomWithId:(NSString *)chatroomId withSuccess:(void (^)(NSArray *messages))success {
 	// call success block after delay to simulate asynchronicity
 	dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.5 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
