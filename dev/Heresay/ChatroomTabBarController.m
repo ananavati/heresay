@@ -18,21 +18,22 @@
 @property (strong, nonatomic) ChatroomMapViewController *chatroomMapViewController;
 @property (strong, nonatomic) MainSettingsViewController *mainSettingsViewController;
 @property (strong, nonatomic) IntroViewController *introViewController;
-@property (strong, nonatomic) LoginViewController *loginViewController;
 
 @property (assign, nonatomic) BOOL introComplete;
 
 @end
 
 @implementation ChatroomTabBarController {
-	NSTimeInterval transitionDuration;
+	int tabTransitionStyle;
+	NSTimeInterval tabTransitionDuration;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
 	self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
 	
 	if (self) {
-		transitionDuration = 0.5;
+		tabTransitionStyle = 1;			// 1 = slide, 2 = flip
+		tabTransitionDuration = tabTransitionStyle == 1 ? 0.35 : 0.75;
 		
 		
 		// Tab bar setup
@@ -40,20 +41,13 @@
 		self.chatroomListViewController.delegate = self;
 		self.chatroomListViewController.title = @"List";
 //		self.chatroomListViewController.tabBarItem.image = [UIImage imageNamed:@"chatroomList.png"];
-//		self.chatroomListViewController.modalTransitionStyle = UIModalPresentationCustom;
-//		self.chatroomListViewController.transitioningDelegate = self;
 		
 		self.chatroomMapViewController = [[ChatroomMapViewController alloc] init];
 		self.chatroomMapViewController.delegate = self;
 		self.chatroomMapViewController.title = @"Map";
 //		self.chatroomMapViewController.tabBarItem.image = [UIImage imageNamed:@"chatroomMap.png"];
-//		self.chatroomMapViewController.modalTransitionStyle = UIModalPresentationCustom;
-//		self.chatroomMapViewController.transitioningDelegate = self;
 		
 		self.viewControllers = @[self.chatroomListViewController, self.chatroomMapViewController];
-		
-//		self.tabBar.delegate = self;
-//		self.tabBarController.delegate = self;
 		self.delegate = self;
 		
 		
@@ -91,15 +85,15 @@
 	// Dispose of any resources that can be recreated.
 }
 
+
+
 - (void)presentIntro {
 	if (self.introComplete) { return; }
 	[self.navigationController presentViewController:self.introViewController animated:YES completion:nil];
 }
 
-- (void)didSelectChatroom:(id)chatroomSelector withChatroom:(Chatroom *)chatroom {
-	// TODO: LoginViewController if not authed, else straight to ChatroomViewController
-	LoginViewController *loginViewController = [[LoginViewController alloc] init];
-	[self.navigationController pushViewController:loginViewController animated:YES];
+- (void)settingsTapped:(id)sender {
+	[self.navigationController pushViewController:self.mainSettingsViewController animated:YES];
 }
 
 - (void)didDismissWithViewController:(UIViewController *)viewController {
@@ -110,9 +104,12 @@
 	}
 }
 
-- (void)settingsTapped:(id)sender {
-//	[self.navigationController presentViewController:self.mainSettingsViewController animated:YES completion:nil];
-	[self.navigationController pushViewController:self.mainSettingsViewController animated:YES];
+- (void)didSelectChatroom:(id)chatroomSelector withChatroom:(Chatroom *)chatroom {
+	// TODO: LoginViewController if not authed, else straight to ChatroomViewController
+	LoginViewController *loginViewController = [[LoginViewController alloc] init];
+	loginViewController.chatroom = chatroom;
+	
+	[self.navigationController pushViewController:loginViewController animated:YES];
 }
 
 
@@ -138,27 +135,54 @@
 }
 
 - (NSTimeInterval)transitionDuration:(id<UIViewControllerContextTransitioning>)transitionContext {
-	return transitionDuration;
+	return tabTransitionDuration;
 }
 
 - (void)performTabTransition:(id<UIViewControllerContextTransitioning>)transitionContext {
 	UIView *containerView = [transitionContext containerView];
+	UIViewController *fromVC = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
 	UIViewController *toVC = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
 	CGSize appSize = [[UIScreen mainScreen] bounds].size;
+	UIViewAnimationOptions animationOptions;
 	
-	if (toVC == self.chatroomListViewController) {
-		// bring Chatroom list in from left
-		toVC.view.frame = CGRectMake(-appSize.width, 0, appSize.width, appSize.height);
-	} else if (toVC == self.chatroomMapViewController) {
-		// bring Chatroom map in from right
-		toVC.view.frame = CGRectMake(appSize.width, 0, appSize.width, appSize.height);
+	if (tabTransitionStyle == 1) {
+		
+		// horizontal slide transition
+		
+		if (toVC == self.chatroomListViewController) {
+			// slide Chatroom list in from left
+			toVC.view.frame = CGRectMake(-appSize.width, 0, appSize.width, appSize.height);
+			animationOptions = UIViewAnimationOptionCurveEaseOut;
+		} else if (toVC == self.chatroomMapViewController) {
+			// slide Chatroom map in from right
+			toVC.view.frame = CGRectMake(appSize.width, 0, appSize.width, appSize.height);
+			animationOptions = UIViewAnimationOptionCurveEaseOut;
+		}
+		
+		[containerView addSubview:toVC.view];
+		
+		[UIView animateWithDuration:tabTransitionDuration delay:0 options:animationOptions animations:^{
+			toVC.view.frame = CGRectMake(0, 0, appSize.width, appSize.height);
+		} completion:nil];
+		
+	} else if (tabTransitionStyle == 2) {
+		
+		// flip transition
+
+		if (toVC == self.chatroomListViewController) {
+			// flip Chatroom list in from right
+			animationOptions = UIViewAnimationOptionTransitionFlipFromLeft;
+		} else if (toVC == self.chatroomMapViewController) {
+			// flip Chatroom map in from left
+			animationOptions = UIViewAnimationOptionTransitionFlipFromRight;
+		}
+		
+		[UIView transitionWithView:containerView duration:tabTransitionDuration options:animationOptions animations:^{
+			[fromVC.view removeFromSuperview];
+			[containerView addSubview:toVC.view];
+		} completion:nil];
 	}
 	
-	[containerView addSubview:toVC.view];
-	
-	[UIView animateWithDuration:transitionDuration delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
-		toVC.view.frame = CGRectMake(0, 0, appSize.width, appSize.height);
-	} completion:nil];
 }
 
 
