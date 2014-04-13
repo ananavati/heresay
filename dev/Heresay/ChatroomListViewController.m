@@ -45,7 +45,6 @@
     // UITableView setup
 	self.tableView.dataSource = self;
 	self.tableView.delegate = self;
-	self.tableView.separatorInset = UIEdgeInsetsZero;
 	self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 	
 	// Register cell nibs
@@ -54,6 +53,10 @@
 	
     cellNib = [UINib nibWithNibName:@"ChatroomViewCell" bundle:nil];
 	[self.tableView registerNib:cellNib forCellReuseIdentifier:@"ChatroomViewCell"];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+	//
 }
 
 - (void)viewDidAppear:(BOOL)animated {

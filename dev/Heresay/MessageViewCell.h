@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface MessageViewCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UILabel *messageLabel;
+@property (weak, nonatomic) IBOutlet UILabel *userLabel;
 
 @end
