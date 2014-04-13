@@ -39,6 +39,6 @@
 
 - (IBAction)onEnableLocationServicesButtonTapped:(id)sender {
 	[[LocationManager instance] enableLocationServices];
-	[self.delegate didCompleteIntroWithIntroViewController:self];
+	[self.delegate didDismissWithViewController:self];
 }
 @end

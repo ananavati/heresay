@@ -7,16 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@class IntroViewController;
-@protocol IntroDelegate <NSObject>
-
-- (void)didCompleteIntroWithIntroViewController:(IntroViewController *)introViewController;
-
-@end
+#import "ModalViewControllerDelegate.h"
 
 @interface IntroViewController : UIViewController
 
-@property (strong, nonatomic) id<IntroDelegate> delegate;
+@property (strong, nonatomic) id<ModalViewControllerDelegate> delegate;
 
 @end

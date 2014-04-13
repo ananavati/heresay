@@ -7,13 +7,13 @@
 //
 
 #import "AppDelegate.h"
-#import "MainViewController.h"
+#import "ChatroomTabBarController.h"
 
 #import <Parse/Parse.h>
 
 @interface AppDelegate ()
 
-@property (strong, nonatomic) MainViewController *mainViewController;
+@property (strong, nonatomic) ChatroomTabBarController *chatroomTabBarController;
 
 @end
 
@@ -25,9 +25,9 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    
-	self.mainViewController = [[MainViewController alloc] init];
-	UINavigationController *mainNavigationController = [[UINavigationController alloc] initWithRootViewController:self.mainViewController];
+	
+	self.chatroomTabBarController = [[ChatroomTabBarController alloc] init];
+	UINavigationController *mainNavigationController = [[UINavigationController alloc] initWithRootViewController:self.chatroomTabBarController];
 	self.window.rootViewController = mainNavigationController;
     [Parse setApplicationId:PARSE_APP_ID clientKey:PARSE_CLIENT_KEY];
 	

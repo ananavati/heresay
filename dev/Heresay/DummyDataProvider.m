@@ -15,6 +15,7 @@
 @property (strong, nonatomic) NSDictionary *dummyData;
 @property (strong, nonatomic) NSMutableArray *nearbyChatrooms;
 @property (strong, nonatomic) User *authenticatedUser;
+@property (strong, nonatomic) NSMutableArray *messagesForChatroom;
 
 @end
 
@@ -58,9 +59,16 @@
 }
 
 - (void)fetchMessagesForChatroomWithId:(NSString *)chatroomId withSuccess:(void (^)(NSArray *messages))success {
-	// call success block after delay to simulate asynchronicity
+	
+    self.messagesForChatroom = [[NSMutableArray alloc] init];
+    for (NSDictionary *messagesData in self.dummyData[@"messages"]){
+        [self.messagesForChatroom addObject:[Message initWithJSON:messagesData]];
+    }
+    
+    
+    // call success block after delay to simulate asynchronicity
 	dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.5 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
-		success(nil);
+		success(self.messagesForChatroom);
 	});
 }
 
