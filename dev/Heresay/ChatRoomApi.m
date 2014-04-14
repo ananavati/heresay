@@ -11,6 +11,7 @@
 @interface ChatRoomApi ()
 
 @property (strong, nonatomic) NSMutableArray *nearbyChatrooms;
+@property (strong, nonatomic) PFQuery *query;
 
 @end
 
@@ -34,6 +35,7 @@
 {
     self = [super init];
     self.nearbyChatrooms = [[NSMutableArray alloc] init];
+    self.query = [PFQuery queryWithClassName:[Chatroom parseClassName]];
     return self;
 }
 
@@ -48,9 +50,7 @@
 }
 
 - (void)fetchChatroomsNearLocation:(CLLocation *)location withSuccess:(void (^)(NSArray *chatrooms))success {
-    PFQuery *query = [PFQuery queryWithClassName:[Chatroom parseClassName]];
-    
-    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+    [self.query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         [self appendChatRooms:objects];
         success(self.nearbyChatrooms);
     }];

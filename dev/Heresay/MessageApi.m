@@ -11,6 +11,7 @@
 @interface MessageApi ()
 
 @property (strong, nonatomic) NSMutableArray *messages;
+@property (strong, nonatomic) PFQuery *query;
 
 @end
 
@@ -34,6 +35,7 @@
 {
     self = [super init];
     self.messages = [[NSMutableArray alloc] init];
+    self.query = [PFQuery queryWithClassName:[Message parseClassName]];
     return self;
 }
 
@@ -50,11 +52,9 @@
 #pragma mark - message api methods
 
 - (void)fetchMessagesForChatroomWithId:(NSString *)chatroomId withSuccess:(void (^)(NSArray *messages))success {
-    PFQuery *query = [PFQuery queryWithClassName:[Message parseClassName]];
+    [self.query whereKey:@"chat_room_id" equalTo:chatroomId];
     
-    [query whereKey:@"chat_room_id" equalTo:chatroomId];
-    
-    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+    [self.query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         [self appendMessages:objects];
         success(self.messages);
     }];
