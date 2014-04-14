@@ -50,9 +50,18 @@
 }
 
 - (void)fetchChatroomsNearLocation:(CLLocation *)location withSuccess:(void (^)(NSArray *chatrooms))success {
-    [self.query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        [self appendChatRooms:objects];
-        success(self.nearbyChatrooms);
+    [PFGeoPoint geoPointForCurrentLocationInBackground:^(PFGeoPoint *geoPoint, NSError *error) {
+        if (!error) {
+            // do something with the new geoPoint
+        }
+    
+        geoPoint = [PFGeoPoint geoPointWithLatitude:37.76245257053061 longitude:-122.5063083419809];
+
+        [self.query whereKey:@"gelocation" nearGeoPoint:geoPoint];
+        [self.query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+            [self appendChatRooms:objects];
+            success(self.nearbyChatrooms);
+        }];
     }];
 }
 
