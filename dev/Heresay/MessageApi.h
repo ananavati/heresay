@@ -9,8 +9,12 @@
 #import <Foundation/Foundation.h>
 #import <Parse/Parse.h>
 
+#import "Message.h"
+
 @interface MessageApi : NSObject
 
 + (MessageApi *)instance;
+
+- (void)fetchMessagesForChatroomWithId:(NSString *)chatroomId withSuccess:(void (^)(NSArray *messages))success;
 
 @end

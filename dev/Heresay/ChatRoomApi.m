@@ -39,6 +39,8 @@
 
 - (void)appendChatRooms:(NSArray *)chatRooms
 {
+    [self.nearbyChatrooms removeAllObjects];
+    
     for (Chatroom *chatRoom in chatRooms) {
         // add to chatroom model to nearbychatrooms array
         [self.nearbyChatrooms addObject:[Chatroom initWithJSON:chatRoom]];
@@ -46,7 +48,8 @@
 }
 
 - (void)fetchChatroomsNearLocation:(CLLocation *)location withSuccess:(void (^)(NSArray *chatrooms))success {
-    PFQuery *query = [PFQuery queryWithClassName:@"chat_rooms"];
+    PFQuery *query = [PFQuery queryWithClassName:[Chatroom parseClassName]];
+    
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         [self appendChatRooms:objects];
         success(self.nearbyChatrooms);

@@ -18,7 +18,7 @@
 @property (strong, nonatomic) NSString *authorId;
 
 
-+ (Message *)initWithJSON:(NSDictionary *)json;
++ (Message *)initWithJSON:(Message *)json;
 + (NSDateFormatter *)longDateFormatter;
 - (NSString *)description;
 

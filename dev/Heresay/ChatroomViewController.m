@@ -9,7 +9,7 @@
 #import "ChatroomViewController.h"
 #import "MessageViewCell.h"
 #import "Message.h"
-#import "DummyDataProvider.h"
+#import "MessageApi.h"
 
 @interface ChatroomViewController ()
 
@@ -24,9 +24,17 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        [self initialize];
     }
     return self;
+}
+
+- (void) initialize
+{
+    // TODO: get this chat room id from the current view
+    NSString* chatRoomId = @"BTY9Cggc6r";
+    
+    [self fetchMessages:chatRoomId];
 }
 
 - (void)viewDidLoad
@@ -41,15 +49,6 @@
     // Init custom UITableCellView
     UINib *nib = [UINib nibWithNibName:@"MessageViewCell" bundle:nil];
     [self.messageTableView registerNib:nib forCellReuseIdentifier:@"MessageCell"];
-    
-    // Init data
-    // TODO pass the chatroom Id
-    [[DummyDataProvider instance] fetchMessagesForChatroomWithId:@"toto" withSuccess:^(NSArray *messages) {
-		self.messageList = messages;
-        NSLog(@"messages:%@", messages.description);
-		[self.messageTableView reloadData];
-	}];
-    
 }
 
 - (void)didReceiveMemoryWarning
@@ -58,6 +57,14 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - messages api
+
+- (void)fetchMessages:(NSString*)chatRoomId {
+    [[MessageApi instance] fetchMessagesForChatroomWithId:chatRoomId withSuccess:^(NSArray *messages) {
+        self.messageList = messages;
+        [self.messageTableView reloadData];
+    }];
+}
 
 #pragma - UITableViewDelegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
