@@ -67,8 +67,13 @@
             "text": "Not much. Just chilin'",
             "authorId": "Georges Washington",
             "created_at": "2014-04-07T23:00:02Z"
+        },
+        {
+            "objectId": "dEfG3HIJKE42",
+            "text": "And now I am going to send this very long message because I want to see how it looks like on 2 or 3 lines...",
+            "authorId": "Georges Washington",
+            "created_at": "2014-04-07T23:00:02Z"
         }
-
     ]
 
 }
