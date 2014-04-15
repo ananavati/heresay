@@ -10,11 +10,14 @@
 #import "MessageViewCell.h"
 #import "Message.h"
 #import "MessageApi.h"
+#import <HPGrowingTextView/HPGrowingTextView.h>
 
 @interface ChatroomViewController ()
 
 @property (weak, nonatomic) IBOutlet UITableView *messageTableView;
 @property (strong, nonatomic) NSArray *messageList;
+@property (strong, nonatomic) HPGrowingTextView *textView;
+
 
 @end
 
@@ -49,6 +52,16 @@
     // Init custom UITableCellView
     UINib *nib = [UINib nibWithNibName:@"MessageViewCell" bundle:nil];
     [self.messageTableView registerNib:nib forCellReuseIdentifier:@"MessageCell"];
+    
+    //
+    self.textView = [[HPGrowingTextView alloc]init];
+    self.textView.backgroundColor = [UIColor lightGrayColor];
+    self.textView.maxNumberOfLines = 4;
+    self.textView.frame = CGRectMake(0, 330, 320, 20);
+    
+    [self.view addSubview:self.textView];
+    
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -63,6 +76,7 @@
     [[MessageApi instance] fetchMessagesForChatroomWithId:chatRoomId withSuccess:^(NSArray *messages) {
         self.messageList = messages;
         [self.messageTableView reloadData];
+        
     }];
 }
 
@@ -88,5 +102,42 @@
     return cell;
     
 }
+
+
+
+
+//#pragma - UITableViewDelegate
+//- (void)textViewDidBeginEditing:(UITextView *)textView
+//{
+//    [self animateTextView: YES];
+//}
+//
+//- (void)textViewDidEndEditing:(UITextView *)textView
+//{
+//    [self animateTextView:NO];
+//}
+//
+//- (void) animateTextView:(BOOL) up
+//{
+//    const int movementDistance = 216; // tweak as needed
+//    const float movementDuration = 0.3f; // tweak as needed
+//    int movement= movement = (up ? -movementDistance : movementDistance);
+//    
+//    [UIView beginAnimations: @"anim" context: nil];
+//    [UIView setAnimationBeginsFromCurrentState: YES];
+//    [UIView setAnimationDuration: movementDuration];
+//    self.view.frame = CGRectOffset(self.inputView.frame, 0, movement);
+//    [UIView commitAnimations];
+//}
+//
+//-(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
+//    
+//    if ([text isEqualToString:@"\n"]) {
+//        [textView resignFirstResponder];
+//        [self animateTextView:NO];
+//        return NO;
+//    }
+//    return YES;
+//}
 
 @end
