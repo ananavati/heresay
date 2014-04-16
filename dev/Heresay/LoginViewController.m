@@ -13,6 +13,7 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *chatroomNameLabel;
 
+@property (weak, nonatomic) IBOutlet UITextField *screenNameTextField;
 @end
 
 @implementation LoginViewController
@@ -44,7 +45,9 @@
 }
 
 - (IBAction)startChatroom:(id)sender {
-    ChatroomViewController *chatroomViewController = [[ChatroomViewController alloc] init];
+    [self.screenNameTextField endEditing:YES];
+    
+    ChatroomViewController *chatroomViewController = [[ChatroomViewController alloc] initWithChatroomName:@"Chatroom Name" userName:self.screenNameTextField.text];
     [self.navigationController pushViewController:chatroomViewController animated:YES];
 }
 

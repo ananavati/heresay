@@ -9,17 +9,20 @@
 #import <Foundation/Foundation.h>
 #import <Parse/PFObject+Subclass.h>
 #import <Parse/Parse.h>
+#import <JSMessagesViewController/JSMessage.h>
 
-@interface Message : PFObject<PFSubclassing>
+@interface Message : PFObject<PFSubclassing, JSMessageData>
 
 + (NSString *)parseClassName;
 
-@property (strong, nonatomic) NSString *text;
+@property (strong, nonatomic) NSString *messageText;
 @property (strong, nonatomic) NSString *authorId;
+@property (strong, nonatomic) NSDate *date;
+
 
 
 + (Message *)initWithJSON:(Message *)json;
 + (NSDateFormatter *)longDateFormatter;
 - (NSString *)description;
-
+-(Message *)initWithMessageText:(NSString *)text authorId:(NSString *)author;
 @end

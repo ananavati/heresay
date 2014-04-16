@@ -10,8 +10,8 @@
 
 @implementation Message
 
-@synthesize text,
-            authorId;
+@synthesize messageText,
+            authorId,date;
 
 // this is the collection/table_name
 + (NSString *)parseClassName {
@@ -36,8 +36,9 @@
 	if (!model) {
 		model = [[Message alloc] init];
         
-		model.text = message[@"text"];
+		model.messageText = message[@"text"];
 		model.authorId = message[@"authorId"];
+        
 	}
 	
 	return model;
@@ -55,8 +56,31 @@
 	return longDateFormatter;
 }
 
+-(Message *)initWithMessageText:(NSString *)text authorId:(NSString *)author{
+    self.authorId = author;
+    self.messageText = text;
+    self.date = [[NSDate alloc]init];
+    
+    return self;
+}
+
 - (NSString *)description {
 	return [NSString stringWithFormat:@"<Message [%@]>", self.text];
+}
+
+#pragma - JSMessageData
+
+- (NSString *)text{
+    return self.messageText;
+}
+
+
+- (NSString *)sender{
+    return self.authorId;
+}
+
+- (NSDate *)date{
+    return date;
 }
 
 @end

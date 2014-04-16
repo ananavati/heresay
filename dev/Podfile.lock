@@ -19,7 +19,9 @@ PODS:
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
   - Facebook-iOS-SDK (3.13.1)
-  - HPGrowingTextView (1.1)
+  - JSMessagesViewController (4.0.3):
+    - JSQSystemSoundPlayer
+  - JSQSystemSoundPlayer (1.4.0)
   - MHPrettyDate (1.1.1)
   - Parse (1.2.19):
     - Facebook-iOS-SDK (~> 3.11)
@@ -27,7 +29,7 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking (~> 2.0)
-  - HPGrowingTextView (~> 1.1)
+  - JSMessagesViewController
   - MHPrettyDate
   - Parse
   - SGNavigationProgress
@@ -35,7 +37,8 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   AFNetworking: 0121f4b69be3fa58d1ab317866e036e12ac9651d
   Facebook-iOS-SDK: 0d121e16437981fabff9379e07bf646bd5ab245c
-  HPGrowingTextView: 4318f557b33c19def1c53ec275d6e2a2d6589cd0
+  JSMessagesViewController: aa0f3f34f70c39ec0a6ded219636b8bd945f5fe2
+  JSQSystemSoundPlayer: 28ccd01a92a0cebc6de6361e8499011b4cb6dab7
   MHPrettyDate: 0486e5e1ddff296748b7a71cd78c9cc785a80cc5
   Parse: 3739f0b211c49115bad96d6b0969b804d4da2f24
   SGNavigationProgress: 2655bbd72c8efee62ed258873c7beb3bbd0a5c76
