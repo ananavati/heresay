@@ -163,7 +163,9 @@
 		
 		[UIView animateWithDuration:tabTransitionDuration delay:0 options:animationOptions animations:^{
 			toVC.view.frame = CGRectMake(0, 0, appSize.width, appSize.height);
-		} completion:nil];
+		} completion:^(BOOL finished){
+			[transitionContext completeTransition:YES];
+		}];
 		
 	} else if (tabTransitionStyle == 2) {
 		
@@ -180,7 +182,9 @@
 		[UIView transitionWithView:containerView duration:tabTransitionDuration options:animationOptions animations:^{
 			[fromVC.view removeFromSuperview];
 			[containerView addSubview:toVC.view];
-		} completion:nil];
+		} completion:^(BOOL finished){
+			[transitionContext completeTransition:YES];
+		}];
 	}
 	
 }
