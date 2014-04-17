@@ -17,6 +17,4 @@
 
 - (User *)getAuthenticatedUser;
 
-- (void)fetchMessagesForChatroomWithId:(NSString *)chatroomId withSuccess:(void (^)(NSArray *messages))success;
-
 @end
