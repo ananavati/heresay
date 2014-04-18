@@ -38,7 +38,14 @@
 }
 
 - (IBAction)onEnableLocationServicesButtonTapped:(id)sender {
-	[[LocationManager instance] enableLocationServices];
-	[self.delegate didDismissWithViewController:self];
+	[[LocationManager instance] enableLocationServicesWithResult:^(BOOL allowed) {
+		if (!allowed) {
+			// TODO: Message user: No location services? No Heresay.
+			//		 Here's how to enable it when you're ready to use it.
+		} else {
+			[self.delegate didDismissWithViewController:self];
+		}
+	}];
 }
+
 @end

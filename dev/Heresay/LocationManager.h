@@ -17,9 +17,14 @@
 + (LocationManager *)instance;
 
 /**
+ * Check if location services already enabled (both on the device, and for this app).
+ */
+- (BOOL)locationServicesEnabled;
+
+/**
  * Enables location services for this app;
  * Prompt the user to allow location services.
  */
-- (void)enableLocationServices;
+- (void)enableLocationServicesWithResult:(void (^)(BOOL allowed))result;
 
 @end

@@ -11,6 +11,7 @@
 #import "ChatroomMapViewController.h"
 #import "MainSettingsViewController.h"
 #import "LoginViewController.h"
+#import "LocationManager.h"
 
 @interface ChatroomTabBarController ()
 
@@ -77,7 +78,10 @@
 	rightButton.tintColor = [UIColor colorWithRed:0.0f green:0.0f blue:0.0f alpha:1.0f];
 	self.navigationItem.rightBarButtonItem = rightButton;
 	
-	[self performSelector:@selector(presentIntro) withObject:nil afterDelay:0];
+	// Display the intro only if the user has not already enabled location services for the app.
+	if (![[LocationManager instance] locationServicesEnabled]) {
+		[self performSelector:@selector(presentIntro) withObject:nil afterDelay:0];
+	}
 }
 
 - (void)didReceiveMemoryWarning {

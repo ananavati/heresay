@@ -11,6 +11,7 @@
 @interface LocationManager()
 
 @property (strong, nonatomic) CLLocationManager *locationManager;
+@property (copy)void (^locationEnabledResult)(BOOL allowed);
 
 @end
 
@@ -45,22 +46,38 @@
 	return self;
 }
 
-- (void)enableLocationServices {
-	if ([CLLocationManager locationServicesEnabled] &&
-		[CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorized) {
+- (BOOL)locationServicesEnabled {
+	return ([CLLocationManager locationServicesEnabled] &&
+			[CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorized);
+}
+
+- (void)enableLocationServicesWithResult:(void (^)(BOOL allowed))result {
+	self.locationEnabledResult = result;
+	
+	if ([self locationServicesEnabled]) {
 		// already enabled
 		return;
 	}
-	
+		
 	[self.locationManager startUpdatingLocation];
+	
+	// TODO: start/stop updating location as app goes to foreground/background
+	// (applicationDidEnterBackground / WillEnterBackground)
+//	[self.locationManager stopUpdatingLocation];
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
-	//
+	if (self.locationEnabledResult) {
+		self.locationEnabledResult(YES);
+		self.locationEnabledResult = nil;
+	}
 }
 
 -(void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
-	//
+	if (self.locationEnabledResult) {
+		self.locationEnabledResult(NO);
+		self.locationEnabledResult = nil;
+	}
 }
 
 

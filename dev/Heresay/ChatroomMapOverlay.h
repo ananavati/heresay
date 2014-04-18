@@ -10,7 +10,12 @@
 #import <MapKit/MapKit.h>
 #import "Chatroom.h"
 
-@interface ChatroomMapOverlay : NSObject <MKOverlay>
+@interface ChatroomMapOverlay : NSObject
+
+@property (strong, nonatomic) Chatroom *chatroom;
+@property (strong, nonatomic) MKPolygon *overlay;
+@property (strong, nonatomic) MKOverlayRenderer *overlayRenderer;
+
 
 - (instancetype)initWithChatroom:(Chatroom *)chatroom;
 

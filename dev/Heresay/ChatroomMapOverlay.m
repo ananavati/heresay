@@ -10,38 +10,42 @@
 
 @implementation ChatroomMapOverlay
 
-// Required by MKOverlay protocol
-@synthesize coordinate,
-			boundingMapRect;
-
 - (instancetype)initWithChatroom:(Chatroom *)chatroom {
 	self = [super init];
 	
-	coordinate = CLLocationCoordinate2DMake(chatroom.geolocation.latitude, chatroom.geolocation.longitude);
-	MKMapPoint centerPoint = MKMapPointForCoordinate(coordinate);
-//	NSLog(@"pts per meter:%f", MKMapPointsPerMeterAtLatitude(chatroom.geolocation.latitude));
-	double radiusInPoints = MKMapPointsPerMeterAtLatitude(chatroom.geolocation.latitude) * [chatroom.radius doubleValue];
-//	boundingMapRect = MKMapRectMake(chatroom.geolocation.latitude, chatroom.geolocation.longitude, radiusInPoints, radiusInPoints);
-	boundingMapRect = MKMapRectMake(centerPoint.x, centerPoint.y, radiusInPoints, radiusInPoints);
-	
-	/*
-	CLLocationCoordinate2D overlayTopLeftCoordinate = CLLocationCoordinate2DMake(37.763599494827744, -122.50571723969188);
-	CLLocationCoordinate2D overlayTopRightCoordinate = CLLocationCoordinate2DMake(37.763718237405826, -122.5037216761848);
-	CLLocationCoordinate2D overlayBottomLeftCoordinate = CLLocationCoordinate2DMake(37.7614875414135, -122.50565286667552);
-	
-	MKMapPoint topLeft = MKMapPointForCoordinate(overlayTopLeftCoordinate);
-    MKMapPoint topRight = MKMapPointForCoordinate(overlayTopRightCoordinate);
-    MKMapPoint bottomLeft = MKMapPointForCoordinate(overlayBottomLeftCoordinate);
-	
-	coordinate = CLLocationCoordinate2DMake(topRight.y - bottomLeft.y, topRight.x - bottomLeft.x);
-	
-    boundingMapRect = MKMapRectMake(topLeft.x,
-						 topLeft.y,
-						 fabs(topLeft.x - topRight.x),
-						 fabs(topLeft.y - bottomLeft.y));
-	*/
+	self.chatroom = chatroom;
+	self.overlay = [self createOverlayWithChatroom:chatroom];
+	self.overlayRenderer = [self createOverlayRendererWithOverlay:self.overlay];
 	
 	return self;
 }
+
+- (MKPolygon *)createOverlayWithChatroom:(Chatroom *)chatroom {
+	CLLocationCoordinate2D centerCoordinate = CLLocationCoordinate2DMake(chatroom.geolocation.latitude, chatroom.geolocation.longitude);
+	MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(centerCoordinate, [chatroom.radius doubleValue], [chatroom.radius doubleValue]);
+	
+	int numCoords = 4;
+	CLLocationCoordinate2D *coords = malloc(sizeof(CLLocationCoordinate2D) * numCoords);
+	coords[0] = CLLocationCoordinate2DMake((region.center.latitude + 0.5*region.span.latitudeDelta), (region.center.longitude - 0.5*region.span.longitudeDelta));
+	coords[1] = CLLocationCoordinate2DMake((region.center.latitude + 0.5*region.span.latitudeDelta), (region.center.longitude + 0.5*region.span.longitudeDelta));
+	coords[2] = CLLocationCoordinate2DMake((region.center.latitude - 0.5*region.span.latitudeDelta), (region.center.longitude + 0.5*region.span.longitudeDelta));
+	coords[3] = CLLocationCoordinate2DMake((region.center.latitude - 0.5*region.span.latitudeDelta), (region.center.longitude - 0.5*region.span.longitudeDelta));
+	
+	MKPolygon *overlay = [MKPolygon polygonWithCoordinates:coords count:numCoords];
+	
+	free(coords);
+	
+	return overlay;
+}
+
+- (MKPolygonRenderer *)createOverlayRendererWithOverlay:(MKPolygon *)overlay {
+	MKPolygonRenderer *overlayRenderer = [[MKPolygonRenderer alloc] initWithPolygon:overlay];
+	overlayRenderer.lineWidth = 2;
+	overlayRenderer.strokeColor = [UIColor colorWithRed:0.0 green:0.5 blue:1.0 alpha:1.0];
+	overlayRenderer.fillColor = [UIColor colorWithRed:0.0 green:0.5 blue:1.0 alpha:0.5];
+	overlayRenderer.alpha = 1.0;
+	return overlayRenderer;
+}
+
 
 @end

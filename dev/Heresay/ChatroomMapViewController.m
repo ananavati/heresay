@@ -13,19 +13,24 @@
 @interface ChatroomMapViewController ()
 
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
+
 @property (strong, nonatomic) NSArray *nearbyChatrooms;
+@property (strong, nonatomic) NSMutableArray *chatroomOverlays;
+@property (strong, nonatomic) NSMutableArray *chatroomMapOverlays;
 
 @end
 
 
 @implementation ChatroomMapViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
+	
+	if (self) {
+		self.chatroomOverlays = [[NSMutableArray alloc] init];
+		self.chatroomMapOverlays = [[NSMutableArray alloc] init];
+	}
+	
     return self;
 }
 
@@ -35,6 +40,20 @@
 	self.mapView.delegate = self;
 	self.mapView.showsUserLocation = YES;
 //	NSLog(@"viewDidLoad userLoc:%f,%f", self.mapView.userLocation.location.coordinate.latitude, self.mapView.userLocation.location.coordinate.longitude);
+	
+	UITapGestureRecognizer *mapTapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onMapViewTapped:)];
+	mapTapGestureRecognizer.cancelsTouchesInView = NO;
+	mapTapGestureRecognizer.numberOfTapsRequired = 1;
+	[self.mapView addGestureRecognizer:mapTapGestureRecognizer];
+	
+	/*
+	UITapGestureRecognizer *mapDoubleTapGestureRecognizer = [[UITapGestureRecognizer alloc] init];
+	mapTapGestureRecognizer.cancelsTouchesInView = NO;
+	mapTapGestureRecognizer.numberOfTapsRequired = 2;
+	[self.mapView addGestureRecognizer:mapDoubleTapGestureRecognizer];
+	
+	[mapTapGestureRecognizer requireGestureRecognizerToFail:mapDoubleTapGestureRecognizer];
+	*/
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -77,53 +96,56 @@
 	
 	for (Chatroom *chatroom in nearbyChatrooms) {
 		
-		CLLocationCoordinate2D centerCoordinate = CLLocationCoordinate2DMake(chatroom.geolocation.latitude, chatroom.geolocation.longitude);
-		MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(centerCoordinate, [chatroom.radius doubleValue], [chatroom.radius doubleValue]);
+		ChatroomMapOverlay *chatroomOverlay = [[ChatroomMapOverlay alloc] initWithChatroom:chatroom];
 		
-		int numCoords = 4;
-		CLLocationCoordinate2D *coords = malloc(sizeof(CLLocationCoordinate2D) * numCoords);
-		coords[0] = CLLocationCoordinate2DMake((region.center.latitude + 0.5*region.span.latitudeDelta), (region.center.longitude - 0.5*region.span.longitudeDelta));
-		coords[1] = CLLocationCoordinate2DMake((region.center.latitude + 0.5*region.span.latitudeDelta), (region.center.longitude + 0.5*region.span.longitudeDelta));
-		coords[2] = CLLocationCoordinate2DMake((region.center.latitude - 0.5*region.span.latitudeDelta), (region.center.longitude + 0.5*region.span.longitudeDelta));
-		coords[3] = CLLocationCoordinate2DMake((region.center.latitude - 0.5*region.span.latitudeDelta), (region.center.longitude - 0.5*region.span.longitudeDelta));
-		MKPolygon *chatroomPolygon = [MKPolygon polygonWithCoordinates:coords count:numCoords];
-		free(coords);
+		// Associate ChatroomMapOverlay object with its MKOverlay object,
+		// to retrieve MKOverlayRenderer from MKOverlay in mapView:rendererForOverlay.
+		// This is a kludge, but couldn't figure out a better way to retrieve
+		// the renderer given the overlay...
+		[self.chatroomOverlays addObject:chatroomOverlay.overlay];
+		[self.chatroomMapOverlays addObject:chatroomOverlay];
 		
-//		chatroomPolygon.coordinate = CLLocationCoordinate2DMake(chatroom.geolocation.latitude, chatroom.geolocation.longitude);
-		//	NSLog(@"pts per meter:%f", MKMapPointsPerMeterAtLatitude(chatroom.geolocation.latitude));
-//		double radiusInPoints = MKMapPointsPerMeterAtLatitude(chatroom.geolocation.latitude) * [chatroom.radius doubleValue];
-//		chatroomPolygon.boundingMapRect = MKMapRectMake(chatroom.geolocation.latitude, chatroom.geolocation.longitude, radiusInPoints, radiusInPoints);
-		
-		
-		[self.mapView addOverlay:chatroomPolygon];
-		
-		NSLog(@"overlays:%i",self.mapView.overlays.count);
-		
-		
-		
-//		ChatroomMapOverlay *chatroomOverlay = [[ChatroomMapOverlay alloc] initWithChatroom:chatroom];
-//		[self.mapView addOverlay:chatroomOverlay];
+		[self.mapView addOverlay:chatroomOverlay.overlay];
 	}
 	
-	// TODO: support interaction with MKPolygonRenderer
-	// http://stackoverflow.com/questions/20858108/detecting-touches-on-mkoverlay-in-ios7-mkoverlayrenderer
-	// http://stackoverflow.com/questions/18477443/detecting-tap-on-mkpolygonview-in-mkmapview-on-ios7
-	// http://stackoverflow.com/questions/19014926/detecting-a-point-in-a-mkpolygon-broke-with-ios7-cgpathcontainspoint
 }
 
 - (MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id<MKOverlay>)overlay {
-	NSLog(@"rendererForOverlay:()");
+	int overlayIndex = [self.chatroomOverlays indexOfObject:overlay];
+	if (overlayIndex == -1) { return nil; }
 	
-	// TODO: better to update instead of recreate?
-	MKPolygonRenderer *chatroomRenderer = [[MKPolygonRenderer alloc] initWithOverlay:overlay];
-//	MKPolygonRenderer *chatroomRenderer = [[MKPolygonRenderer alloc] initWithPolygon:overlay];
-	chatroomRenderer.lineWidth = 2;
-	chatroomRenderer.strokeColor = [UIColor colorWithRed:0.0 green:0.5 blue:1.0 alpha:1.0];
-	chatroomRenderer.fillColor = [UIColor colorWithRed:0.0 green:0.5 blue:1.0 alpha:0.5];
-	chatroomRenderer.alpha = 1.0;
-//	[chatroomRenderer invalidatePath];
-	return chatroomRenderer;
+	return ((ChatroomMapOverlay *)(self.chatroomMapOverlays[overlayIndex])).overlayRenderer;
 }
 
+// Implementation from:
+// http://stackoverflow.com/questions/20858108/detecting-touches-on-mkoverlay-in-ios7-mkoverlayrenderer
+- (void)onMapViewTapped:(UITapGestureRecognizer *)tapGestureRecognizer {
+	
+	// TODO: optimize by testing only polygons in view
+	
+	CGPoint tapPoint = [tapGestureRecognizer locationInView:self.mapView];
+	CLLocationCoordinate2D tapCoordinate = [self.mapView convertPoint:tapPoint toCoordinateFromView:self.mapView];
+	MKMapPoint mapCoordinate = MKMapPointForCoordinate(tapCoordinate);
+	CGPoint mapPoint = CGPointMake(mapCoordinate.x, mapCoordinate.y);
+	
+	for (ChatroomMapOverlay *chatroomMapOverlay in self.chatroomMapOverlays) {
+		MKPolygon *polygon = chatroomMapOverlay.overlay;
+		CGMutablePathRef pathRef = CGPathCreateMutable();
+		MKMapPoint *polygonPoints = polygon.points;
+		
+		for (int i=0; i<polygon.pointCount; i++) {
+			MKMapPoint pt = polygonPoints[i];
+			if (i == 0) {
+				CGPathMoveToPoint(pathRef, NULL, pt.x, pt.y);
+			} else {
+				CGPathAddLineToPoint(pathRef, NULL, pt.x, pt.y);
+			}
+			
+			if (CGPathContainsPoint(pathRef, NULL, mapPoint, FALSE)) {
+				NSLog(@"tapped in chatroom:%@", chatroomMapOverlay.chatroom);
+			}
+		}
+	}
+}
 
 @end
