@@ -40,6 +40,7 @@
 		model.radius = chatRoom[@"radius"];
 		model.placeName = chatRoom[@"placeName"];
         model.geolocation = [PFGeoPoint geoPointWithLatitude:[chatRoom[@"latitude"] doubleValue] longitude:[chatRoom[@"longitude"] doubleValue]];
+        model.objectId = chatRoom.objectId;
 
 		// TODO: how will we store these on the client?
 		// As User models, PFRelations, ids...?
