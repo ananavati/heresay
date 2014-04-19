@@ -45,13 +45,7 @@
 
 - (void) initialize
 {
-    // TODO: get this chat room id from the current view
-    NSString* chatRoomId = @"BTY9Cggc6r";
-    [self fetchMessages:chatRoomId];
-    
-    NSLog(@"Chatroom name %@ ", self.chartroom.objectId);
-    
-//    [self fetchMessages:self.chartroom.objectId];
+    [self fetchMessages:self.chartroom.objectId];
 
 }
 
