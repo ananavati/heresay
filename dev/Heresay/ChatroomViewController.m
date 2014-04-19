@@ -126,7 +126,7 @@
  
     Message *currMessage = self.messageList[indexPath.row];
     
-    if ([currMessage.authorId isEqualToString:self.userName]) {
+    if (currMessage.sentFromCurrentUser) {
         return JSBubbleMessageTypeOutgoing;
     } else {
         return JSBubbleMessageTypeIncoming;

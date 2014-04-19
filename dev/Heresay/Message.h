@@ -16,8 +16,11 @@
 + (NSString *)parseClassName;
 
 @property (strong, nonatomic) NSString *messageText;
+@property (strong, nonatomic) NSString *authorName;
 @property (strong, nonatomic) NSString *authorId;
 @property (strong, nonatomic) NSDate *date;
+@property (nonatomic, assign) BOOL sentFromCurrentUser;
+
 
 
 

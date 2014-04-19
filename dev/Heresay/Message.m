@@ -11,7 +11,10 @@
 @implementation Message
 
 @synthesize messageText,
-            authorId,date;
+            authorName,
+            authorId,
+            date,
+            sentFromCurrentUser;
 
 // this is the collection/table_name
 + (NSString *)parseClassName {
@@ -37,9 +40,15 @@
 		model = [[Message alloc] init];
         
 		model.messageText = message[@"text"];
-		model.authorId = message[@"authorId"];
-        
+		
+        NSDictionary *author = message[@"author"];
+        model.authorId = [author objectForKey:@"id"];
+        model.authorName = [author objectForKey:@"name"];
 	}
+    
+    
+    // TODO check user sending the messages
+    // set self.sentFromCurrentUser = YES if needed
 	
 	return model;
 }
@@ -57,7 +66,11 @@
 }
 
 -(Message *)initWithMessageText:(NSString *)text authorId:(NSString *)author{
-    self.authorId = author;
+
+    // TODO set author ID
+    self.sentFromCurrentUser = YES;
+    self.authorName = author;
+    
     self.messageText = text;
     self.date = [[NSDate alloc]init];
     
@@ -76,7 +89,7 @@
 
 
 - (NSString *)sender{
-    return self.authorId;
+    return self.authorName;
 }
 
 - (NSDate *)date{
