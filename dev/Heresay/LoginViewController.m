@@ -47,7 +47,9 @@
 - (IBAction)startChatroom:(id)sender {
     [self.screenNameTextField endEditing:YES];
     
-    ChatroomViewController *chatroomViewController = [[ChatroomViewController alloc] initWithChatroomName:@"Chatroom Name" userName:self.screenNameTextField.text];
+    NSLog(@"Start chatroom with %@", [self.chatroom description]);
+    
+    ChatroomViewController *chatroomViewController = [[ChatroomViewController alloc] initWithChatroom:self.chatroom userName:self.screenNameTextField.text];
     [self.navigationController pushViewController:chatroomViewController animated:YES];
 }
 

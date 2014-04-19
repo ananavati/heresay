@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "JSMessagesViewController.h"
+#import "Chatroom.h"
 
 @interface ChatroomViewController : JSMessagesViewController <UITableViewDataSource, UITableViewDelegate, JSMessagesViewDelegate, JSMessagesViewDataSource>
 
--(id)initWithChatroomName:(NSString *)chatroomName userName:(NSString *)userName;
+-(id)initWithChatroom:(Chatroom *)chatroom userName:(NSString *)userName;
 
 @end

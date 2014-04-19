@@ -10,6 +10,7 @@
 #import "MessageViewCell.h"
 #import "Message.h"
 #import "MessageApi.h"
+#import "Chatroom.h"
 
 
 @interface ChatroomViewController ()
@@ -18,6 +19,7 @@
 @property (strong, nonatomic) NSMutableArray *messageList;
 @property (strong, nonatomic) NSString *chatroomName;
 @property (strong, nonatomic) NSString *userName;
+@property (strong, nonatomic) Chatroom *chartroom;
 
 @end
 
@@ -32,8 +34,9 @@
     return self;
 }
 
--(id)initWithChatroomName:(NSString *)chatroomName userName:(NSString *)userName{
-    self.chatroomName = chatroomName;
+-(id)initWithChatroom:(Chatroom *)chatroom userName:(NSString *)userName{
+    self.chartroom = chatroom;
+    self.chatroomName = chatroom.chatRoomName;
     self.userName = userName;
     
     [self initialize];
@@ -44,8 +47,12 @@
 {
     // TODO: get this chat room id from the current view
     NSString* chatRoomId = @"BTY9Cggc6r";
-    
     [self fetchMessages:chatRoomId];
+    
+    NSLog(@"Chatroom name %@ ", self.chartroom.objectId);
+    
+//    [self fetchMessages:self.chartroom.objectId];
+
 }
 
 - (void)viewDidLoad
