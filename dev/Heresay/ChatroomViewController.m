@@ -191,7 +191,10 @@
  *  @return An image view specifying the avatar for the message at indexPath. This value may be `nil`.
  */
 - (UIImageView *)avatarImageViewForRowAtIndexPath:(NSIndexPath *)indexPath sender:(NSString *)sender{
-    return nil;
+    
+    
+    UIImage *avatar = [JSAvatarImageFactory avatarImageNamed:@"avatar" croppedToCircle:YES];
+    return [[UIImageView alloc] initWithImage:avatar];
 }
 
 

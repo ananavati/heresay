@@ -78,7 +78,7 @@
 }
 
 - (NSString *)description {
-	return [NSString stringWithFormat:@"<Message [%@]>", self.text];
+	return [NSString stringWithFormat:@"<Message [%@:%@]>", self.authorName, self.text];
 }
 
 #pragma - JSMessageData
