@@ -158,9 +158,9 @@ static const double CARDS_VIEW_ANIMATE_CLOSE_DURATION = 0.75;
 }
 
 - (void)didHighlightChatroom:(id)chatroomSelector withChatroom:(Chatroom *)chatroom {
-	if (chatroomSelector == self.chatroomMapViewController) {
+	if (chatroomSelector == self.chatroomCardsViewController) {
 		[self.chatroomMapViewController highlightChatroom:chatroom];
-	} else if (chatroomSelector == self.chatroomCardsViewController) {
+	} else if (chatroomSelector == self.chatroomMapViewController) {
 		[self.chatroomCardsViewController highlightChatroom:chatroom];
 	}
 	
@@ -224,9 +224,9 @@ static const double CARDS_VIEW_ANIMATE_CLOSE_DURATION = 0.75;
 	double cardsViewPosition = self.chatroomCardsViewController.view.frame.origin.y / (CARDS_VIEW_CLOSED_Y - CARDS_VIEW_OPEN_Y);
 	CGPoint panVelocity = [panGestureRecognizer velocityInView:self.view];
 	
-	if (!self.cardsViewOpen && cardsViewPosition < 0.5) {
+	if (!self.cardsViewOpen && cardsViewPosition < 0.65) {
 		[self setCardsViewOpen:YES withVelocity:panVelocity];
-	} else if (self.cardsViewOpen && cardsViewPosition > 0.5) {
+	} else if (self.cardsViewOpen && cardsViewPosition > 0.35) {
 		[self setCardsViewOpen:NO withVelocity:panVelocity];
 	} else {
 		[self setCardsViewOpen:self.cardsViewOpen withVelocity:panVelocity];

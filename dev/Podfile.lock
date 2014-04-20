@@ -22,6 +22,7 @@ PODS:
   - JSMessagesViewController (4.0.3):
     - JSQSystemSoundPlayer
   - JSQSystemSoundPlayer (1.4.0)
+  - MBXMapKit (0.2.1)
   - MHPrettyDate (1.1.1)
   - Parse (1.2.19):
     - Facebook-iOS-SDK (~> 3.11)
@@ -30,6 +31,7 @@ PODS:
 DEPENDENCIES:
   - AFNetworking (~> 2.0)
   - JSMessagesViewController
+  - MBXMapKit (~> 0.2)
   - MHPrettyDate
   - Parse
   - SGNavigationProgress
@@ -39,6 +41,7 @@ SPEC CHECKSUMS:
   Facebook-iOS-SDK: 0d121e16437981fabff9379e07bf646bd5ab245c
   JSMessagesViewController: aa0f3f34f70c39ec0a6ded219636b8bd945f5fe2
   JSQSystemSoundPlayer: 28ccd01a92a0cebc6de6361e8499011b4cb6dab7
+  MBXMapKit: ddbf1945d8f640f6db3411a41ffcfe1b132497a5
   MHPrettyDate: 0486e5e1ddff296748b7a71cd78c9cc785a80cc5
   Parse: 3739f0b211c49115bad96d6b0969b804d4da2f24
   SGNavigationProgress: 2655bbd72c8efee62ed258873c7beb3bbd0a5c76
