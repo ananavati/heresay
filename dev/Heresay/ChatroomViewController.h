@@ -12,6 +12,6 @@
 
 @interface ChatroomViewController : JSMessagesViewController <UITableViewDataSource, UITableViewDelegate, JSMessagesViewDelegate, JSMessagesViewDataSource>
 
--(id)initWithChatroom:(Chatroom *)chatroom userName:(NSString *)userName;
+-(id)initWithChatroom:(Chatroom *)chatroom userName:(NSString *)userName avatarImage:(UIImage*)image;
 
 @end

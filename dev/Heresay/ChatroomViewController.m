@@ -20,6 +20,7 @@
 @property (strong, nonatomic) NSString *chatroomName;
 @property (strong, nonatomic) NSString *userName;
 @property (strong, nonatomic) Chatroom *chartroom;
+@property (strong, nonatomic) UIImage *avatarImage;
 
 @end
 
@@ -34,10 +35,11 @@
     return self;
 }
 
--(id)initWithChatroom:(Chatroom *)chatroom userName:(NSString *)userName{
+-(id)initWithChatroom:(Chatroom *)chatroom userName:(NSString *)userName avatarImage:(UIImage*)image{
     self.chartroom = chatroom;
     self.chatroomName = chatroom.chatRoomName;
     self.userName = userName;
+    self.avatarImage = image;
     
     [self initialize];
     return self;
@@ -63,6 +65,7 @@
     
     //Init JSBubbleView UI
     [[JSBubbleView appearance] setFont:[UIFont systemFontOfSize:16.0f]];
+    [self setBackgroundColor:[UIColor whiteColor]];
     self.title = self.chatroomName;
     self.messageInputView.textView.placeHolder = @"Message";
     self.sender = self.userName;
@@ -154,6 +157,7 @@
     } else {
         return [JSBubbleImageViewFactory bubbleImageViewForType:JSBubbleMessageTypeIncoming
                                                           color:[UIColor js_bubbleBlueColor]];
+    
     }
     
 
@@ -192,11 +196,51 @@
  */
 - (UIImageView *)avatarImageViewForRowAtIndexPath:(NSIndexPath *)indexPath sender:(NSString *)sender{
     
+    UIImage *avatar;
+    Message *currMessage = self.messageList[indexPath.row];
     
-    UIImage *avatar = [JSAvatarImageFactory avatarImageNamed:@"avatar" croppedToCircle:YES];
+    if (currMessage.sentFromCurrentUser) {
+        avatar = [JSAvatarImageFactory avatarImage:self.avatarImage croppedToCircle:YES];
+        
+    } else {
+            avatar = [JSAvatarImageFactory avatarImageNamed:@"avatar" croppedToCircle:YES];
+    }
+    
     return [[UIImageView alloc] initWithImage:avatar];
 }
 
+
+//
+//  *** Implement to customize cell further
+//
+//- (void)configureCell:(JSBubbleMessageCell *)cell atIndexPath:(NSIndexPath *)indexPath
+//{
+//    if ([cell messageType] == JSBubbleMessageTypeOutgoing) {
+//        cell.bubbleView.textView.textColor = [UIColor whiteColor];
+//        
+//        if ([cell.bubbleView.textView respondsToSelector:@selector(linkTextAttributes)]) {
+//            NSMutableDictionary *attrs = [cell.bubbleView.textView.linkTextAttributes mutableCopy];
+//            [attrs setValue:[UIColor blueColor] forKey:UITextAttributeTextColor];
+//            
+//            cell.bubbleView.textView.linkTextAttributes = attrs;
+//        }
+//    }
+//    
+//    if (cell.timestampLabel) {
+//        cell.timestampLabel.textColor = [UIColor lightGrayColor];
+//        cell.timestampLabel.shadowOffset = CGSizeZero;
+//    }
+//    
+//    if (cell.subtitleLabel) {
+//        cell.subtitleLabel.textColor = [UIColor lightGrayColor];
+//    }
+//    
+//#if TARGET_IPHONE_SIMULATOR
+//    cell.bubbleView.textView.dataDetectorTypes = UIDataDetectorTypeNone;
+//#else
+//    cell.bubbleView.textView.dataDetectorTypes = UIDataDetectorTypeAll;
+//#endif
+//}
 
 
 #pragma - UITableViewDelegate

@@ -14,6 +14,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *chatroomNameLabel;
 
 @property (weak, nonatomic) IBOutlet UITextField *screenNameTextField;
+@property (assign, nonatomic) UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet UIImageView *avatarImage;
+
 @end
 
 @implementation LoginViewController
@@ -37,6 +40,8 @@
 	} else {
 		self.chatroomNameLabel.text = @"New Chatroom";
 	}
+    
+    self.avatarImage.image = [JSAvatarImageFactory avatarImageNamed:@"avatar" croppedToCircle:YES];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -44,13 +49,47 @@
 	// Dispose of any resources that can be recreated.
 }
 
-- (IBAction)startChatroom:(id)sender {
+- (IBAction)startChatroom:(id)sender {    
     [self.screenNameTextField endEditing:YES];
     
     NSLog(@"Start chatroom with %@", [self.chatroom description]);
     
-    ChatroomViewController *chatroomViewController = [[ChatroomViewController alloc] initWithChatroom:self.chatroom userName:self.screenNameTextField.text];
+    ChatroomViewController *chatroomViewController = [[ChatroomViewController alloc] initWithChatroom:self.chatroom userName:self.screenNameTextField.text avatarImage:self.avatarImage.image];
     [self.navigationController pushViewController:chatroomViewController animated:YES];
+}
+
+- (IBAction)didTouchTakeAPicture:(id)sender {
+    UIImagePickerController *picker;
+    picker = [[UIImagePickerController alloc] init];
+    
+    picker.delegate = self;
+    picker.allowsEditing = YES;
+    picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+    
+    [self presentViewController:picker animated:YES completion:NULL];
+}
+
+- (IBAction)didTouchPickAPicture:(id)sender {
+    UIImagePickerController *picker;
+    picker = [[UIImagePickerController alloc] init];
+    
+    picker.delegate = self;
+    picker.allowsEditing = YES;
+    picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+
+    [self presentViewController:picker animated:YES completion:NULL];
+}
+
+
+
+#pragma - UIImagePickerControllerDelegate
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
+    
+    UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
+    [picker dismissViewControllerAnimated:YES completion:NULL];
+    
+    self.avatarImage.image = [JSAvatarImageFactory avatarImage:chosenImage croppedToCircle:YES];
+ 
 }
 
 
