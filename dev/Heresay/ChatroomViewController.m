@@ -214,21 +214,4 @@
     return YES;
 }
 
-//
-//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-//    
-//    // Get cell
-//    MessageViewCell *cell = [self.messageTableView dequeueReusableCellWithIdentifier:@"MessageCell" forIndexPath:indexPath];
-//    
-//    // Get current message
-//    Message *currMessage = self.messageList[indexPath.row];
-//    
-//    // Populate current Cell
-//    cell.userLabel.text = currMessage.authorId;
-//    cell.messageLabel.text = currMessage.text;
-//    
-//    return cell;
-//    
-//}
-
 @end
