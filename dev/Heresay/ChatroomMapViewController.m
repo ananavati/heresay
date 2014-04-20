@@ -14,7 +14,6 @@
 
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 
-@property (strong, nonatomic) NSArray *nearbyChatrooms;
 @property (strong, nonatomic) NSMutableArray *chatroomOverlays;
 @property (strong, nonatomic) NSMutableArray *chatroomMapOverlays;
 
@@ -39,25 +38,15 @@
 	
 	self.mapView.delegate = self;
 	self.mapView.showsUserLocation = YES;
-//	NSLog(@"viewDidLoad userLoc:%f,%f", self.mapView.userLocation.location.coordinate.latitude, self.mapView.userLocation.location.coordinate.longitude);
 	
 	UITapGestureRecognizer *mapTapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onMapViewTapped:)];
 	mapTapGestureRecognizer.cancelsTouchesInView = NO;
 	mapTapGestureRecognizer.numberOfTapsRequired = 1;
 	[self.mapView addGestureRecognizer:mapTapGestureRecognizer];
-	
-	/*
-	UITapGestureRecognizer *mapDoubleTapGestureRecognizer = [[UITapGestureRecognizer alloc] init];
-	mapTapGestureRecognizer.cancelsTouchesInView = NO;
-	mapTapGestureRecognizer.numberOfTapsRequired = 2;
-	[self.mapView addGestureRecognizer:mapDoubleTapGestureRecognizer];
-	
-	[mapTapGestureRecognizer requireGestureRecognizerToFail:mapDoubleTapGestureRecognizer];
-	*/
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-//	NSLog(@"viewWillAppear userLoc:%f,%f", self.mapView.userLocation.location.coordinate.latitude, self.mapView.userLocation.location.coordinate.longitude);
+	//
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -71,7 +60,7 @@
 }
 
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation {
-//	NSLog(@"didUpdateUserLoc userLoc:%f,%f", userLocation.location.coordinate.latitude, userLocation.location.coordinate.longitude);
+//	NSLog(@"mapView didUpdateUserLoc userLoc:%f,%f", userLocation.location.coordinate.latitude, userLocation.location.coordinate.longitude);
 	[self.mapView setCenterCoordinate:userLocation.coordinate animated:YES];
 }
 
@@ -80,9 +69,6 @@
 		if (annotationView.annotation == mapView.userLocation) {
 			
 //			NSLog(@"didAddAnnView userLoc:%f,%f", self.mapView.userLocation.location.coordinate.latitude, self.mapView.userLocation.location.coordinate.longitude);
-			[[ChatRoomApi instance] fetchChatroomsNearLocation:self.mapView.userLocation.location withSuccess:^(NSArray *chatrooms) {
-				self.nearbyChatrooms = chatrooms;
-			}];
 			
 			// Zoom into current location once it's obtained
 			MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(self.mapView.userLocation.location.coordinate, 1000, 1000);
@@ -91,10 +77,10 @@
 	}
 }
 
-- (void)setNearbyChatrooms:(NSArray *)nearbyChatrooms {
-	_nearbyChatrooms = nearbyChatrooms;
+- (void)setChatroomModels:(NSArray *)chatroomModels {
+	_chatroomModels = chatroomModels;
 	
-	for (Chatroom *chatroom in nearbyChatrooms) {
+	for (Chatroom *chatroom in chatroomModels) {
 		
 		ChatroomMapOverlay *chatroomOverlay = [[ChatroomMapOverlay alloc] initWithChatroom:chatroom];
 		

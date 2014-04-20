@@ -56,9 +56,10 @@
 	
 	if ([self locationServicesEnabled]) {
 		// already enabled
+		self.userLocation = self.locationManager.location;
 		return;
 	}
-		
+	
 	[self.locationManager startUpdatingLocation];
 	
 	// TODO: start/stop updating location as app goes to foreground/background
@@ -71,6 +72,7 @@
 		self.locationEnabledResult(YES);
 		self.locationEnabledResult = nil;
 	}
+	self.userLocation = locations[0];
 }
 
 -(void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
@@ -79,6 +81,5 @@
 		self.locationEnabledResult = nil;
 	}
 }
-
 
 @end

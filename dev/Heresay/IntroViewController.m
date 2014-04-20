@@ -43,7 +43,7 @@
 			// TODO: Message user: No location services? No Heresay.
 			//		 Here's how to enable it when you're ready to use it.
 		} else {
-			[self.delegate didDismissWithViewController:self];
+			[self.delegate didDismissModalViewController:self];
 		}
 	}];
 }

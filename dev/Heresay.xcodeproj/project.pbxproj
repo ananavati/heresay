@@ -36,6 +36,12 @@
 		CAD8814018F9B09F00FC3646 /* DummyDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = CAD8813F18F9B09F00FC3646 /* DummyDataProvider.m */; };
 		CAD8814218F9C55000FC3646 /* dummyData.json in Resources */ = {isa = PBXBuildFile; fileRef = CAD8814118F9C55000FC3646 /* dummyData.json */; };
 		CAD8816918FE4F2900FC3646 /* ChatroomMapOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = CAD8816818FE4F2900FC3646 /* ChatroomMapOverlay.m */; };
+		CAD881BD1902F44D00FC3646 /* ChatroomContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAD881BB1902F44D00FC3646 /* ChatroomContainerViewController.m */; };
+		CAD881BE1902F44D00FC3646 /* ChatroomContainerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CAD881BC1902F44D00FC3646 /* ChatroomContainerViewController.xib */; };
+		CAD881C21902FBBF00FC3646 /* ChatroomCardsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAD881C01902FBBF00FC3646 /* ChatroomCardsViewController.m */; };
+		CAD881C31902FBBF00FC3646 /* ChatroomCardsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CAD881C11902FBBF00FC3646 /* ChatroomCardsViewController.xib */; };
+		CAD881CB19031D7B00FC3646 /* ChatroomCardViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CAD881CA19031D7B00FC3646 /* ChatroomCardViewCell.m */; };
+		CAD881CF1903217E00FC3646 /* ChatroomCardViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CAD881CE1903217E00FC3646 /* ChatroomCardViewCell.xib */; };
 		E99EA19B18FAFD9A0020F8EE /* ChatroomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E99EA19918FAFD9A0020F8EE /* ChatroomViewController.m */; };
 		E99EA19C18FAFD9A0020F8EE /* ChatroomViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E99EA19A18FAFD9A0020F8EE /* ChatroomViewController.xib */; };
 		E9DB5C2E18EE81A9007B2C84 /* Chatroom.m in Sources */ = {isa = PBXBuildFile; fileRef = E9DB5C2D18EE81A9007B2C84 /* Chatroom.m */; };
@@ -119,6 +125,15 @@
 		CAD8814118F9C55000FC3646 /* dummyData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = dummyData.json; sourceTree = "<group>"; };
 		CAD8816718FE4F2900FC3646 /* ChatroomMapOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatroomMapOverlay.h; sourceTree = "<group>"; };
 		CAD8816818FE4F2900FC3646 /* ChatroomMapOverlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatroomMapOverlay.m; sourceTree = "<group>"; };
+		CAD881BA1902F44D00FC3646 /* ChatroomContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatroomContainerViewController.h; sourceTree = "<group>"; };
+		CAD881BB1902F44D00FC3646 /* ChatroomContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatroomContainerViewController.m; sourceTree = "<group>"; };
+		CAD881BC1902F44D00FC3646 /* ChatroomContainerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatroomContainerViewController.xib; sourceTree = "<group>"; };
+		CAD881BF1902FBBF00FC3646 /* ChatroomCardsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatroomCardsViewController.h; sourceTree = "<group>"; };
+		CAD881C01902FBBF00FC3646 /* ChatroomCardsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatroomCardsViewController.m; sourceTree = "<group>"; };
+		CAD881C11902FBBF00FC3646 /* ChatroomCardsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatroomCardsViewController.xib; sourceTree = "<group>"; };
+		CAD881C919031D7B00FC3646 /* ChatroomCardViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatroomCardViewCell.h; sourceTree = "<group>"; };
+		CAD881CA19031D7B00FC3646 /* ChatroomCardViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatroomCardViewCell.m; sourceTree = "<group>"; };
+		CAD881CE1903217E00FC3646 /* ChatroomCardViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatroomCardViewCell.xib; sourceTree = "<group>"; };
 		E99EA19818FAFD9A0020F8EE /* ChatroomViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatroomViewController.h; sourceTree = "<group>"; };
 		E99EA19918FAFD9A0020F8EE /* ChatroomViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatroomViewController.m; sourceTree = "<group>"; };
 		E99EA19A18FAFD9A0020F8EE /* ChatroomViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatroomViewController.xib; sourceTree = "<group>"; };
@@ -314,6 +329,18 @@
 		E9DB5C2A18EE8158007B2C84 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				CAD881BA1902F44D00FC3646 /* ChatroomContainerViewController.h */,
+				CAD881BB1902F44D00FC3646 /* ChatroomContainerViewController.m */,
+				CAD881BC1902F44D00FC3646 /* ChatroomContainerViewController.xib */,
+				E9DB5C3A18EE82B9007B2C84 /* ChatroomMapViewController.h */,
+				E9DB5C3B18EE82B9007B2C84 /* ChatroomMapViewController.m */,
+				E9DB5C3C18EE82B9007B2C84 /* ChatroomMapViewController.xib */,
+				CAD881BF1902FBBF00FC3646 /* ChatroomCardsViewController.h */,
+				CAD881C01902FBBF00FC3646 /* ChatroomCardsViewController.m */,
+				CAD881C11902FBBF00FC3646 /* ChatroomCardsViewController.xib */,
+				CA5EDAD718F7B6CE00C3A09B /* IntroViewController.h */,
+				CA5EDAD818F7B6CE00C3A09B /* IntroViewController.m */,
+				CA5EDAD918F7B6CE00C3A09B /* IntroViewController.xib */,
 				17602A9218FB52180048B9E0 /* MainSettingsViewController.h */,
 				17602A9318FB52180048B9E0 /* MainSettingsViewController.m */,
 				17602A9418FB52180048B9E0 /* MainSettingsViewController.xib */,
@@ -323,15 +350,9 @@
 				E9DB5C3518EE81FB007B2C84 /* ChatroomListViewController.h */,
 				E9DB5C3618EE81FB007B2C84 /* ChatroomListViewController.m */,
 				E9DB5C3718EE81FB007B2C84 /* ChatroomListViewController.xib */,
-				E9DB5C3A18EE82B9007B2C84 /* ChatroomMapViewController.h */,
-				E9DB5C3B18EE82B9007B2C84 /* ChatroomMapViewController.m */,
-				E9DB5C3C18EE82B9007B2C84 /* ChatroomMapViewController.xib */,
 				E9DB5C4418EE82EE007B2C84 /* InviteUserViewController.h */,
 				E9DB5C4518EE82EE007B2C84 /* InviteUserViewController.m */,
 				E9DB5C4618EE82EE007B2C84 /* InviteUserViewController.xib */,
-				CA5EDAD718F7B6CE00C3A09B /* IntroViewController.h */,
-				CA5EDAD818F7B6CE00C3A09B /* IntroViewController.m */,
-				CA5EDAD918F7B6CE00C3A09B /* IntroViewController.xib */,
 				CA5EDADF18F7CC9F00C3A09B /* LoginViewController.h */,
 				CA5EDAE018F7CC9F00C3A09B /* LoginViewController.m */,
 				CA5EDAE118F7CC9F00C3A09B /* LoginViewController.xib */,
@@ -345,6 +366,9 @@
 		E9DB5C2B18EE8179007B2C84 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				CAD881C919031D7B00FC3646 /* ChatroomCardViewCell.h */,
+				CAD881CA19031D7B00FC3646 /* ChatroomCardViewCell.m */,
+				CAD881CE1903217E00FC3646 /* ChatroomCardViewCell.xib */,
 				E9DB5C4918EE8351007B2C84 /* ChatroomViewCell.h */,
 				E9DB5C4A18EE8351007B2C84 /* ChatroomViewCell.m */,
 				E9DB5C4C18EE8365007B2C84 /* ChatroomViewCell.xib */,
@@ -442,6 +466,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CAD881C31902FBBF00FC3646 /* ChatroomCardsViewController.xib in Resources */,
 				E9DB5C3E18EE82B9007B2C84 /* ChatroomMapViewController.xib in Resources */,
 				CA105B5418ECFA6300F78D28 /* InfoPlist.strings in Resources */,
 				CA105B5C18ECFA6300F78D28 /* Images.xcassets in Resources */,
@@ -452,9 +477,11 @@
 				E9DB5C4D18EE8365007B2C84 /* ChatroomViewCell.xib in Resources */,
 				E9DB5C6618EE8680007B2C84 /* MessageViewCell.xib in Resources */,
 				E9DB5C6118EE8566007B2C84 /* NewChatroomViewCell.xib in Resources */,
+				CAD881CF1903217E00FC3646 /* ChatroomCardViewCell.xib in Resources */,
 				17602A9118FB51FB0048B9E0 /* ChatroomTabBarController.xib in Resources */,
 				17602A9618FB52180048B9E0 /* MainSettingsViewController.xib in Resources */,
 				CAD8814218F9C55000FC3646 /* dummyData.json in Resources */,
+				CAD881BE1902F44D00FC3646 /* ChatroomContainerViewController.xib in Resources */,
 				CA5EDADB18F7B6CE00C3A09B /* IntroViewController.xib in Resources */,
 				E9DB5C5718EE8435007B2C84 /* InviteUserViewCell.xib in Resources */,
 				E99EA19C18FAFD9A0020F8EE /* ChatroomViewController.xib in Resources */,
@@ -477,6 +504,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CAD881CB19031D7B00FC3646 /* ChatroomCardViewCell.m in Sources */,
 				E9DB5C3118EE81BE007B2C84 /* User.m in Sources */,
 				E9DB5C4718EE82EE007B2C84 /* InviteUserViewController.m in Sources */,
 				E9DB5C3818EE81FB007B2C84 /* ChatroomListViewController.m in Sources */,
@@ -486,6 +514,7 @@
 				CAD8816918FE4F2900FC3646 /* ChatroomMapOverlay.m in Sources */,
 				17602A9018FB51FB0048B9E0 /* ChatroomTabBarController.m in Sources */,
 				17602A9518FB52180048B9E0 /* MainSettingsViewController.m in Sources */,
+				CAD881C21902FBBF00FC3646 /* ChatroomCardsViewController.m in Sources */,
 				E9DB5C2E18EE81A9007B2C84 /* Chatroom.m in Sources */,
 				E9DB5C5F18EE8551007B2C84 /* NewChatroomViewCell.m in Sources */,
 				CA5EDADE18F7C7CE00C3A09B /* ChatroomSelectorDelegate.m in Sources */,
@@ -503,6 +532,7 @@
 				17602A9918FB54190048B9E0 /* MessageApi.m in Sources */,
 				CA105B5618ECFA6300F78D28 /* main.m in Sources */,
 				17602A9C18FB54250048B9E0 /* UserApi.m in Sources */,
+				CAD881BD1902F44D00FC3646 /* ChatroomContainerViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

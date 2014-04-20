@@ -11,7 +11,7 @@
 @class ModalViewControllerDelegate;
 @protocol ModalViewControllerDelegate <NSObject>
 
-- (void)didDismissWithViewController:(UIViewController *)viewController;
+- (void)didDismissModalViewController:(UIViewController *)viewController;
 
 @end
 

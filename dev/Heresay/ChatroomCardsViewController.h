@@ -1,16 +1,15 @@
 //
-//  ChatroomMapViewController.h
+//  ChatroomCardsViewController.h
 //  Heresay
 //
-//  Created by Thomas Ezan on 4/3/14.
+//  Created by Eric Socolofsky on 4/19/14.
 //  Copyright (c) 2014 Heresay Industries, Ltd. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
-#import <MapKit/MapKit.h>
 #import "ChatroomSelectorDelegate.h"
 
-@interface ChatroomMapViewController : UIViewController <MKMapViewDelegate>
+@interface ChatroomCardsViewController : UIViewController </*UIGestureRecognizerDelegate, UIScrollViewDelegate, */ UICollectionViewDelegateFlowLayout, UICollectionViewDataSource>
 
 @property (strong, nonatomic) NSArray *chatroomModels;
 @property (strong, nonatomic) id<ChatroomSelectorDelegate> delegate;

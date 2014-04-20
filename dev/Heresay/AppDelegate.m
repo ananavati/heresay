@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "ChatroomTabBarController.h"
+#import "ChatroomContainerViewController.h"
 
 #import <Parse/Parse.h>
 
@@ -17,7 +17,7 @@
 
 @interface AppDelegate ()
 
-@property (strong, nonatomic) ChatroomTabBarController *chatroomTabBarController;
+@property (strong, nonatomic) ChatroomContainerViewController *chatroomContainerViewController;
 
 @end
 
@@ -33,8 +33,8 @@
     [Parse setApplicationId:PARSE_APP_ID clientKey:PARSE_CLIENT_KEY];
     [self registerParseSubClasses];
     
-	self.chatroomTabBarController = [[ChatroomTabBarController alloc] init];
-	UINavigationController *mainNavigationController = [[UINavigationController alloc] initWithRootViewController:self.chatroomTabBarController];
+	self.chatroomContainerViewController = [[ChatroomContainerViewController alloc] init];
+	UINavigationController *mainNavigationController = [[UINavigationController alloc] initWithRootViewController:self.chatroomContainerViewController];
 	self.window.rootViewController = mainNavigationController;
 	
     self.window.backgroundColor = [UIColor whiteColor];

@@ -15,5 +15,16 @@
 
 + (ChatRoomApi *)instance;
 
+/**
+ * Fetch chatrooms near the user's current location.
+ * If user location not yet available, the success callback will be called after
+ * user location becomes available and the nearby chatrooms are fetched.
+ */
+- (void)fetchChatroomsNearUserLocationWithSuccess:(void (^)(NSArray *chatrooms))success;
+
+/**
+ * Fetch chatrooms near a specified location.
+ */
 - (void)fetchChatroomsNearLocation:(CLLocation *)location withSuccess:(void (^)(NSArray *chatrooms))success;
+
 @end

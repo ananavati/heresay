@@ -7,11 +7,13 @@
 //
 
 #import "ChatRoomApi.h"
+#import "LocationManager.h"
 
 @interface ChatRoomApi ()
 
 @property (strong, nonatomic) NSMutableArray *nearbyChatrooms;
 @property (strong, nonatomic) PFQuery *query;
+@property (strong, nonatomic) NSMutableArray *pendingUserLocationSuccessBlocks;
 
 @end
 
@@ -49,11 +51,39 @@
     }
 }
 
+- (void)fetchChatroomsNearUserLocationWithSuccess:(void (^)(NSArray *chatrooms))success {
+	LocationManager *locationManager = [LocationManager instance];
+	CLLocation *userLocation = locationManager.userLocation;
+	if (!userLocation) {
+		// user location not yet available; process fetch request once it is
+		if (!self.pendingUserLocationSuccessBlocks) {
+			self.pendingUserLocationSuccessBlocks = [NSMutableArray new];
+		}
+		[self.pendingUserLocationSuccessBlocks addObject:success];
+		[locationManager addObserver:self forKeyPath:@"userLocation" options:NSKeyValueObservingOptionNew context:NULL];
+		
+	} else {
+		[self fetchChatroomsNearLocation:userLocation withSuccess:success];
+	}
+}
+
 - (void)fetchChatroomsNearLocation:(CLLocation *)location withSuccess:(void (^)(NSArray *chatrooms))success {
     [self.query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         [self appendChatRooms:objects];
         success(self.nearbyChatrooms);
     }];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+	if (object == [LocationManager instance] && [keyPath isEqual: @"userLocation"]) {
+		LocationManager *locationManager = [LocationManager instance];
+		if (self.pendingUserLocationSuccessBlocks) {
+			for (void (^ successBlock)(NSArray *chatrooms) in self.pendingUserLocationSuccessBlocks) {
+				[self fetchChatroomsNearLocation:locationManager.userLocation withSuccess:successBlock];
+			}
+		}
+		[locationManager removeObserver:self forKeyPath:@"userLocation"];
+	}
 }
 
 @end
