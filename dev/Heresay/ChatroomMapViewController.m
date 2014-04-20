@@ -37,7 +37,8 @@
 	[super viewDidLoad];
 	
 	self.mapView.delegate = self;
-	self.mapView.showsUserLocation = YES;
+//	self.mapView.showsUserLocation = YES;
+	self.mapView.showsBuildings = YES;
 	
 	UITapGestureRecognizer *mapTapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onMapViewTapped:)];
 	mapTapGestureRecognizer.cancelsTouchesInView = NO;
@@ -57,6 +58,14 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)showUserLocation {
+	self.mapView.showsUserLocation = YES;
+}
+
+- (void)highlightChatroom:(Chatroom *)chatroom {
+	NSLog(@"TODO: highlight card for chatroom:%@", chatroom);
 }
 
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation {
@@ -128,7 +137,7 @@
 			}
 			
 			if (CGPathContainsPoint(pathRef, NULL, mapPoint, FALSE)) {
-				NSLog(@"tapped in chatroom:%@", chatroomMapOverlay.chatroom);
+				[self.delegate didHighlightChatroom:self withChatroom:chatroomMapOverlay.chatroom];
 			}
 		}
 	}

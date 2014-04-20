@@ -11,6 +11,7 @@
 
 @protocol ChatroomSelectorDelegate <NSObject>
 
+- (void)didHighlightChatroom:(id)chatroomSelector withChatroom:(Chatroom *)chatroom;
 - (void)didSelectChatroom:(id)chatroomSelector withChatroom:(Chatroom *)chatroom;
 
 @end

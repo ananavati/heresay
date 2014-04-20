@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		17602A8C18FA416C0048B9E0 /* ChatRoomApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 17602A8B18FA416C0048B9E0 /* ChatRoomApi.m */; };
-		17602A9018FB51FB0048B9E0 /* ChatroomTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17602A8E18FB51FB0048B9E0 /* ChatroomTabBarController.m */; };
-		17602A9118FB51FB0048B9E0 /* ChatroomTabBarController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17602A8F18FB51FB0048B9E0 /* ChatroomTabBarController.xib */; };
 		17602A9518FB52180048B9E0 /* MainSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17602A9318FB52180048B9E0 /* MainSettingsViewController.m */; };
 		17602A9618FB52180048B9E0 /* MainSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17602A9418FB52180048B9E0 /* MainSettingsViewController.xib */; };
 		17602A9918FB54190048B9E0 /* MessageApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 17602A9818FB54190048B9E0 /* MessageApi.m */; };
@@ -47,22 +45,16 @@
 		E9DB5C2E18EE81A9007B2C84 /* Chatroom.m in Sources */ = {isa = PBXBuildFile; fileRef = E9DB5C2D18EE81A9007B2C84 /* Chatroom.m */; };
 		E9DB5C3118EE81BE007B2C84 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = E9DB5C3018EE81BE007B2C84 /* User.m */; };
 		E9DB5C3418EE81CC007B2C84 /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = E9DB5C3318EE81CC007B2C84 /* Message.m */; };
-		E9DB5C3818EE81FB007B2C84 /* ChatroomListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9DB5C3618EE81FB007B2C84 /* ChatroomListViewController.m */; };
-		E9DB5C3918EE81FB007B2C84 /* ChatroomListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9DB5C3718EE81FB007B2C84 /* ChatroomListViewController.xib */; };
 		E9DB5C3D18EE82B9007B2C84 /* ChatroomMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9DB5C3B18EE82B9007B2C84 /* ChatroomMapViewController.m */; };
 		E9DB5C3E18EE82B9007B2C84 /* ChatroomMapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9DB5C3C18EE82B9007B2C84 /* ChatroomMapViewController.xib */; };
 		E9DB5C4718EE82EE007B2C84 /* InviteUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9DB5C4518EE82EE007B2C84 /* InviteUserViewController.m */; };
 		E9DB5C4818EE82EE007B2C84 /* InviteUserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9DB5C4618EE82EE007B2C84 /* InviteUserViewController.xib */; };
-		E9DB5C4B18EE8351007B2C84 /* ChatroomViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E9DB5C4A18EE8351007B2C84 /* ChatroomViewCell.m */; };
-		E9DB5C4D18EE8365007B2C84 /* ChatroomViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9DB5C4C18EE8365007B2C84 /* ChatroomViewCell.xib */; };
 		E9DB5C5018EE83D4007B2C84 /* UserListView.m in Sources */ = {isa = PBXBuildFile; fileRef = E9DB5C4F18EE83D4007B2C84 /* UserListView.m */; };
 		E9DB5C5218EE83E8007B2C84 /* UserListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9DB5C5118EE83E8007B2C84 /* UserListView.xib */; };
 		E9DB5C5518EE8418007B2C84 /* InviteUserViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E9DB5C5418EE8418007B2C84 /* InviteUserViewCell.m */; };
 		E9DB5C5718EE8435007B2C84 /* InviteUserViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9DB5C5618EE8435007B2C84 /* InviteUserViewCell.xib */; };
 		E9DB5C5A18EE8490007B2C84 /* InviteListAccountViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E9DB5C5918EE8490007B2C84 /* InviteListAccountViewCell.m */; };
 		E9DB5C5C18EE84BA007B2C84 /* InviteListAccountViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9DB5C5B18EE84BA007B2C84 /* InviteListAccountViewCell.xib */; };
-		E9DB5C5F18EE8551007B2C84 /* NewChatroomViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E9DB5C5E18EE8551007B2C84 /* NewChatroomViewCell.m */; };
-		E9DB5C6118EE8566007B2C84 /* NewChatroomViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9DB5C6018EE8566007B2C84 /* NewChatroomViewCell.xib */; };
 		E9DB5C6418EE8674007B2C84 /* MessageViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E9DB5C6318EE8674007B2C84 /* MessageViewCell.m */; };
 		E9DB5C6618EE8680007B2C84 /* MessageViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9DB5C6518EE8680007B2C84 /* MessageViewCell.xib */; };
 		FC2126CDEA2A4F5E8B11227D /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F5EC7052AFA41239E2BC3E5 /* libPods.a */; };
@@ -82,9 +74,6 @@
 		0F5EC7052AFA41239E2BC3E5 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		17602A8A18FA416C0048B9E0 /* ChatRoomApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatRoomApi.h; sourceTree = "<group>"; };
 		17602A8B18FA416C0048B9E0 /* ChatRoomApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatRoomApi.m; sourceTree = "<group>"; };
-		17602A8D18FB51FB0048B9E0 /* ChatroomTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatroomTabBarController.h; sourceTree = "<group>"; };
-		17602A8E18FB51FB0048B9E0 /* ChatroomTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatroomTabBarController.m; sourceTree = "<group>"; };
-		17602A8F18FB51FB0048B9E0 /* ChatroomTabBarController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatroomTabBarController.xib; sourceTree = "<group>"; };
 		17602A9218FB52180048B9E0 /* MainSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainSettingsViewController.h; sourceTree = "<group>"; };
 		17602A9318FB52180048B9E0 /* MainSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainSettingsViewController.m; sourceTree = "<group>"; };
 		17602A9418FB52180048B9E0 /* MainSettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainSettingsViewController.xib; sourceTree = "<group>"; };
@@ -143,18 +132,12 @@
 		E9DB5C3018EE81BE007B2C84 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		E9DB5C3218EE81CC007B2C84 /* Message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Message.h; sourceTree = "<group>"; };
 		E9DB5C3318EE81CC007B2C84 /* Message.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Message.m; sourceTree = "<group>"; };
-		E9DB5C3518EE81FB007B2C84 /* ChatroomListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatroomListViewController.h; sourceTree = "<group>"; };
-		E9DB5C3618EE81FB007B2C84 /* ChatroomListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatroomListViewController.m; sourceTree = "<group>"; };
-		E9DB5C3718EE81FB007B2C84 /* ChatroomListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatroomListViewController.xib; sourceTree = "<group>"; };
 		E9DB5C3A18EE82B9007B2C84 /* ChatroomMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatroomMapViewController.h; sourceTree = "<group>"; };
 		E9DB5C3B18EE82B9007B2C84 /* ChatroomMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatroomMapViewController.m; sourceTree = "<group>"; };
 		E9DB5C3C18EE82B9007B2C84 /* ChatroomMapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatroomMapViewController.xib; sourceTree = "<group>"; };
 		E9DB5C4418EE82EE007B2C84 /* InviteUserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InviteUserViewController.h; sourceTree = "<group>"; };
 		E9DB5C4518EE82EE007B2C84 /* InviteUserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InviteUserViewController.m; sourceTree = "<group>"; };
 		E9DB5C4618EE82EE007B2C84 /* InviteUserViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InviteUserViewController.xib; sourceTree = "<group>"; };
-		E9DB5C4918EE8351007B2C84 /* ChatroomViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatroomViewCell.h; sourceTree = "<group>"; };
-		E9DB5C4A18EE8351007B2C84 /* ChatroomViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatroomViewCell.m; sourceTree = "<group>"; };
-		E9DB5C4C18EE8365007B2C84 /* ChatroomViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatroomViewCell.xib; sourceTree = "<group>"; };
 		E9DB5C4E18EE83D4007B2C84 /* UserListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserListView.h; sourceTree = "<group>"; };
 		E9DB5C4F18EE83D4007B2C84 /* UserListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserListView.m; sourceTree = "<group>"; };
 		E9DB5C5118EE83E8007B2C84 /* UserListView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserListView.xib; sourceTree = "<group>"; };
@@ -164,9 +147,6 @@
 		E9DB5C5818EE8490007B2C84 /* InviteListAccountViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InviteListAccountViewCell.h; sourceTree = "<group>"; };
 		E9DB5C5918EE8490007B2C84 /* InviteListAccountViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InviteListAccountViewCell.m; sourceTree = "<group>"; };
 		E9DB5C5B18EE84BA007B2C84 /* InviteListAccountViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InviteListAccountViewCell.xib; sourceTree = "<group>"; };
-		E9DB5C5D18EE8551007B2C84 /* NewChatroomViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewChatroomViewCell.h; sourceTree = "<group>"; };
-		E9DB5C5E18EE8551007B2C84 /* NewChatroomViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewChatroomViewCell.m; sourceTree = "<group>"; };
-		E9DB5C6018EE8566007B2C84 /* NewChatroomViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewChatroomViewCell.xib; sourceTree = "<group>"; };
 		E9DB5C6218EE8674007B2C84 /* MessageViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageViewCell.h; sourceTree = "<group>"; };
 		E9DB5C6318EE8674007B2C84 /* MessageViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageViewCell.m; sourceTree = "<group>"; };
 		E9DB5C6518EE8680007B2C84 /* MessageViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageViewCell.xib; sourceTree = "<group>"; };
@@ -344,12 +324,6 @@
 				17602A9218FB52180048B9E0 /* MainSettingsViewController.h */,
 				17602A9318FB52180048B9E0 /* MainSettingsViewController.m */,
 				17602A9418FB52180048B9E0 /* MainSettingsViewController.xib */,
-				17602A8D18FB51FB0048B9E0 /* ChatroomTabBarController.h */,
-				17602A8E18FB51FB0048B9E0 /* ChatroomTabBarController.m */,
-				17602A8F18FB51FB0048B9E0 /* ChatroomTabBarController.xib */,
-				E9DB5C3518EE81FB007B2C84 /* ChatroomListViewController.h */,
-				E9DB5C3618EE81FB007B2C84 /* ChatroomListViewController.m */,
-				E9DB5C3718EE81FB007B2C84 /* ChatroomListViewController.xib */,
 				E9DB5C4418EE82EE007B2C84 /* InviteUserViewController.h */,
 				E9DB5C4518EE82EE007B2C84 /* InviteUserViewController.m */,
 				E9DB5C4618EE82EE007B2C84 /* InviteUserViewController.xib */,
@@ -369,9 +343,6 @@
 				CAD881C919031D7B00FC3646 /* ChatroomCardViewCell.h */,
 				CAD881CA19031D7B00FC3646 /* ChatroomCardViewCell.m */,
 				CAD881CE1903217E00FC3646 /* ChatroomCardViewCell.xib */,
-				E9DB5C4918EE8351007B2C84 /* ChatroomViewCell.h */,
-				E9DB5C4A18EE8351007B2C84 /* ChatroomViewCell.m */,
-				E9DB5C4C18EE8365007B2C84 /* ChatroomViewCell.xib */,
 				E9DB5C4E18EE83D4007B2C84 /* UserListView.h */,
 				E9DB5C4F18EE83D4007B2C84 /* UserListView.m */,
 				E9DB5C5118EE83E8007B2C84 /* UserListView.xib */,
@@ -381,9 +352,6 @@
 				E9DB5C5818EE8490007B2C84 /* InviteListAccountViewCell.h */,
 				E9DB5C5918EE8490007B2C84 /* InviteListAccountViewCell.m */,
 				E9DB5C5B18EE84BA007B2C84 /* InviteListAccountViewCell.xib */,
-				E9DB5C5D18EE8551007B2C84 /* NewChatroomViewCell.h */,
-				E9DB5C5E18EE8551007B2C84 /* NewChatroomViewCell.m */,
-				E9DB5C6018EE8566007B2C84 /* NewChatroomViewCell.xib */,
 				E9DB5C6218EE8674007B2C84 /* MessageViewCell.h */,
 				E9DB5C6318EE8674007B2C84 /* MessageViewCell.m */,
 				E9DB5C6518EE8680007B2C84 /* MessageViewCell.xib */,
@@ -472,13 +440,9 @@
 				CA105B5C18ECFA6300F78D28 /* Images.xcassets in Resources */,
 				E9DB5C5C18EE84BA007B2C84 /* InviteListAccountViewCell.xib in Resources */,
 				CA5EDAE318F7CC9F00C3A09B /* LoginViewController.xib in Resources */,
-				E9DB5C3918EE81FB007B2C84 /* ChatroomListViewController.xib in Resources */,
 				E9DB5C4818EE82EE007B2C84 /* InviteUserViewController.xib in Resources */,
-				E9DB5C4D18EE8365007B2C84 /* ChatroomViewCell.xib in Resources */,
 				E9DB5C6618EE8680007B2C84 /* MessageViewCell.xib in Resources */,
-				E9DB5C6118EE8566007B2C84 /* NewChatroomViewCell.xib in Resources */,
 				CAD881CF1903217E00FC3646 /* ChatroomCardViewCell.xib in Resources */,
-				17602A9118FB51FB0048B9E0 /* ChatroomTabBarController.xib in Resources */,
 				17602A9618FB52180048B9E0 /* MainSettingsViewController.xib in Resources */,
 				CAD8814218F9C55000FC3646 /* dummyData.json in Resources */,
 				CAD881BE1902F44D00FC3646 /* ChatroomContainerViewController.xib in Resources */,
@@ -507,18 +471,14 @@
 				CAD881CB19031D7B00FC3646 /* ChatroomCardViewCell.m in Sources */,
 				E9DB5C3118EE81BE007B2C84 /* User.m in Sources */,
 				E9DB5C4718EE82EE007B2C84 /* InviteUserViewController.m in Sources */,
-				E9DB5C3818EE81FB007B2C84 /* ChatroomListViewController.m in Sources */,
 				17602A8C18FA416C0048B9E0 /* ChatRoomApi.m in Sources */,
 				CAD8814018F9B09F00FC3646 /* DummyDataProvider.m in Sources */,
 				CA5EDAE218F7CC9F00C3A09B /* LoginViewController.m in Sources */,
 				CAD8816918FE4F2900FC3646 /* ChatroomMapOverlay.m in Sources */,
-				17602A9018FB51FB0048B9E0 /* ChatroomTabBarController.m in Sources */,
 				17602A9518FB52180048B9E0 /* MainSettingsViewController.m in Sources */,
 				CAD881C21902FBBF00FC3646 /* ChatroomCardsViewController.m in Sources */,
 				E9DB5C2E18EE81A9007B2C84 /* Chatroom.m in Sources */,
-				E9DB5C5F18EE8551007B2C84 /* NewChatroomViewCell.m in Sources */,
 				CA5EDADE18F7C7CE00C3A09B /* ChatroomSelectorDelegate.m in Sources */,
-				E9DB5C4B18EE8351007B2C84 /* ChatroomViewCell.m in Sources */,
 				CA5EDAD618F7B1E800C3A09B /* LocationManager.m in Sources */,
 				E9DB5C5018EE83D4007B2C84 /* UserListView.m in Sources */,
 				E9DB5C3418EE81CC007B2C84 /* Message.m in Sources */,

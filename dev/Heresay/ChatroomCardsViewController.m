@@ -64,6 +64,10 @@
 	// TODO: no idea why collectionView doesn't layout unless panGestureRecognizer is set up!
 }
 
+- (void)highlightChatroom:(Chatroom *)chatroom {
+	NSLog(@"TODO: highlight map overlay for chatroom:%@", chatroom);
+}
+
 
 #pragma mark - UICollectionView methods
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
@@ -99,6 +103,12 @@
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
 	// specify edge insets (margins) around each collection view cell
 	return UIEdgeInsetsMake(20, 20, 20, 20);
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+	CGFloat pageWidth = self.collectionView.frame.size.width;
+	int pageNum = self.collectionView.contentOffset.x / pageWidth;
+	[self.delegate didHighlightChatroom:self withChatroom:self.chatroomModels[pageNum]];
 }
 
 @end

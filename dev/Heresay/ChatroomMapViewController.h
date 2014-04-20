@@ -15,4 +15,7 @@
 @property (strong, nonatomic) NSArray *chatroomModels;
 @property (strong, nonatomic) id<ChatroomSelectorDelegate> delegate;
 
+- (void)showUserLocation;
+- (void)highlightChatroom:(Chatroom *)chatroom;
+
 @end

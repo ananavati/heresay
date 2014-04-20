@@ -107,10 +107,13 @@ static const double CARDS_VIEW_ANIMATE_CLOSE_DURATION = 0.75;
 	// display the intro only if the user has not already enabled location services for the app.
 	// NOTE: should be checking NSUserDefaults (for introComplete) to see if user has gone through intro,
 	//		 as that's more explicit than checking for location services enabled.
+	// TODO: this should happen somewhere other than viewDidAppear,
+	//		 since it's called when navigating back from chatroom.
 	if (![[LocationManager instance] locationServicesEnabled]) {
 		[self performSelector:@selector(presentIntro) withObject:nil afterDelay:0];
 	} else {
 		[[LocationManager instance] enableLocationServicesWithResult:nil];
+		[self.chatroomMapViewController showUserLocation];
 		[self openChatroomMapViewAnimated:NO];
 	}
 	
@@ -149,6 +152,16 @@ static const double CARDS_VIEW_ANIMATE_CLOSE_DURATION = 0.75;
 	
 	if (viewController == self.introViewController) {
 		self.introComplete = YES;
+		[self.chatroomMapViewController showUserLocation];
+	}
+	
+}
+
+- (void)didHighlightChatroom:(id)chatroomSelector withChatroom:(Chatroom *)chatroom {
+	if (chatroomSelector == self.chatroomMapViewController) {
+		[self.chatroomMapViewController highlightChatroom:chatroom];
+	} else if (chatroomSelector == self.chatroomCardsViewController) {
+		[self.chatroomCardsViewController highlightChatroom:chatroom];
 	}
 	
 }

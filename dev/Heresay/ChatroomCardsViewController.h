@@ -9,9 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "ChatroomSelectorDelegate.h"
 
-@interface ChatroomCardsViewController : UIViewController </*UIGestureRecognizerDelegate, UIScrollViewDelegate, */ UICollectionViewDelegateFlowLayout, UICollectionViewDataSource>
+@interface ChatroomCardsViewController : UIViewController <UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UIScrollViewDelegate>
 
 @property (strong, nonatomic) NSArray *chatroomModels;
 @property (strong, nonatomic) id<ChatroomSelectorDelegate> delegate;
+
+- (void)highlightChatroom:(Chatroom *)chatroom;
 
 @end
