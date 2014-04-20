@@ -60,5 +60,12 @@
     }];
 }
 
+- (void)saveMessage:(Message *)message {
+    PFObject *m = [PFObject objectWithClassName:@"messages"];
+    m[@"text"] = message.text;
+    m[@"chat_room_id"] = message.chat_room_id;
+    
+    [m saveInBackground];
+}
 
 @end

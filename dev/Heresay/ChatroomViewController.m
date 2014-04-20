@@ -102,9 +102,9 @@
     
     NSLog(@"didSendText: %@", text);
     
-    Message *message = [[Message alloc] initWithMessageText:text authorId:sender];
-
-    // TODO Thomas: send message to Parse
+    Message *message = [[Message alloc] initWithMessageText:text authorId:sender chatRoom:self.chartroom.objectId];
+    
+    [[MessageApi instance] saveMessage:message];
     
     [self.messageList addObject:message];
     [self.tableView reloadData];

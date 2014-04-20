@@ -10,9 +10,9 @@
 
 @implementation Message
 
-@synthesize messageText,
-            authorName,
-            authorId,
+@synthesize text,
+            author,
+            chat_room_id,
             date,
             sentFromCurrentUser;
 
@@ -39,11 +39,10 @@
 	if (!model) {
 		model = [[Message alloc] init];
         
-		model.messageText = message[@"text"];
+		model.text = message[@"text"];
 		
-        NSDictionary *author = message[@"author"];
-        model.authorId = [author objectForKey:@"id"];
-        model.authorName = [author objectForKey:@"name"];
+//        NSDictionary *author = message[@"author"];
+//        model.author.name = [author objectForKey:@"name"];
 	}
     
     
@@ -65,35 +64,28 @@
 	return longDateFormatter;
 }
 
--(Message *)initWithMessageText:(NSString *)text authorId:(NSString *)author{
+-(Message *)initWithMessageText:(NSString *)messageText authorId:(NSString *)authorName chatRoom:(NSString *)chatRoomId{
 
     // TODO set author ID
     self.sentFromCurrentUser = YES;
-    self.authorName = author;
+    self.author = @{@"name": authorName,
+                    @"id": @""};
     
-    self.messageText = text;
-    self.date = [[NSDate alloc]init];
+    self.text = messageText;
+    self.chat_room_id = chatRoomId;
     
     return self;
 }
 
 - (NSString *)description {
-	return [NSString stringWithFormat:@"<Message [%@:%@]>", self.authorName, self.text];
+	return [NSString stringWithFormat:@"<Message [%@:%@]>", self.author[@"name"], self.text];
 }
 
 #pragma - JSMessageData
 
-- (NSString *)text{
-    return self.messageText;
-}
-
-
 - (NSString *)sender{
-    return self.authorName;
+    return self.author[@"name"];
 }
 
-- (NSDate *)date{
-    return date;
-}
 
 @end

@@ -15,17 +15,16 @@
 
 + (NSString *)parseClassName;
 
-@property (strong, nonatomic) NSString *messageText;
-@property (strong, nonatomic) NSString *authorName;
-@property (strong, nonatomic) NSString *authorId;
+@property (strong, nonatomic) NSString *text;
+@property (strong, nonatomic) NSDictionary *author;
+@property (strong, nonatomic) NSString *chat_room_id;
+
 @property (strong, nonatomic) NSDate *date;
 @property (nonatomic, assign) BOOL sentFromCurrentUser;
-
-
 
 
 + (Message *)initWithJSON:(Message *)json;
 + (NSDateFormatter *)longDateFormatter;
 - (NSString *)description;
--(Message *)initWithMessageText:(NSString *)text authorId:(NSString *)author;
+-(Message *)initWithMessageText:(NSString *)text authorId:(NSString *)author chatRoom:(NSString *)chatRoomId;
 @end

@@ -10,11 +10,13 @@
 #import <Parse/Parse.h>
 
 #import "Message.h"
+#import "User.h"
 
 @interface MessageApi : NSObject
 
 + (MessageApi *)instance;
 
 - (void)fetchMessagesForChatroomWithId:(NSString *)chatroomId withSuccess:(void (^)(NSArray *messages))success;
+- (void)saveMessage:(Message *)message;
 
 @end
