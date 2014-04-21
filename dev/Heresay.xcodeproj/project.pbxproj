@@ -43,6 +43,9 @@
 		CAD881D41904735500FC3646 /* ChatroomMapOverlayRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = CAD881D31904735500FC3646 /* ChatroomMapOverlayRenderer.m */; };
 		E99EA19B18FAFD9A0020F8EE /* ChatroomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E99EA19918FAFD9A0020F8EE /* ChatroomViewController.m */; };
 		E99EA19C18FAFD9A0020F8EE /* ChatroomViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E99EA19A18FAFD9A0020F8EE /* ChatroomViewController.xib */; };
+		E9CE0B9C1904B02800EB51DC /* IntroSlide.m in Sources */ = {isa = PBXBuildFile; fileRef = E9CE0B9B1904B02800EB51DC /* IntroSlide.m */; };
+		E9CE0BA01904B18700EB51DC /* IntroSlideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9CE0B9E1904B18700EB51DC /* IntroSlideViewController.m */; };
+		E9CE0BA11904B18700EB51DC /* IntroSlideViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9CE0B9F1904B18700EB51DC /* IntroSlideViewController.xib */; };
 		E9DB5C2E18EE81A9007B2C84 /* Chatroom.m in Sources */ = {isa = PBXBuildFile; fileRef = E9DB5C2D18EE81A9007B2C84 /* Chatroom.m */; };
 		E9DB5C3118EE81BE007B2C84 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = E9DB5C3018EE81BE007B2C84 /* User.m */; };
 		E9DB5C3418EE81CC007B2C84 /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = E9DB5C3318EE81CC007B2C84 /* Message.m */; };
@@ -130,6 +133,11 @@
 		E99EA19818FAFD9A0020F8EE /* ChatroomViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatroomViewController.h; sourceTree = "<group>"; };
 		E99EA19918FAFD9A0020F8EE /* ChatroomViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatroomViewController.m; sourceTree = "<group>"; };
 		E99EA19A18FAFD9A0020F8EE /* ChatroomViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatroomViewController.xib; sourceTree = "<group>"; };
+		E9CE0B9A1904B02800EB51DC /* IntroSlide.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntroSlide.h; sourceTree = "<group>"; };
+		E9CE0B9B1904B02800EB51DC /* IntroSlide.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntroSlide.m; sourceTree = "<group>"; };
+		E9CE0B9D1904B18700EB51DC /* IntroSlideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntroSlideViewController.h; sourceTree = "<group>"; };
+		E9CE0B9E1904B18700EB51DC /* IntroSlideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntroSlideViewController.m; sourceTree = "<group>"; };
+		E9CE0B9F1904B18700EB51DC /* IntroSlideViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IntroSlideViewController.xib; sourceTree = "<group>"; };
 		E9DB5C2C18EE81A9007B2C84 /* Chatroom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Chatroom.h; sourceTree = "<group>"; };
 		E9DB5C2D18EE81A9007B2C84 /* Chatroom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Chatroom.m; sourceTree = "<group>"; };
 		E9DB5C2F18EE81BE007B2C84 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
@@ -232,6 +240,7 @@
 		CA105B4F18ECFA6300F78D28 /* Heresay */ = {
 			isa = PBXGroup;
 			children = (
+				E9CE0B991904B00500EB51DC /* Misc */,
 				17602A8918FA41350048B9E0 /* api */,
 				E9DB5C2918EE8145007B2C84 /* Models */,
 				CA5EDAD318F7B1D100C3A09B /* Controllers */,
@@ -298,6 +307,18 @@
 				CAD881D31904735500FC3646 /* ChatroomMapOverlayRenderer.m */,
 			);
 			name = ChatroomMap;
+			sourceTree = "<group>";
+		};
+		E9CE0B991904B00500EB51DC /* Misc */ = {
+			isa = PBXGroup;
+			children = (
+				E9CE0B9A1904B02800EB51DC /* IntroSlide.h */,
+				E9CE0B9B1904B02800EB51DC /* IntroSlide.m */,
+				E9CE0B9D1904B18700EB51DC /* IntroSlideViewController.h */,
+				E9CE0B9E1904B18700EB51DC /* IntroSlideViewController.m */,
+				E9CE0B9F1904B18700EB51DC /* IntroSlideViewController.xib */,
+			);
+			name = Misc;
 			sourceTree = "<group>";
 		};
 		E9DB5C2918EE8145007B2C84 /* Models */ = {
@@ -441,6 +462,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9CE0BA11904B18700EB51DC /* IntroSlideViewController.xib in Resources */,
 				CAD881C31902FBBF00FC3646 /* ChatroomCardsViewController.xib in Resources */,
 				E9DB5C3E18EE82B9007B2C84 /* ChatroomMapViewController.xib in Resources */,
 				CA105B5418ECFA6300F78D28 /* InfoPlist.strings in Resources */,
@@ -491,11 +513,13 @@
 				E9DB5C5018EE83D4007B2C84 /* UserListView.m in Sources */,
 				E9DB5C3418EE81CC007B2C84 /* Message.m in Sources */,
 				E9DB5C5518EE8418007B2C84 /* InviteUserViewCell.m in Sources */,
+				E9CE0BA01904B18700EB51DC /* IntroSlideViewController.m in Sources */,
 				E9DB5C3D18EE82B9007B2C84 /* ChatroomMapViewController.m in Sources */,
 				CA5EDADA18F7B6CE00C3A09B /* IntroViewController.m in Sources */,
 				E9DB5C5A18EE8490007B2C84 /* InviteListAccountViewCell.m in Sources */,
 				E9DB5C6418EE8674007B2C84 /* MessageViewCell.m in Sources */,
 				E99EA19B18FAFD9A0020F8EE /* ChatroomViewController.m in Sources */,
+				E9CE0B9C1904B02800EB51DC /* IntroSlide.m in Sources */,
 				CA105B5A18ECFA6300F78D28 /* AppDelegate.m in Sources */,
 				17602A9918FB54190048B9E0 /* MessageApi.m in Sources */,
 				CA105B5618ECFA6300F78D28 /* main.m in Sources */,

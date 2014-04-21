@@ -9,8 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "ModalViewControllerDelegate.h"
 
-@interface IntroViewController : UIViewController
+@interface IntroViewController : UIViewController<UIPageViewControllerDataSource, UIPageViewControllerDelegate>
 
 @property (strong, nonatomic) id<ModalViewControllerDelegate> delegate;
+@property (nonatomic, strong) UIPageViewController *pageViewController;
+@property (nonatomic, strong) NSMutableArray *modelArray;
+@property (nonatomic) NSInteger vcIndex;
 
 @end
