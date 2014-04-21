@@ -23,6 +23,8 @@
 
 // TODO: Will need to convert to PFGeoPoint for de/serialization.
 @property (strong, nonatomic) PFGeoPoint *geolocation;
+@property (strong, nonatomic) NSNumber *latitude;
+@property (strong, nonatomic) NSNumber *longitude;
 
 
 #pragma mark - User-related properties

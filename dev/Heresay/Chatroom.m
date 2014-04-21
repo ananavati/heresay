@@ -13,7 +13,9 @@
 @synthesize radius,
             chatRoomName,
             placeName,
-            geolocation;
+            geolocation,
+            latitude,
+            longitude;
 
 // this is the collection/table_name
 + (NSString *)parseClassName {

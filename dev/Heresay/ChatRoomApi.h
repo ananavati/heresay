@@ -27,4 +27,6 @@
  */
 - (void)fetchChatroomsNearLocation:(CLLocation *)location withSuccess:(void (^)(NSArray *chatrooms))success;
 
+- (void)saveChatRoom:(Chatroom *)chatRoom;
+
 @end

@@ -86,4 +86,29 @@
 	}
 }
 
+//    use the following as an example to set up a chatroom and save it
+
+//    Chatroom *chatRoom = [[Chatroom alloc] init];
+//    chatRoom.chatRoomName = @"dummyroom";
+//    chatRoom.radius = @100.0;
+//    chatRoom.placeName = @"dummyplacename";
+//    chatRoom.geolocation = [PFGeoPoint geoPointWithLatitude:40.0 longitude:-30.0];
+//    chatRoom.latitude = @40.0;
+//    chatRoom.longitude = @-30.0;
+//
+//    [[ChatRoomApi instance] saveChatRoom:chatRoom];
+
+- (void) saveChatRoom:(Chatroom *)chatRoom {
+    PFObject *c = [PFObject objectWithClassName:@"chat_rooms"];
+    
+    c[@"chatRoomName"] = chatRoom.chatRoomName;
+    c[@"placeName"] = chatRoom.placeName;
+    c[@"radius"] = chatRoom.radius;
+    c[@"geolocation"] = chatRoom.geolocation;
+    c[@"latitude"] = chatRoom.latitude;
+    c[@"longitude"] = chatRoom.longitude;
+    
+    [c saveInBackground];
+}
+
 @end
