@@ -40,9 +40,7 @@
 		model = [[Message alloc] init];
         
 		model.text = message[@"text"];
-		
-//        NSDictionary *author = message[@"author"];
-//        model.author.name = [author objectForKey:@"name"];
+        model.author = message[@"author"];
 	}
     
     
