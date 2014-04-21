@@ -267,7 +267,7 @@ static Class MAPBOX_TILE_CLASS;
 	
 	// renderer for existing chatroom
 	NSUInteger overlayIndex = [self.chatroomOverlays indexOfObject:overlay];
-	if (overlayIndex == -1) { return nil; }
+	if (overlayIndex == NSNotFound) { return nil; }
 	return ((ChatroomMapOverlay *)(self.chatroomMapOverlays[overlayIndex])).overlayRenderer;
 	
 }

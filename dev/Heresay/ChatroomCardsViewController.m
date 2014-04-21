@@ -69,8 +69,8 @@
 }
 
 - (void)highlightChatroom:(Chatroom *)chatroom {
-	NSUInteger chatroomIndex = [self.chatroomModels indexOfObject:chatroom];
-	if (chatroomIndex == -1) { return; }
+	int chatroomIndex = [self.chatroomModels indexOfObject:chatroom];
+	if (chatroomIndex == NSNotFound) { return; }
 	
 	CGFloat pageWidth = self.collectionView.frame.size.width;
 	[self.collectionView setContentOffset:CGPointMake(pageWidth * chatroomIndex, 0) animated:YES];

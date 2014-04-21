@@ -21,6 +21,7 @@
 }
 
 - (void)setChatroom:(Chatroom *)chatroom {
+	_chatroom = chatroom;
 	self.overlay = [self createOverlayWithChatroom:chatroom];
 	self.overlayRenderer = [self createOverlayRendererWithOverlay:self.overlay];
 	if (!self.style) {
