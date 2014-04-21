@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Chatroom.h"
 
-@interface LoginViewController : UIViewController
+@interface LoginViewController : UIViewController<UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 
 @property (strong, nonatomic) Chatroom *chatroom;
 

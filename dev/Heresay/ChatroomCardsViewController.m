@@ -65,7 +65,11 @@
 }
 
 - (void)highlightChatroom:(Chatroom *)chatroom {
-	NSLog(@"TODO: highlight map overlay for chatroom:%@", chatroom);
+	int chatroomIndex = [self.chatroomModels indexOfObject:chatroom];
+	if (chatroomIndex == -1) { return; }
+	
+	CGFloat pageWidth = self.collectionView.frame.size.width;
+	[self.collectionView setContentOffset:CGPointMake(pageWidth * chatroomIndex, 0) animated:YES];
 }
 
 

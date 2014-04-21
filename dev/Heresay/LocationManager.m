@@ -75,7 +75,7 @@
 	self.userLocation = locations[0];
 }
 
--(void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
 	if (self.locationEnabledResult) {
 		self.locationEnabledResult(NO);
 		self.locationEnabledResult = nil;

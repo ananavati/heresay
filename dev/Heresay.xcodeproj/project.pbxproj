@@ -40,6 +40,7 @@
 		CAD881C31902FBBF00FC3646 /* ChatroomCardsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CAD881C11902FBBF00FC3646 /* ChatroomCardsViewController.xib */; };
 		CAD881CB19031D7B00FC3646 /* ChatroomCardViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CAD881CA19031D7B00FC3646 /* ChatroomCardViewCell.m */; };
 		CAD881CF1903217E00FC3646 /* ChatroomCardViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CAD881CE1903217E00FC3646 /* ChatroomCardViewCell.xib */; };
+		CAD881D41904735500FC3646 /* ChatroomMapOverlayRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = CAD881D31904735500FC3646 /* ChatroomMapOverlayRenderer.m */; };
 		E99EA19B18FAFD9A0020F8EE /* ChatroomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E99EA19918FAFD9A0020F8EE /* ChatroomViewController.m */; };
 		E99EA19C18FAFD9A0020F8EE /* ChatroomViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E99EA19A18FAFD9A0020F8EE /* ChatroomViewController.xib */; };
 		E9DB5C2E18EE81A9007B2C84 /* Chatroom.m in Sources */ = {isa = PBXBuildFile; fileRef = E9DB5C2D18EE81A9007B2C84 /* Chatroom.m */; };
@@ -123,6 +124,9 @@
 		CAD881C919031D7B00FC3646 /* ChatroomCardViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatroomCardViewCell.h; sourceTree = "<group>"; };
 		CAD881CA19031D7B00FC3646 /* ChatroomCardViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatroomCardViewCell.m; sourceTree = "<group>"; };
 		CAD881CE1903217E00FC3646 /* ChatroomCardViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatroomCardViewCell.xib; sourceTree = "<group>"; };
+		CAD881D019043C5F00FC3646 /* libPods-MBXMapKit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-MBXMapKit.a"; path = "Pods/build/Debug-iphoneos/libPods-MBXMapKit.a"; sourceTree = "<group>"; };
+		CAD881D21904735500FC3646 /* ChatroomMapOverlayRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatroomMapOverlayRenderer.h; sourceTree = "<group>"; };
+		CAD881D31904735500FC3646 /* ChatroomMapOverlayRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatroomMapOverlayRenderer.m; sourceTree = "<group>"; };
 		E99EA19818FAFD9A0020F8EE /* ChatroomViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatroomViewController.h; sourceTree = "<group>"; };
 		E99EA19918FAFD9A0020F8EE /* ChatroomViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatroomViewController.m; sourceTree = "<group>"; };
 		E99EA19A18FAFD9A0020F8EE /* ChatroomViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatroomViewController.xib; sourceTree = "<group>"; };
@@ -214,6 +218,7 @@
 		CA105B4818ECFA6300F78D28 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CAD881D019043C5F00FC3646 /* libPods-MBXMapKit.a */,
 				CA5EDAD118F7AEF000C3A09B /* MapKit.framework */,
 				CA105B4918ECFA6300F78D28 /* Foundation.framework */,
 				CA105B4B18ECFA6300F78D28 /* CoreGraphics.framework */,
@@ -289,6 +294,8 @@
 			children = (
 				CAD8816718FE4F2900FC3646 /* ChatroomMapOverlay.h */,
 				CAD8816818FE4F2900FC3646 /* ChatroomMapOverlay.m */,
+				CAD881D21904735500FC3646 /* ChatroomMapOverlayRenderer.h */,
+				CAD881D31904735500FC3646 /* ChatroomMapOverlayRenderer.m */,
 			);
 			name = ChatroomMap;
 			sourceTree = "<group>";
@@ -471,6 +478,7 @@
 				CAD881CB19031D7B00FC3646 /* ChatroomCardViewCell.m in Sources */,
 				E9DB5C3118EE81BE007B2C84 /* User.m in Sources */,
 				E9DB5C4718EE82EE007B2C84 /* InviteUserViewController.m in Sources */,
+				CAD881D41904735500FC3646 /* ChatroomMapOverlayRenderer.m in Sources */,
 				17602A8C18FA416C0048B9E0 /* ChatRoomApi.m in Sources */,
 				CAD8814018F9B09F00FC3646 /* DummyDataProvider.m in Sources */,
 				CA5EDAE218F7CC9F00C3A09B /* LoginViewController.m in Sources */,
@@ -613,6 +621,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Heresay/Heresay-Prefix.pch";
 				INFOPLIST_FILE = "Heresay/Heresay-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Pods/build/Debug-iphoneos",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -627,6 +639,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Heresay/Heresay-Prefix.pch";
 				INFOPLIST_FILE = "Heresay/Heresay-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Pods/build/Debug-iphoneos",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
