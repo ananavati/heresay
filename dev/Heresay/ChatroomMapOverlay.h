@@ -26,6 +26,6 @@ typedef NS_ENUM(NSInteger, ChatroomMapOverlayStyle) {
 @property (assign, nonatomic) ChatroomMapOverlayStyle style;
 
 
-- (instancetype)initWithChatroom:(Chatroom *)chatroom;
+- (instancetype)initWithChatroom:(Chatroom *)chatroom style:(NSInteger)style;
 
 @end

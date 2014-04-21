@@ -14,6 +14,8 @@
 @interface Chatroom : PFObject<PFSubclassing>
 
 + (NSString *)parseClassName;
++ (Chatroom *)initWithJSON:(Chatroom *)json;
+- (void)setLocation:(CLLocationCoordinate2D)location;
 
 @property (strong, nonatomic) NSString *chatRoomName;
 
@@ -35,6 +37,5 @@
 //@property (strong, nonatomic) NSMutableArray *activeUsers;
 //@property (strong, nonatomic) NSMutableArray *nearbyUsers;
 
-+ (Chatroom *)initWithJSON:(Chatroom *)json;
 
 @end

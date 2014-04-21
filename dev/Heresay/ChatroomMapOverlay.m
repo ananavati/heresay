@@ -11,37 +11,50 @@
 
 @implementation ChatroomMapOverlay
 
-- (instancetype)initWithChatroom:(Chatroom *)chatroom {
+- (instancetype)initWithChatroom:(Chatroom *)chatroom style:(NSInteger)style {
 	self = [super init];
 	
+	_style = style;
 	self.chatroom = chatroom;
-	self.overlay = [self createOverlayWithChatroom:chatroom];
-	self.overlayRenderer = [self createOverlayRendererWithOverlay:self.overlay];
 	
 	return self;
+}
+
+- (void)setChatroom:(Chatroom *)chatroom {
+	self.overlay = [self createOverlayWithChatroom:chatroom];
+	self.overlayRenderer = [self createOverlayRendererWithOverlay:self.overlay];
+	if (!self.style) {
+		self.style = ChatroomMapOverlayStyleExisting;
+	} else {
+		self.style = self.style;
+	}
 }
 
 - (void)setStyle:(ChatroomMapOverlayStyle)style {
 	switch (style) {
 		case ChatroomMapOverlayStyleExisting:
+			self.overlayRenderer.lineWidth = 1;
 			self.overlayRenderer.strokeColor = [UIColor colorWithRed:104.0/255.0 green:185.0/255.0 blue:199.0/255.0 alpha:1.0];
 			self.overlayRenderer.fillColor = [UIColor colorWithRed:226.0/255.0 green:240.0/255.0 blue:234.0/255.0 alpha:0.65];
 			break;
 		case ChatroomMapOverlayStyleNew:
+			self.overlayRenderer.lineWidth = 2;
 			self.overlayRenderer.strokeColor = [UIColor colorWithRed:97.0/255.0 green:116.0/255.0 blue:114.0/255.0 alpha:1.0];
-			self.overlayRenderer.fillColor = [UIColor colorWithRed:210.0/255.0 green:255.0/255.0 blue:248.0/255.0 alpha:0.5];
+			self.overlayRenderer.fillColor = [UIColor colorWithRed:135.0/255.0 green:224.0/255.0 blue:217.0/255.0 alpha:0.65];
 			break;
 		case ChatroomMapOverlayStyleHighlighted:
+			self.overlayRenderer.lineWidth = 1;
 			self.overlayRenderer.strokeColor = [UIColor colorWithRed:97.0/255.0 green:116.0/255.0 blue:114.0/255.0 alpha:1.0];
 			self.overlayRenderer.fillColor = [UIColor colorWithRed:135.0/255.0 green:224.0/255.0 blue:217.0/255.0 alpha:0.65];
 			break;
 		case ChatroomMapOverlayStyleGhosted:
+			self.overlayRenderer.lineWidth = 1;
 			self.overlayRenderer.strokeColor = [UIColor colorWithRed:142.0/255.0 green:170.0/255.0 blue:168.0/255.0 alpha:0.75];
 			self.overlayRenderer.fillColor = [UIColor colorWithRed:193.0/255.0 green:211.0/255.0 blue:209.0/255.0 alpha:0.35];
 			break;
 	}
 
-	[self.overlayRenderer setNeedsDisplayInMapRect:self.overlay.boundingMapRect];
+//	[self.overlayRenderer setNeedsDisplayInMapRect:self.overlay.boundingMapRect];
 	
 }
 

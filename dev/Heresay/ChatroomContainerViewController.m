@@ -157,7 +157,10 @@ static const double CARDS_VIEW_ANIMATE_CLOSE_DURATION = 0.75;
 	
 }
 
-- (void)didHighlightChatroom:(id)chatroomSelector withChatroom:(Chatroom *)chatroom {
+
+#pragma mark - ChatroomSelectorDelegate implementation
+- (void)chatroomSelector:(id)chatroomSelector didHighlightChatroom:(Chatroom *)chatroom {
+
 	if (chatroomSelector == self.chatroomCardsViewController) {
 		[self.chatroomMapViewController highlightChatroom:chatroom];
 	} else if (chatroomSelector == self.chatroomMapViewController) {
@@ -166,14 +169,28 @@ static const double CARDS_VIEW_ANIMATE_CLOSE_DURATION = 0.75;
 	
 }
 
-- (void)didSelectChatroom:(id)chatroomSelector withChatroom:(Chatroom *)chatroom {
-	
+- (void)chatroomSelector:(id)chatroomSelector didSelectChatroom:(Chatroom *)chatroom {
+
 	// TODO: LoginViewController if not authed, else straight to ChatroomViewController
 	LoginViewController *loginViewController = [[LoginViewController alloc] init];
 	loginViewController.chatroom = chatroom;
 	
 	[self.navigationController pushViewController:loginViewController animated:YES];
 	self.navigationController.navigationBar.hidden = NO;
+	
+}
+
+- (void)chatroomSelector:(id)chatroomSelector didStageNewChatroom:(Chatroom *)chatroom {
+
+	self.chatroomMapViewController.stagedChatroom = chatroom;
+	self.chatroomCardsViewController.stagedChatroom = chatroom;
+	
+}
+
+- (void)chatroomSelectorDidAbortNewChatroom:(id)chatroomSelector {
+	
+	self.chatroomMapViewController.stagedChatroom = nil;
+	self.chatroomCardsViewController.stagedChatroom = nil;
 	
 }
 
@@ -208,6 +225,11 @@ static const double CARDS_VIEW_ANIMATE_CLOSE_DURATION = 0.75;
 			break;
 		case UIGestureRecognizerStateEnded:
 			[self onCardsViewPanEnded:panGestureRecognizer];
+			break;
+		case UIGestureRecognizerStatePossible:
+		case UIGestureRecognizerStateBegan:
+		case UIGestureRecognizerStateCancelled:
+		case UIGestureRecognizerStateFailed:
 			break;
 	}
 }

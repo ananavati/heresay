@@ -67,6 +67,10 @@
 	return longDateFormatter;
 }
 
+- (void)setLocation:(CLLocationCoordinate2D)location {
+	self.geolocation = [PFGeoPoint geoPointWithLatitude:location.latitude longitude:location.longitude];
+}
+
 - (NSString *)description {
 	return [NSString stringWithFormat:@"<Chatroom [%@]>", self.chatRoomName];
 }

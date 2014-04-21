@@ -28,7 +28,6 @@
 		CA5EDAD618F7B1E800C3A09B /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CA5EDAD518F7B1E800C3A09B /* LocationManager.m */; };
 		CA5EDADA18F7B6CE00C3A09B /* IntroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA5EDAD818F7B6CE00C3A09B /* IntroViewController.m */; };
 		CA5EDADB18F7B6CE00C3A09B /* IntroViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA5EDAD918F7B6CE00C3A09B /* IntroViewController.xib */; };
-		CA5EDADE18F7C7CE00C3A09B /* ChatroomSelectorDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CA5EDADD18F7C7CE00C3A09B /* ChatroomSelectorDelegate.m */; };
 		CA5EDAE218F7CC9F00C3A09B /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA5EDAE018F7CC9F00C3A09B /* LoginViewController.m */; };
 		CA5EDAE318F7CC9F00C3A09B /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA5EDAE118F7CC9F00C3A09B /* LoginViewController.xib */; };
 		CAD8814018F9B09F00FC3646 /* DummyDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = CAD8813F18F9B09F00FC3646 /* DummyDataProvider.m */; };
@@ -41,6 +40,7 @@
 		CAD881CB19031D7B00FC3646 /* ChatroomCardViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CAD881CA19031D7B00FC3646 /* ChatroomCardViewCell.m */; };
 		CAD881CF1903217E00FC3646 /* ChatroomCardViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CAD881CE1903217E00FC3646 /* ChatroomCardViewCell.xib */; };
 		CAD881D41904735500FC3646 /* ChatroomMapOverlayRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = CAD881D31904735500FC3646 /* ChatroomMapOverlayRenderer.m */; };
+		CAD881DA1904D30700FC3646 /* AppConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = CAD881D91904D30700FC3646 /* AppConstants.m */; };
 		E99EA19B18FAFD9A0020F8EE /* ChatroomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E99EA19918FAFD9A0020F8EE /* ChatroomViewController.m */; };
 		E99EA19C18FAFD9A0020F8EE /* ChatroomViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E99EA19A18FAFD9A0020F8EE /* ChatroomViewController.xib */; };
 		E9CE0B9C1904B02800EB51DC /* IntroSlide.m in Sources */ = {isa = PBXBuildFile; fileRef = E9CE0B9B1904B02800EB51DC /* IntroSlide.m */; };
@@ -109,7 +109,6 @@
 		CA5EDAD818F7B6CE00C3A09B /* IntroViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntroViewController.m; sourceTree = "<group>"; };
 		CA5EDAD918F7B6CE00C3A09B /* IntroViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IntroViewController.xib; sourceTree = "<group>"; };
 		CA5EDADC18F7C7CE00C3A09B /* ChatroomSelectorDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatroomSelectorDelegate.h; sourceTree = "<group>"; };
-		CA5EDADD18F7C7CE00C3A09B /* ChatroomSelectorDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatroomSelectorDelegate.m; sourceTree = "<group>"; };
 		CA5EDADF18F7CC9F00C3A09B /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		CA5EDAE018F7CC9F00C3A09B /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		CA5EDAE118F7CC9F00C3A09B /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
@@ -130,6 +129,8 @@
 		CAD881D019043C5F00FC3646 /* libPods-MBXMapKit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-MBXMapKit.a"; path = "Pods/build/Debug-iphoneos/libPods-MBXMapKit.a"; sourceTree = "<group>"; };
 		CAD881D21904735500FC3646 /* ChatroomMapOverlayRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatroomMapOverlayRenderer.h; sourceTree = "<group>"; };
 		CAD881D31904735500FC3646 /* ChatroomMapOverlayRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatroomMapOverlayRenderer.m; sourceTree = "<group>"; };
+		CAD881D81904D30700FC3646 /* AppConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppConstants.h; sourceTree = "<group>"; };
+		CAD881D91904D30700FC3646 /* AppConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppConstants.m; sourceTree = "<group>"; };
 		E99EA19818FAFD9A0020F8EE /* ChatroomViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatroomViewController.h; sourceTree = "<group>"; };
 		E99EA19918FAFD9A0020F8EE /* ChatroomViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatroomViewController.m; sourceTree = "<group>"; };
 		E99EA19A18FAFD9A0020F8EE /* ChatroomViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatroomViewController.xib; sourceTree = "<group>"; };
@@ -291,9 +292,10 @@
 				CA5EDAD418F7B1E800C3A09B /* LocationManager.h */,
 				CA5EDAD518F7B1E800C3A09B /* LocationManager.m */,
 				CA5EDADC18F7C7CE00C3A09B /* ChatroomSelectorDelegate.h */,
-				CA5EDADD18F7C7CE00C3A09B /* ChatroomSelectorDelegate.m */,
 				CAD8813E18F9B09F00FC3646 /* DummyDataProvider.h */,
 				CAD8813F18F9B09F00FC3646 /* DummyDataProvider.m */,
+				CAD881D81904D30700FC3646 /* AppConstants.h */,
+				CAD881D91904D30700FC3646 /* AppConstants.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -508,9 +510,9 @@
 				17602A9518FB52180048B9E0 /* MainSettingsViewController.m in Sources */,
 				CAD881C21902FBBF00FC3646 /* ChatroomCardsViewController.m in Sources */,
 				E9DB5C2E18EE81A9007B2C84 /* Chatroom.m in Sources */,
-				CA5EDADE18F7C7CE00C3A09B /* ChatroomSelectorDelegate.m in Sources */,
 				CA5EDAD618F7B1E800C3A09B /* LocationManager.m in Sources */,
 				E9DB5C5018EE83D4007B2C84 /* UserListView.m in Sources */,
+				CAD881DA1904D30700FC3646 /* AppConstants.m in Sources */,
 				E9DB5C3418EE81CC007B2C84 /* Message.m in Sources */,
 				E9DB5C5518EE8418007B2C84 /* InviteUserViewCell.m in Sources */,
 				E9CE0BA01904B18700EB51DC /* IntroSlideViewController.m in Sources */,

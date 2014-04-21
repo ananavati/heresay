@@ -13,6 +13,7 @@
 
 @property (strong, nonatomic) NSArray *chatroomModels;
 @property (strong, nonatomic) id<ChatroomSelectorDelegate> delegate;
+@property (strong, nonatomic) Chatroom *stagedChatroom;
 
 - (void)highlightChatroom:(Chatroom *)chatroom;
 

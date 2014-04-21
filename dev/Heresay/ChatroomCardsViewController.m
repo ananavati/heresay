@@ -55,17 +55,21 @@
 	// Dispose of any resources that can be recreated.
 }
 
+- (void)onPan:(UIPanGestureRecognizer *)panGestureRecognizer {
+	// TODO: no idea why collectionView doesn't layout unless panGestureRecognizer is set up!
+}
+
 - (void)setChatroomModels:(NSArray *)chatroomModels {
 	_chatroomModels = chatroomModels;
 	[self.collectionView reloadData];
 }
 
-- (void)onPan:(UIPanGestureRecognizer *)panGestureRecognizer {
-	// TODO: no idea why collectionView doesn't layout unless panGestureRecognizer is set up!
+- (void)setStagedChatroom:(Chatroom *)stagedChatroom {
+	// TODO: respond to change in staged (new) chatroom
 }
 
 - (void)highlightChatroom:(Chatroom *)chatroom {
-	int chatroomIndex = [self.chatroomModels indexOfObject:chatroom];
+	NSUInteger chatroomIndex = [self.chatroomModels indexOfObject:chatroom];
 	if (chatroomIndex == -1) { return; }
 	
 	CGFloat pageWidth = self.collectionView.frame.size.width;
@@ -95,8 +99,7 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
 	NSLog(@"Chatroom (card) selected:%@", self.chatroomModels[indexPath.row]);
 	
-//	[self.delegate didSelectChatroom:self withChatroom:nil];
-	[self.delegate didSelectChatroom:self withChatroom:self.chatroomModels[indexPath.row]];
+	[self.delegate chatroomSelector:self didSelectChatroom:self.chatroomModels[indexPath.row]];
 
 }
 
@@ -112,7 +115,7 @@
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
 	CGFloat pageWidth = self.collectionView.frame.size.width;
 	int pageNum = self.collectionView.contentOffset.x / pageWidth;
-	[self.delegate didHighlightChatroom:self withChatroom:self.chatroomModels[pageNum]];
+	[self.delegate chatroomSelector:self didHighlightChatroom:self.chatroomModels[pageNum]];
 }
 
 @end

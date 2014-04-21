@@ -11,8 +11,11 @@
 
 @protocol ChatroomSelectorDelegate <NSObject>
 
-- (void)didHighlightChatroom:(id)chatroomSelector withChatroom:(Chatroom *)chatroom;
-- (void)didSelectChatroom:(id)chatroomSelector withChatroom:(Chatroom *)chatroom;
+@required
+- (void)chatroomSelector:(id)chatroomSelector didHighlightChatroom:(Chatroom *)chatroom;
+- (void)chatroomSelector:(id)chatroomSelector didSelectChatroom:(Chatroom *)chatroom;
+- (void)chatroomSelector:(id)chatroomSelector didStageNewChatroom:(Chatroom *)chatroom;
+- (void)chatroomSelectorDidAbortNewChatroom:(id)chatroomSelector;
 
 @end
 

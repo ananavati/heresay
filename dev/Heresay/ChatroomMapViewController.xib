@@ -6,6 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChatroomMapViewController">
             <connections>
+                <outlet property="chatroomSizeControl" destination="vKT-yN-HNX" id="Nxf-x4-hMG"/>
                 <outlet property="view" destination="1" id="3"/>
             </connections>
         </placeholder>
@@ -13,6 +14,22 @@
         <view contentMode="scaleToFill" id="1">
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="vKT-yN-HNX">
+                    <rect key="frame" x="20" y="520" width="280" height="29"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.88627450980392153" green="0.94117647058823528" blue="0.91764705882352937" alpha="0.65000000000000002" colorSpace="calibratedRGB"/>
+                    <segments>
+                        <segment title="Room"/>
+                        <segment title="Building"/>
+                        <segment title="Block"/>
+                        <segment title="Region"/>
+                    </segments>
+                    <connections>
+                        <action selector="chatroomSizeControlValueChanged:" destination="-1" eventType="valueChanged" id="mk0-P1-YHA"/>
+                    </connections>
+                </segmentedControl>
+            </subviews>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>
