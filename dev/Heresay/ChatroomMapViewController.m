@@ -102,7 +102,7 @@ static Class MAPBOX_TILE_CLASS;
 	}
 }
 
-- (void)setChatroomModels:(NSArray *)chatroomModels {
+- (void)setChatroomModels:(NSMutableArray *)chatroomModels {
 	_chatroomModels = chatroomModels;
 	
 	for (Chatroom *chatroom in chatroomModels) {
@@ -195,7 +195,7 @@ static Class MAPBOX_TILE_CLASS;
 #pragma mark - MapView delegate implementation
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation {
 	//	NSLog(@"mapView didUpdateUserLoc userLoc:%f,%f", userLocation.location.coordinate.latitude, userLocation.location.coordinate.longitude);
-	[self.mapView setCenterCoordinate:userLocation.coordinate animated:YES];
+//	[self.mapView setCenterCoordinate:userLocation.coordinate animated:YES];
 }
 
 - (void)mapView:(MKMapView *)mapView didAddAnnotationViews:(NSArray *)views {

@@ -59,21 +59,35 @@
 	// TODO: no idea why collectionView doesn't layout unless panGestureRecognizer is set up!
 }
 
-- (void)setChatroomModels:(NSArray *)chatroomModels {
+- (void)setChatroomModels:(NSMutableArray *)chatroomModels {
 	_chatroomModels = chatroomModels;
 	[self.collectionView reloadData];
 }
 
 - (void)setStagedChatroom:(Chatroom *)stagedChatroom {
-	// TODO: respond to change in staged (new) chatroom
+	NSLog(@"set staged");
+	_stagedChatroom = stagedChatroom;
+	if (self.stagedChatroom) {
+		// added or updated staged chatroom
+		if ([self.chatroomModels indexOfObject:self.stagedChatroom] == NSNotFound) {
+			[self.chatroomModels insertObject:stagedChatroom atIndex:0];
+			
+			[self.collectionView insertItemsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]]];
+			[self highlightChatroom:self.stagedChatroom];
+		}
+	} else {
+		// removed staged chatroom
+		// TODO: this is probably too fragile...rethink when less tired.
+		[self.chatroomModels removeObjectAtIndex:0];
+		[self.collectionView deleteItemsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]]];
+	}
 }
 
 - (void)highlightChatroom:(Chatroom *)chatroom {
 	int chatroomIndex = (int)[self.chatroomModels indexOfObject:chatroom];
 	if ([self.chatroomModels indexOfObject:chatroom] == NSNotFound) { return; }
 	
-	CGFloat pageWidth = self.collectionView.frame.size.width;
-	[self.collectionView setContentOffset:CGPointMake(pageWidth * chatroomIndex, 0) animated:YES];
+	[self.collectionView selectItemAtIndexPath:[NSIndexPath indexPathForRow:chatroomIndex inSection:0] animated:YES scrollPosition:UICollectionViewScrollPositionCenteredHorizontally];
 }
 
 

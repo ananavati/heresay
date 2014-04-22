@@ -51,7 +51,7 @@
     }
 }
 
-- (void)fetchChatroomsNearUserLocationWithSuccess:(void (^)(NSArray *chatrooms))success {
+- (void)fetchChatroomsNearUserLocationWithSuccess:(void (^)(NSMutableArray *chatrooms))success {
 	LocationManager *locationManager = [LocationManager instance];
 	CLLocation *userLocation = locationManager.userLocation;
 	if (!userLocation) {
@@ -67,7 +67,7 @@
 	}
 }
 
-- (void)fetchChatroomsNearLocation:(CLLocation *)location withSuccess:(void (^)(NSArray *chatrooms))success {
+- (void)fetchChatroomsNearLocation:(CLLocation *)location withSuccess:(void (^)(NSMutableArray *chatrooms))success {
     [self.query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         [self appendChatRooms:objects];
         success(self.nearbyChatrooms);

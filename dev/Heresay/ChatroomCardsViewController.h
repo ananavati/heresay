@@ -11,7 +11,7 @@
 
 @interface ChatroomCardsViewController : UIViewController <UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UIScrollViewDelegate>
 
-@property (strong, nonatomic) NSArray *chatroomModels;
+@property (strong, nonatomic) NSMutableArray *chatroomModels;
 @property (strong, nonatomic) id<ChatroomSelectorDelegate> delegate;
 @property (strong, nonatomic) Chatroom *stagedChatroom;
 

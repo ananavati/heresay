@@ -126,7 +126,7 @@ static const double CARDS_VIEW_ANIMATE_CLOSE_DURATION = 0.75;
 
 - (void)refreshNearbyChatrooms {
 	
-	[[ChatRoomApi instance] fetchChatroomsNearUserLocationWithSuccess:^(NSArray *chatrooms) {
+	[[ChatRoomApi instance] fetchChatroomsNearUserLocationWithSuccess:^(NSMutableArray *chatrooms) {
 		self.chatroomMapViewController.chatroomModels = chatrooms;
 		self.chatroomCardsViewController.chatroomModels = chatrooms;
 	}];

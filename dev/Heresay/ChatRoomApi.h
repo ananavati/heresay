@@ -20,12 +20,12 @@
  * If user location not yet available, the success callback will be called after
  * user location becomes available and the nearby chatrooms are fetched.
  */
-- (void)fetchChatroomsNearUserLocationWithSuccess:(void (^)(NSArray *chatrooms))success;
+- (void)fetchChatroomsNearUserLocationWithSuccess:(void (^)(NSMutableArray *chatrooms))success;
 
 /**
  * Fetch chatrooms near a specified location.
  */
-- (void)fetchChatroomsNearLocation:(CLLocation *)location withSuccess:(void (^)(NSArray *chatrooms))success;
+- (void)fetchChatroomsNearLocation:(CLLocation *)location withSuccess:(void (^)(NSMutableArray *chatrooms))success;
 
 - (void)saveChatRoom:(Chatroom *)chatRoom;
 
