@@ -33,7 +33,7 @@
 
 - (CGSize)calcSizeWithModel:(Chatroom *)model {
 	
-	CGSize size = CGSizeMake(320, 360);
+	CGSize size = CGSizeMake(220, 360);
 	return size;
 	
 }
