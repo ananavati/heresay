@@ -65,56 +65,82 @@
 }
 
 - (void)setStagedChatroom:(Chatroom *)stagedChatroom {
-	NSLog(@"set staged");
+	BOOL addedOrRemovedStagedChatroom = (!_stagedChatroom && stagedChatroom) || (_stagedChatroom && !stagedChatroom);
 	_stagedChatroom = stagedChatroom;
-	if (self.stagedChatroom) {
-		// added or updated staged chatroom
-		if ([self.chatroomModels indexOfObject:self.stagedChatroom] == NSNotFound) {
-			[self.chatroomModels insertObject:stagedChatroom atIndex:0];
-			
-			[self.collectionView insertItemsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]]];
+	
+	if (addedOrRemovedStagedChatroom) {
+		if (self.stagedChatroom) {
+			// staged new chatroom
+			[self.collectionView insertSections:[[NSIndexSet alloc] initWithIndex:1]];
 			[self highlightChatroom:self.stagedChatroom];
+		} else {
+			// unstaged new chatroom
+			[self.collectionView deleteSections:[[NSIndexSet alloc] initWithIndex:1]];
 		}
 	} else {
-		// removed staged chatroom
-		// TODO: this is probably too fragile...rethink when less tired.
-		[self.chatroomModels removeObjectAtIndex:0];
-		[self.collectionView deleteItemsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]]];
+		if (self.stagedChatroom) {
+			// updated new chatroom
+			[self.collectionView reloadData];
+			[self highlightChatroom:self.stagedChatroom];
+		}
 	}
 }
 
 - (void)highlightChatroom:(Chatroom *)chatroom {
-	int chatroomIndex = (int)[self.chatroomModels indexOfObject:chatroom];
-	if ([self.chatroomModels indexOfObject:chatroom] == NSNotFound) { return; }
+	int chatroomRow = (int)[self.chatroomModels indexOfObject:chatroom];
+	int chatroomSection;
+	if ([self.chatroomModels indexOfObject:chatroom] != NSNotFound) {
+		// one of existing chatrooms
+		chatroomSection = 0;
+	} else {
+		if (self.stagedChatroom && (chatroom == self.stagedChatroom)) {
+			// staged chatroom
+			chatroomRow = 0;
+			chatroomSection = 1;
+		} else {
+			// chatroom not found
+			return;
+		}
+	}
 	
-	[self.collectionView selectItemAtIndexPath:[NSIndexPath indexPathForRow:chatroomIndex inSection:0] animated:YES scrollPosition:UICollectionViewScrollPositionCenteredHorizontally];
+	[self.collectionView selectItemAtIndexPath:[NSIndexPath indexPathForRow:chatroomRow inSection:chatroomSection] animated:YES scrollPosition:UICollectionViewScrollPositionCenteredHorizontally];
 }
 
 
 #pragma mark - UICollectionView methods
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-	return self.chatroomModels ? [self.chatroomModels count] : 0;
+	if (section == 0) {
+		return self.chatroomModels ? [self.chatroomModels count] : 0;
+	} else {
+		return self.stagedChatroom ? 1 : 0;
+	}
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-	return 1;
+	return self.stagedChatroom ? 2 : 1;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
 	ChatroomCardViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ChatroomCardViewCell" forIndexPath:indexPath];
-	if (!self.chatroomModels || [self.chatroomModels count] == 0) { return cell; }
+	if (!self.stagedChatroom && (!self.chatroomModels || [self.chatroomModels count] == 0)) { return cell; }
 	
-	[cell initWithModel:self.chatroomModels[indexPath.row]];
-//	cell.delegate = self;
+	if (indexPath.section == 0) {
+		// existing chat card
+		[cell initWithModel:self.chatroomModels[indexPath.row]];
+	} else {
+		// new chat card
+		[cell initWithModel:self.stagedChatroom];
+	}
 	
 	return cell;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-	NSLog(@"Chatroom (card) selected:%@", self.chatroomModels[indexPath.row]);
-	
-	[self.delegate chatroomSelector:self didSelectChatroom:self.chatroomModels[indexPath.row]];
-
+	if (indexPath.section == 0) {
+		[self.delegate chatroomSelector:self didSelectChatroom:self.chatroomModels[indexPath.row]];
+	} else {
+		[self.delegate chatroomSelector:self didSelectChatroom:self.stagedChatroom];
+	}
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -129,7 +155,13 @@
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
 	CGFloat pageWidth = self.collectionView.frame.size.width;
 	int pageNum = self.collectionView.contentOffset.x / pageWidth;
-	[self.delegate chatroomSelector:self didHighlightChatroom:self.chatroomModels[pageNum]];
+	if (pageNum < 0 || pageNum > self.chatroomModels.count) { return; }
+	
+	if (pageNum > self.chatroomModels.count - 1 && self.stagedChatroom) {
+		[self.delegate chatroomSelector:self didHighlightChatroom:self.stagedChatroom];
+	} else {
+		[self.delegate chatroomSelector:self didHighlightChatroom:self.chatroomModels[pageNum]];
+	}
 }
 
 @end

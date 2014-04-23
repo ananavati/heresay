@@ -10,9 +10,8 @@
 
 @implementation AppConstants
 
-double const CHATROOM_SIZE_SMALL = 20.0;
-double const CHATROOM_SIZE_MEDIUM = 50.0;
-double const CHATROOM_SIZE_LARGE = 100.0;
-double const CHATROOM_SIZE_XLARGE = 500.0;
+double const CHATROOM_SIZE_SMALL = 50.0;
+double const CHATROOM_SIZE_MEDIUM = 100.0;
+double const CHATROOM_SIZE_LARGE = 500.0;
 
 @end

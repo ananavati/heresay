@@ -50,6 +50,7 @@ static Class MAPBOX_TILE_CLASS;
 	self.mapView = [[MBXMapView alloc] initWithFrame:self.view.frame mapID:@"ericsoco.i1e8759o"];
 	self.mapView.delegate = self;
 	self.mapView.showsBuildings = YES;
+	self.mapView.pitchEnabled = NO;
 	[self.view addSubview:self.mapView];
 	
 	UITapGestureRecognizer *mapTapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onMapViewTapped:)];
@@ -131,9 +132,10 @@ static Class MAPBOX_TILE_CLASS;
 	
 	Chatroom *newChatroom = [[Chatroom alloc] init];
 	newChatroom.chatRoomName = @"New Chat";
-	newChatroom.radius = [NSNumber numberWithDouble:CHATROOM_SIZE_LARGE];
+	newChatroom.radius = [NSNumber numberWithDouble:CHATROOM_SIZE_MEDIUM];
 	[newChatroom setLocation:self.mapView.userLocation.location.coordinate];
 	[self.delegate chatroomSelector:self didStageNewChatroom:newChatroom];
+	self.chatroomSizeControl.selectedSegmentIndex = 1;
 }
 
 - (void)setStagedChatroom:(Chatroom *)stagedChatroom {
@@ -157,7 +159,6 @@ static Class MAPBOX_TILE_CLASS;
 			self.stagedChatroomOverlay = nil;
 			self.stagedChatroomMapOverlay = nil;
 		} else {
-			NSLog(@"update overlay");
 			// update existing staged chatroom
 			[self.mapView removeOverlay:self.stagedChatroomOverlay];
 			self.stagedChatroomMapOverlay.chatroom = self.stagedChatroom;
@@ -182,9 +183,6 @@ static Class MAPBOX_TILE_CLASS;
 		case 2:
 			radius = CHATROOM_SIZE_LARGE;
 			break;
-		case 3:
-			radius = CHATROOM_SIZE_XLARGE;
-			break;
 	}
 	self.stagedChatroom.radius = [NSNumber numberWithDouble:radius];
 	[self.delegate chatroomSelector:self didStageNewChatroom:self.stagedChatroom];
@@ -208,7 +206,7 @@ static Class MAPBOX_TILE_CLASS;
 			[((UIButton *)(annotationView.rightCalloutAccessoryView)) addTarget:self action:@selector(onNewChatTapped) forControlEvents:UIControlEventTouchUpInside];
 			
 			// Zoom into current location once it's obtained
-			MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(self.mapView.userLocation.location.coordinate, 1.1*CHATROOM_SIZE_XLARGE, 1.1*CHATROOM_SIZE_XLARGE);
+			MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(self.mapView.userLocation.location.coordinate, 1.1*CHATROOM_SIZE_LARGE, 1.1*CHATROOM_SIZE_LARGE);
 			[self.mapView setRegion:region animated:YES];
 		} else {
 			// hide MapBox HQ annotation
@@ -261,7 +259,6 @@ static Class MAPBOX_TILE_CLASS;
 	
 	// renderer for staged new chatroom
 	if (overlay == self.stagedChatroomOverlay) {
-		NSLog(@"renderer for staged overlay");
 		return self.stagedChatroomMapOverlay.overlayRenderer;
 	}
 	

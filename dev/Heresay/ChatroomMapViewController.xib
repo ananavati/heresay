@@ -20,10 +20,9 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.88627450980392153" green="0.94117647058823528" blue="0.91764705882352937" alpha="0.65000000000000002" colorSpace="calibratedRGB"/>
                     <segments>
-                        <segment title="Room"/>
-                        <segment title="Building"/>
+                        <segment title="Room" width="70"/>
                         <segment title="Block"/>
-                        <segment title="Region"/>
+                        <segment title="Neighborhood" width="115"/>
                     </segments>
                     <connections>
                         <action selector="chatroomSizeControlValueChanged:" destination="-1" eventType="valueChanged" id="mk0-P1-YHA"/>

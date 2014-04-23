@@ -13,6 +13,5 @@
 extern double const CHATROOM_SIZE_SMALL;
 extern double const CHATROOM_SIZE_MEDIUM;
 extern double const CHATROOM_SIZE_LARGE;
-extern double const CHATROOM_SIZE_XLARGE;
 
 @end
