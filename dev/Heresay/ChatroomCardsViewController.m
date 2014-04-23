@@ -114,12 +114,10 @@ static double CARD_HEIGHT;
 
 #pragma mark - ChatroomCardViewDelegate implementation
 - (void)chatroomCardViewDidConfirm:(ChatroomCardViewCell *)chatroomCardView {
-	NSLog(@"card view heard confirm");
 	[self.delegate chatroomSelectorDidConfirmNewChatroom:self];
 }
 
 - (void)chatroomCardViewDidCancel:(ChatroomCardViewCell *)chatroomCardView {
-	NSLog(@"card view heard cancel");
 	[self.delegate chatroomSelectorDidCancelNewChatroom:self];
 }
 

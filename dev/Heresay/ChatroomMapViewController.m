@@ -248,7 +248,6 @@ static Class MAPBOX_TILE_CLASS;
 
 - (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view {
 	if (view.annotation == mapView.userLocation) {
-		NSLog(@"anno");
 		if (self.stagedChatroom) {
 			[self.delegate chatroomSelector:self didSelectChatroom:self.stagedChatroom];
 		} else {

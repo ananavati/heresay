@@ -69,20 +69,18 @@
 }
 
 - (IBAction)nameInputChanged:(id)sender {
-	
+	// TODO: hide/show submit button when there's content here and topicInput
 }
 
 - (IBAction)topicInputChanged:(id)sender {
-	
+	// TODO: hide/show submit button when there's content here and nameInput
 }
 
 - (IBAction)submitButtonTapped:(id)sender {
-	NSLog(@"submit");
 	[self.delegate chatroomCardViewDidConfirm:self];
 }
 
 - (IBAction)cancelButtonTapped:(id)sender {
-	NSLog(@"cancel");
 	[self.delegate chatroomCardViewDidCancel:self];
 }
 
