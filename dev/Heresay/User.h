@@ -16,5 +16,7 @@
 
 @property (strong, nonatomic) NSString *name;
 @property (strong, nonatomic) NSString *profileImageURL;
+@property (strong, nonatomic) NSString *uuid;
+@property (strong, nonatomic) UIImage *avatarImage;
 
 @end

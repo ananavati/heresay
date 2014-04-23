@@ -11,7 +11,9 @@
 @implementation User
 
 @synthesize name,
-            profileImageURL;
+            profileImageURL,
+            uuid,
+            avatarImage;
 
 // this is the collection/table_name
 + (NSString *)parseClassName {
@@ -37,6 +39,8 @@
 
 		model.name = user[@"name"];
 		model.profileImageURL = user[@"profileImageURL"];
+        model.uuid = user[@"uuid"];
+        
 	}
 	
 	return model;

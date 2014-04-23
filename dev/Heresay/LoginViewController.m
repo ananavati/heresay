@@ -8,6 +8,8 @@
 
 #import "LoginViewController.h"
 #import "ChatroomViewController.h"
+#import "User.h"
+#import "UserApi.h"
 
 @interface LoginViewController ()
 
@@ -16,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *screenNameTextField;
 @property (assign, nonatomic) UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UIImageView *avatarImage;
+
 
 @end
 
@@ -54,6 +57,8 @@
     
     NSLog(@"Start chatroom with %@", [self.chatroom description]);
     
+    [self createUserWithName:self.screenNameTextField.text avatar:self.avatarImage.image];
+    
     ChatroomViewController *chatroomViewController = [[ChatroomViewController alloc] initWithChatroom:self.chatroom userName:self.screenNameTextField.text avatarImage:self.avatarImage.image];
     [self.navigationController pushViewController:chatroomViewController animated:YES];
 }
@@ -67,6 +72,7 @@
     picker.sourceType = UIImagePickerControllerSourceTypeCamera;
     picker.cameraDevice = UIImagePickerControllerCameraDeviceFront;
     
+
     [self presentViewController:picker animated:YES completion:NULL];
 }
 
@@ -79,6 +85,23 @@
     picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
 
     [self presentViewController:picker animated:YES completion:NULL];
+}
+
+-(void)createUserWithName:(NSString *)userName avatar:(UIImage*)image{
+    
+    User *newUser = [[User alloc] init];
+    newUser.name = userName;
+    
+    newUser.profileImageURL = @"";
+    newUser.avatarImage = image;
+    
+    
+    // TODO send the UIImage on the internet somewhere to store it and let's
+    // persit the URL of the image
+    newUser.uuid = [[UIDevice currentDevice] identifierForVendor].UUIDString;
+    
+    [[UserApi instance] saveUser:newUser];
+    
 }
 
 

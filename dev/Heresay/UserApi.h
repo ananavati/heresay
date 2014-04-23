@@ -8,9 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import <Parse/Parse.h>
+#import "User.h"
 
 @interface UserApi : NSObject
 
 + (UserApi *)instance;
+- (void)saveUser:(User *)user;
 
 @end
