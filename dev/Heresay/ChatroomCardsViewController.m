@@ -9,7 +9,6 @@
 #import "ChatroomCardsViewController.h"
 #import "ChatRoomApi.h"
 #import "Chatroom.h"
-#import "ChatroomCardViewCell.h"
 
 @interface ChatroomCardsViewController ()
 
@@ -17,6 +16,9 @@
 @property (strong, nonatomic) UICollectionViewFlowLayout *collectionViewFlowLayout;
 
 @end
+
+
+static double CARD_HEIGHT;
 
 @implementation ChatroomCardsViewController
 
@@ -40,6 +42,8 @@
 		
 		UINib *cellNib = [UINib nibWithNibName:@"ChatroomCardViewCell" bundle:nil];
 		[self.collectionView registerNib:cellNib forCellWithReuseIdentifier:@"ChatroomCardViewCell"];
+		
+		CARD_HEIGHT = [UIScreen mainScreen].bounds.size.height - 20*2;
 	}
 
 	return self;
@@ -107,6 +111,20 @@
 }
 
 
+
+#pragma mark - ChatroomCardViewDelegate implementation
+- (void)chatroomCardViewDidConfirm:(ChatroomCardViewCell *)chatroomCardView {
+	NSLog(@"card view heard confirm");
+	[self.delegate chatroomSelectorDidConfirmNewChatroom:self];
+}
+
+- (void)chatroomCardViewDidCancel:(ChatroomCardViewCell *)chatroomCardView {
+	NSLog(@"card view heard cancel");
+	[self.delegate chatroomSelectorDidCancelNewChatroom:self];
+}
+
+
+
 #pragma mark - UICollectionView methods
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
 	if (section == 0) {
@@ -127,9 +145,12 @@
 	if (indexPath.section == 0) {
 		// existing chat card
 		[cell initWithModel:self.chatroomModels[indexPath.row]];
+		cell.isNewChatroom = false;
 	} else {
 		// new chat card
 		[cell initWithModel:self.stagedChatroom];
+		cell.delegate = self;
+		cell.isNewChatroom = true;
 	}
 	
 	return cell;
@@ -144,7 +165,7 @@
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-	return CGSizeMake(280, 360);
+	return CGSizeMake(280, CARD_HEIGHT);
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {

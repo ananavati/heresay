@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "ChatroomSelectorDelegate.h"
+#import "ChatroomCardViewCell.h"
 
-@interface ChatroomCardsViewController : UIViewController <UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UIScrollViewDelegate>
+@interface ChatroomCardsViewController : UIViewController <UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UIScrollViewDelegate, ChatroomCardViewDelegate>
 
 @property (strong, nonatomic) NSMutableArray *chatroomModels;
 @property (strong, nonatomic) id<ChatroomSelectorDelegate> delegate;

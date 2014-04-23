@@ -16,6 +16,8 @@
 - (void)chatroomSelector:(id)chatroomSelector didSelectChatroom:(Chatroom *)chatroom;
 - (void)chatroomSelector:(id)chatroomSelector didStageNewChatroom:(Chatroom *)chatroom;
 - (void)chatroomSelectorDidAbortNewChatroom:(id)chatroomSelector;
+- (void)chatroomSelectorDidConfirmNewChatroom:(id)chatroomSelector;
+- (void)chatroomSelectorDidCancelNewChatroom:(id)chatroomSelector;
 
 @end
 

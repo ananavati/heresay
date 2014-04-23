@@ -9,8 +9,19 @@
 #import <UIKit/UIKit.h>
 #import "Chatroom.h"
 
+@class ChatroomCardViewCell;
+@protocol ChatroomCardViewDelegate <NSObject>
+
+- (void)chatroomCardViewDidConfirm:(ChatroomCardViewCell *)chatroomCardView;
+- (void)chatroomCardViewDidCancel:(ChatroomCardViewCell *)chatroomCardView;
+
+@end
+
+
 @interface ChatroomCardViewCell : UICollectionViewCell
 
+@property (strong, nonatomic) id<ChatroomCardViewDelegate> delegate;
+@property (assign, nonatomic) BOOL isNewChatroom;
 - (void)initWithModel:(Chatroom *)model;
 - (CGSize)calcSizeWithModel:(Chatroom *)model;
 

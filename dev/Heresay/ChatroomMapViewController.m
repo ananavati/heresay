@@ -47,7 +47,10 @@ static Class MAPBOX_TILE_CLASS;
 - (void)viewDidLoad {
 	[super viewDidLoad];
 	
-	self.mapView = [[MBXMapView alloc] initWithFrame:self.view.frame mapID:@"ericsoco.i1e8759o"];
+	// app bounds - cards view closed y
+	CGRect mapViewFrame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height-120.0);
+	
+	self.mapView = [[MBXMapView alloc] initWithFrame:mapViewFrame mapID:@"ericsoco.i1e8759o"];
 	self.mapView.delegate = self;
 	self.mapView.showsBuildings = YES;
 	self.mapView.pitchEnabled = NO;
@@ -71,7 +74,11 @@ static Class MAPBOX_TILE_CLASS;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-	//
+	/*
+	// reposition Legal link
+	UILabel *attributionLabel = [self.mapView.subviews objectAtIndex:1];
+	attributionLabel.center = CGPointMake(attributionLabel.center.x, [UIScreen mainScreen].bounds.size.width - 50.0);
+	 */
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -124,6 +131,11 @@ static Class MAPBOX_TILE_CLASS;
 
 #pragma mark - New Chat UI
 - (void)onNewChatTapped {
+	if (self.stagedChatroom) {
+		[self.delegate chatroomSelector:self didSelectChatroom:self.stagedChatroom];
+		return;
+	}
+	
 	self.chatroomSizeControl.hidden = NO;
 	self.chatroomSizeControl.alpha = 0.0;
 	[UIView animateWithDuration:0.5 animations:^{
@@ -202,7 +214,9 @@ static Class MAPBOX_TILE_CLASS;
 			
 			// custom user location annotation
 			// TODO: move into nib?
-			annotationView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeContactAdd];
+			UIButton *addButton = [UIButton buttonWithType:UIButtonTypeContactAdd];
+			[addButton addTarget:self action:@selector(onNewChatTapped) forControlEvents:UIControlEventTouchUpInside];
+			annotationView.rightCalloutAccessoryView = addButton;
 			[((UIButton *)(annotationView.rightCalloutAccessoryView)) addTarget:self action:@selector(onNewChatTapped) forControlEvents:UIControlEventTouchUpInside];
 			
 			// Zoom into current location once it's obtained
@@ -234,7 +248,12 @@ static Class MAPBOX_TILE_CLASS;
 
 - (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view {
 	if (view.annotation == mapView.userLocation) {
-		[self onNewChatTapped];
+		NSLog(@"anno");
+		if (self.stagedChatroom) {
+			[self.delegate chatroomSelector:self didSelectChatroom:self.stagedChatroom];
+		} else {
+			[self onNewChatTapped];
+		}
 	}
 }
 

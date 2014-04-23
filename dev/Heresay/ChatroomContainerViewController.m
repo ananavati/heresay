@@ -31,14 +31,14 @@
 
 
 static double CARDS_VIEW_CLOSED_Y;
-static const double CARDS_VIEW_OPEN_Y = 0.0;
+static const double CARDS_VIEW_OPEN_Y = 200.0;
+static const double CARDS_VIEW_OPEN_FULL_Y = 0.0;
 static const double CARDS_VIEW_ANIMATE_CLOSE_DURATION = 0.75;
 
 @implementation ChatroomContainerViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+	self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
 
 	if (self) {
 		
@@ -71,14 +71,13 @@ static const double CARDS_VIEW_ANIMATE_CLOSE_DURATION = 0.75;
 		[self.chatroomCardsViewController.view addGestureRecognizer:self.panGestureRecognizer];
 
 		// calculate open position for cards view
-		CARDS_VIEW_CLOSED_Y = -self.chatroomCardsViewController.view.frame.size.height + 100.0;
+		CARDS_VIEW_CLOSED_Y = [UIScreen mainScreen].bounds.size.height - 120.0;
 	}
 	
     return self;
 }
 
 - (void)viewDidLoad {
-	
 	[super viewDidLoad];
 	// Do any additional setup after loading the view from its nib.
 	
@@ -93,7 +92,6 @@ static const double CARDS_VIEW_ANIMATE_CLOSE_DURATION = 0.75;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-	
 	/*
 	// navigation bar setup
 	self.title = @"Nearby Chats";
@@ -116,7 +114,6 @@ static const double CARDS_VIEW_ANIMATE_CLOSE_DURATION = 0.75;
 		[self.chatroomMapViewController showUserLocation];
 		[self openChatroomMapViewAnimated:NO];
 	}
-	
 }
 
 - (void)didReceiveMemoryWarning {
@@ -125,36 +122,28 @@ static const double CARDS_VIEW_ANIMATE_CLOSE_DURATION = 0.75;
 }
 
 - (void)refreshNearbyChatrooms {
-	
 	[[ChatRoomApi instance] fetchChatroomsNearUserLocationWithSuccess:^(NSMutableArray *chatrooms) {
 		self.chatroomMapViewController.chatroomModels = chatrooms;
 		self.chatroomCardsViewController.chatroomModels = chatrooms;
 	}];
-	
 }
 
 - (void)presentIntro {
-	
 	if (self.introComplete) { return; }
 	[self.navigationController presentViewController:self.introViewController animated:YES completion:nil];
-	
 }
 
 - (void)settingsTapped:(id)sender {
-	
 	[self.navigationController pushViewController:self.mainSettingsViewController animated:YES];
-	
 }
 
 - (void)didDismissModalViewController:(UIViewController *)viewController {
-	
 	[self.navigationController dismissViewControllerAnimated:YES completion:nil];
 	
 	if (viewController == self.introViewController) {
 		self.introComplete = YES;
 		[self.chatroomMapViewController showUserLocation];
 	}
-	
 }
 
 
@@ -170,37 +159,48 @@ static const double CARDS_VIEW_ANIMATE_CLOSE_DURATION = 0.75;
 }
 
 - (void)chatroomSelector:(id)chatroomSelector didSelectChatroom:(Chatroom *)chatroom {
+	if (chatroom == self.chatroomCardsViewController.stagedChatroom) {
+		[self setCardsViewOpen:YES toPosition:[NSNumber numberWithDouble:CARDS_VIEW_OPEN_FULL_Y]];
+		return;
+	}
+	
+	[self enterChatroom:chatroom];
+}
 
+- (void)chatroomSelector:(id)chatroomSelector didStageNewChatroom:(Chatroom *)chatroom {
+	self.chatroomMapViewController.stagedChatroom = chatroom;
+	self.chatroomCardsViewController.stagedChatroom = chatroom;
+}
+
+- (void)chatroomSelectorDidAbortNewChatroom:(id)chatroomSelector {
+	self.chatroomMapViewController.stagedChatroom = nil;
+	self.chatroomCardsViewController.stagedChatroom = nil;
+}
+
+- (void)chatroomSelectorDidConfirmNewChatroom:(id)chatroomSelector {
+	[self setCardsViewOpen:NO toPosition:[NSNumber numberWithFloat:CARDS_VIEW_CLOSED_Y]];
+	[self enterChatroom:self.chatroomCardsViewController.stagedChatroom];
+}
+
+- (void)chatroomSelectorDidCancelNewChatroom:(id)chatroomSelector {
+	[self setCardsViewOpen:NO toPosition:[NSNumber numberWithFloat:CARDS_VIEW_CLOSED_Y]];
+}
+
+
+#pragma mark - Chatroom view controller management
+- (void)enterChatroom:(Chatroom *)chatroom {
+	if (!chatroom) { return; }
+	
 	// TODO: LoginViewController if not authed, else straight to ChatroomViewController
 	LoginViewController *loginViewController = [[LoginViewController alloc] init];
 	loginViewController.chatroom = chatroom;
 	
 	[self.navigationController pushViewController:loginViewController animated:YES];
 	self.navigationController.navigationBar.hidden = NO;
-	
 }
-
-- (void)chatroomSelector:(id)chatroomSelector didStageNewChatroom:(Chatroom *)chatroom {
-
-	self.chatroomMapViewController.stagedChatroom = chatroom;
-	self.chatroomCardsViewController.stagedChatroom = chatroom;
-	
-}
-
-- (void)chatroomSelectorDidAbortNewChatroom:(id)chatroomSelector {
-	
-	self.chatroomMapViewController.stagedChatroom = nil;
-	self.chatroomCardsViewController.stagedChatroom = nil;
-	
-}
-
-
-#pragma mark - Chatroom view controller management
 
 - (void)openChatroomMapViewAnimated:(BOOL)animated {
-	
 	CGRect viewFrame = self.chatroomCardsViewController.view.frame;
-//	viewFrame.origin.y = -[UIScreen mainScreen].bounds.size.height + CARDS_VIEW_CLOSED_Y;
 	viewFrame.origin.y = CARDS_VIEW_CLOSED_Y;
 	
 	NSTimeInterval animateDuration = animated ? CARDS_VIEW_ANIMATE_CLOSE_DURATION : 0.0;
@@ -210,12 +210,6 @@ static const double CARDS_VIEW_ANIMATE_CLOSE_DURATION = 0.75;
 	[UIView animateWithDuration:animateDuration delay:0 usingSpringWithDamping:damping initialSpringVelocity:initialSpringVelocity options:UIViewAnimationOptionAllowUserInteraction animations:^{
 		self.chatroomCardsViewController.view.frame = viewFrame;
 	} completion:nil];
-	
-}
-
-- (void)openChatroomCardsViewAnimated:(BOOL)animated {
-	
-	
 }
 
 - (void)onCardsViewPan:(UIPanGestureRecognizer *)panGestureRecognizer {
@@ -235,43 +229,58 @@ static const double CARDS_VIEW_ANIMATE_CLOSE_DURATION = 0.75;
 }
 
 - (void)onCardsViewPanChanged:(UIPanGestureRecognizer *)panGestureRecognizer {
+	// HACK: checking if stagedChatroom exists to perform new chat math.
+	double cardsOpenY = self.chatroomCardsViewController.stagedChatroom ? CARDS_VIEW_OPEN_FULL_Y : CARDS_VIEW_OPEN_Y;
+	
 	CGPoint translation = [panGestureRecognizer translationInView:self.view];
-	double targetY = (self.cardsViewOpen ? CARDS_VIEW_OPEN_Y : CARDS_VIEW_CLOSED_Y) + translation.y;
+	double targetY = (self.cardsViewOpen ? cardsOpenY : CARDS_VIEW_CLOSED_Y) + translation.y;
 	CGRect frame = self.chatroomCardsViewController.view.frame;
-	frame.origin.y = MIN(MAX(CARDS_VIEW_CLOSED_Y, targetY), CARDS_VIEW_OPEN_Y);
+	frame.origin.y = MAX(MIN(CARDS_VIEW_CLOSED_Y, targetY), cardsOpenY);
 	self.chatroomCardsViewController.view.frame = frame;
 }
 
 - (void)onCardsViewPanEnded:(UIPanGestureRecognizer *)panGestureRecognizer {
-	double cardsViewPosition = self.chatroomCardsViewController.view.frame.origin.y / (CARDS_VIEW_CLOSED_Y - CARDS_VIEW_OPEN_Y);
+	// HACK: checking if stagedChatroom exists to perform new chat math.
+	double cardsOpenY = self.chatroomCardsViewController.stagedChatroom ? CARDS_VIEW_OPEN_FULL_Y : CARDS_VIEW_OPEN_Y;
+	double cardsOpenThreshold = self.chatroomCardsViewController.stagedChatroom ? 0.75 : 0.65;
+	
+	double cardsViewPosition = (self.chatroomCardsViewController.view.frame.origin.y - cardsOpenY) / (CARDS_VIEW_CLOSED_Y - cardsOpenY);
 	CGPoint panVelocity = [panGestureRecognizer velocityInView:self.view];
 	
-	if (!self.cardsViewOpen && cardsViewPosition < 0.65) {
-		[self setCardsViewOpen:YES withVelocity:panVelocity];
+	if (!self.cardsViewOpen && cardsViewPosition < cardsOpenThreshold) {
+		[self setCardsViewOpen:YES withVelocity:panVelocity toPosition:cardsOpenY];
 	} else if (self.cardsViewOpen && cardsViewPosition > 0.35) {
-		[self setCardsViewOpen:NO withVelocity:panVelocity];
+		[self setCardsViewOpen:NO withVelocity:panVelocity toPosition:CARDS_VIEW_CLOSED_Y];
 	} else {
-		[self setCardsViewOpen:self.cardsViewOpen withVelocity:panVelocity];
+		double position = (self.cardsViewOpen ? cardsOpenY : CARDS_VIEW_CLOSED_Y);
+		[self setCardsViewOpen:self.cardsViewOpen withVelocity:panVelocity toPosition:position];
 	}
 }
 
-- (void)setCardsViewOpen:(BOOL)cardsViewOpen {
-	[self setCardsViewOpen:cardsViewOpen withVelocity:CGPointMake(0, cardsViewOpen ? 100 : -100)];
+- (void)setCardsViewOpen:(BOOL)cardsViewOpen toPosition:(NSNumber *)position {
+	double positionDouble;
+	if (position != nil) {
+		positionDouble = [position doubleValue];
+	} else {
+		positionDouble = (self.cardsViewOpen ? CARDS_VIEW_OPEN_Y : CARDS_VIEW_CLOSED_Y);
+	}
+	
+	[self setCardsViewOpen:cardsViewOpen withVelocity:CGPointMake(0, cardsViewOpen ? 100 : -100) toPosition:positionDouble];
 }
 
-- (void)setCardsViewOpen:(BOOL)cardsViewOpen withVelocity:(CGPoint)velocity {
+- (void)setCardsViewOpen:(BOOL)cardsViewOpen withVelocity:(CGPoint)velocity toPosition:(double)position {
 	_cardsViewOpen = cardsViewOpen;
 	
 	CGRect frame = self.chatroomCardsViewController.view.frame;
 	double remainingDistance;
-	CGFloat damping = cardsViewOpen ? 1.0f : 0.75f;	// don't bounce when opening, as this reveals stuff below top edge
+	CGFloat damping = cardsViewOpen ? 0.75f : 1.0f;	// don't bounce when closing, as this reveals stuff below bottom edge
 	
 	if (cardsViewOpen) {
-		remainingDistance = CARDS_VIEW_OPEN_Y - frame.origin.y;
-		frame.origin.y = CARDS_VIEW_OPEN_Y;
+		remainingDistance = position - frame.origin.y;
+		frame.origin.y = position;
 	} else {
-		remainingDistance = CARDS_VIEW_CLOSED_Y - frame.origin.y;
-		frame.origin.y = CARDS_VIEW_CLOSED_Y;
+		remainingDistance = position - frame.origin.y;
+		frame.origin.y = position;
 	}
 	
 	double initialSpringVelocity = remainingDistance / velocity.y;
