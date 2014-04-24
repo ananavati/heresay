@@ -56,25 +56,34 @@
 - (IBAction)startChatroom:(id)sender {    
     [self.screenNameTextField endEditing:YES];
     
-    // save the chat room on parse
-    PFObject* c = [[ChatRoomApi instance] saveChatRoom:self.chatroom];
-    
-    [c saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        if (succeeded) {
-            PFQuery *query = [PFQuery queryWithClassName:@"chat_rooms"];
-            [query orderByDescending:@"createdAt"];
-            
-            [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-                self.chatroom = [Chatroom initWithJSON:objects[0]];
-                NSLog(@"Start chatroom with %@", [self.chatroom description]);
+    if (self.chatroom.objectId) {
+        NSLog(@"Start chatroom with %@", [self.chatroom description]);
+        
+        [self createUserWithName:self.screenNameTextField.text avatar:self.avatarImage.image];
+        
+        ChatroomViewController *chatroomViewController = [[ChatroomViewController alloc] initWithChatroom:self.chatroom userName:self.screenNameTextField.text avatarImage:self.avatarImage.image];
+        [self.navigationController pushViewController:chatroomViewController animated:YES];
+    } else {
+        // save the chat room on parse
+        PFObject* c = [[ChatRoomApi instance] saveChatRoom:self.chatroom];
+        
+        [c saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            if (succeeded) {
+                PFQuery *query = [PFQuery queryWithClassName:@"chat_rooms"];
+                [query orderByDescending:@"createdAt"];
                 
-                [self createUserWithName:self.screenNameTextField.text avatar:self.avatarImage.image];
-                
-                ChatroomViewController *chatroomViewController = [[ChatroomViewController alloc] initWithChatroom:self.chatroom userName:self.screenNameTextField.text avatarImage:self.avatarImage.image];
-                [self.navigationController pushViewController:chatroomViewController animated:YES];
-            }];
-        }
-    }];
+                [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+                    self.chatroom = [Chatroom initWithJSON:objects[0]];
+                    NSLog(@"Start chatroom with %@", [self.chatroom description]);
+                    
+                    [self createUserWithName:self.screenNameTextField.text avatar:self.avatarImage.image];
+                    
+                    ChatroomViewController *chatroomViewController = [[ChatroomViewController alloc] initWithChatroom:self.chatroom userName:self.screenNameTextField.text avatarImage:self.avatarImage.image];
+                    [self.navigationController pushViewController:chatroomViewController animated:YES];
+                }];
+            }
+        }];
+    }
 }
 
 - (IBAction)didTouchTakeAPicture:(id)sender {
