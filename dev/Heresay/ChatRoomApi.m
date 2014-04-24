@@ -98,7 +98,7 @@
 //
 //    [[ChatRoomApi instance] saveChatRoom:chatRoom];
 
-- (void) saveChatRoom:(Chatroom *)chatRoom {
+- (PFObject *) saveChatRoom:(Chatroom *)chatRoom {
     PFObject *c = [PFObject objectWithClassName:@"chat_rooms"];
     
     c[@"chatRoomName"] = chatRoom.chatRoomName;
@@ -108,7 +108,7 @@
     c[@"latitude"] = chatRoom.latitude;
     c[@"longitude"] = chatRoom.longitude;
     
-    [c saveInBackground];
+    return c;
 }
 
 @end
