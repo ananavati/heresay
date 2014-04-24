@@ -9,6 +9,13 @@
 #import "UserApi.h"
 #import "User.h"
 
+@interface UserApi ()
+
+@property (strong, nonatomic) User *user;
+@property (strong, nonatomic) PFQuery *query;
+
+@end
+
 @implementation UserApi
 
 + (UserApi *)instance {
@@ -24,6 +31,17 @@
 	
 	return instance;
 }
+
+#pragma mark - users api methods
+- (void)fetchUserForUuid:(NSString *)uuid withSuccess:(void (^)(User *user))success {
+    [self.query whereKey:@"uuid" equalTo:uuid];
+    
+    [self.query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        self.user = objects[0];
+        success(self.user);
+    }];
+}
+
 
 - (void)saveUser:(User *)user {
     PFObject *u = [PFObject objectWithClassName:@"users"];

@@ -85,7 +85,6 @@
     picker.allowsEditing = YES;
     picker.sourceType = UIImagePickerControllerSourceTypeCamera;
     picker.cameraDevice = UIImagePickerControllerCameraDeviceFront;
-    
 
     [self presentViewController:picker animated:YES completion:NULL];
 }
@@ -130,5 +129,8 @@
  
 }
 
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker{
+    
+}
 
 @end
