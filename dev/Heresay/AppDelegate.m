@@ -8,12 +8,13 @@
 
 #import "AppDelegate.h"
 #import "ChatroomContainerViewController.h"
+#import "UIColor+HeresayColor.h"
 
 #import <Parse/Parse.h>
-
 #import "User.h"
 #import "Chatroom.h"
 #import "Message.h"
+
 
 @interface AppDelegate ()
 
@@ -35,6 +36,12 @@
     
 	self.chatroomContainerViewController = [[ChatroomContainerViewController alloc] init];
 	UINavigationController *mainNavigationController = [[UINavigationController alloc] initWithRootViewController:self.chatroomContainerViewController];
+	
+	[UINavigationBar appearance].tintColor = [UIColor lightBackgroundColor];
+	mainNavigationController.navigationBar.barTintColor = [UIColor darkBackgroundColor];
+	mainNavigationController.navigationBar.translucent = NO;
+	[[UIView appearance] setTintColor:[UIColor whiteColor]];
+	
 	self.window.rootViewController = mainNavigationController;
 	
 	/*
