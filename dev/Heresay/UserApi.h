@@ -14,5 +14,6 @@
 
 + (UserApi *)instance;
 - (void)saveUser:(User *)user;
+- (void)fetchUserForUuid:(NSString *)uuid withSuccess:(void (^)(User *user))success;
 
 @end

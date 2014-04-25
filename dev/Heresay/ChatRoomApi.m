@@ -105,8 +105,12 @@
     c[@"placeName"] = chatRoom.placeName;
     c[@"radius"] = chatRoom.radius;
     c[@"geolocation"] = chatRoom.geolocation;
-    c[@"latitude"] = chatRoom.latitude;
-    c[@"longitude"] = chatRoom.longitude;
+
+    if ((chatRoom.latitude != nil) && (chatRoom.longitude != nil)) {
+        c[@"latitude"] = chatRoom.latitude;
+        c[@"longitude"] = chatRoom.longitude;
+    }
+
     
     return c;
 }

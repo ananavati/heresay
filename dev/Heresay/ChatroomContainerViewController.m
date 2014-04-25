@@ -9,10 +9,12 @@
 #import "ChatroomContainerViewController.h"
 #import "ChatroomMapViewController.h"
 #import "ChatroomCardsViewController.h"
+#import "ChatroomViewController.h"
 #import "MainSettingsViewController.h"
 #import "LoginViewController.h"
 #import "LocationManager.h"
 #import "ChatRoomApi.h"
+#import "UserApi.h"
 
 
 @interface ChatroomContainerViewController ()
@@ -192,11 +194,24 @@ static const double CARDS_VIEW_ANIMATE_CLOSE_DURATION = 0.75;
 	if (!chatroom) { return; }
 	
 	// TODO: LoginViewController if not authed, else straight to ChatroomViewController
-	LoginViewController *loginViewController = [[LoginViewController alloc] init];
-	loginViewController.chatroom = chatroom;
-	
-	[self.navigationController pushViewController:loginViewController animated:YES];
-	self.navigationController.navigationBar.hidden = NO;
+
+    NSString *uuid = [[UIDevice currentDevice] identifierForVendor].UUIDString;
+    // TODO try to fetch an existing user and skip the login page if necessary
+    
+//    [[UserApi fetchUserForUuid:(NSString *)uuid withSuccess:^(User *user){
+//        
+//        if (user!=nil){
+//            ChatroomViewController *chatroomViewController = [[ChatroomViewController alloc] initWithChatroom:self.chatroom userName:self.screenNameTextField.text avatarImage:self.avatarImage.image];
+//            [self.navigationController pushViewController:chatroomViewController animated:YES];
+//        } else {
+            LoginViewController *loginViewController = [[LoginViewController alloc] init];
+            loginViewController.chatroom = chatroom;
+            [self.navigationController pushViewController:loginViewController animated:YES];
+            self.navigationController.navigationBar.hidden = NO;
+//        }
+//        
+//    }]];
+    
 }
 
 - (void)openChatroomMapViewAnimated:(BOOL)animated {
