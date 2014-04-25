@@ -9,3 +9,4 @@ pod 'SGNavigationProgress'
 pod 'MHPrettyDate'
 pod 'JSMessagesViewController'
 pod 'MBXMapKit', '~> 0.2'
+

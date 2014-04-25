@@ -19,6 +19,7 @@ PODS:
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
   - Facebook-iOS-SDK (3.13.1)
+  - IBCustomFonts (0.0.1)
   - JSMessagesViewController (4.0.3):
     - JSQSystemSoundPlayer
   - JSQSystemSoundPlayer (1.4.0)
@@ -30,6 +31,7 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking (~> 2.0)
+  - IBCustomFonts (~> 0.0)
   - JSMessagesViewController
   - MBXMapKit (~> 0.2)
   - MHPrettyDate
@@ -38,7 +40,8 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   AFNetworking: ae513199cca79e9d7af2708ccabe2ed075550c42
-  Facebook-iOS-SDK: 0d121e16437981fabff9379e07bf646bd5ab245c
+  Facebook-iOS-SDK: 47ae9e54684c84f93d75d4e6ab47cd031abdf406
+  IBCustomFonts: dc9b9b6a90206a936ef231722120b2fd1e26affb
   JSMessagesViewController: aa0f3f34f70c39ec0a6ded219636b8bd945f5fe2
   JSQSystemSoundPlayer: 28ccd01a92a0cebc6de6361e8499011b4cb6dab7
   MBXMapKit: ddbf1945d8f640f6db3411a41ffcfe1b132497a5

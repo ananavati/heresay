@@ -22,14 +22,29 @@
 	<string>????</string>
 	<key>CFBundleVersion</key>
 	<string>1.0</string>
+	<key>IBCustomFonts</key>
+	<dict>
+		<key>OpenSans Light</key>
+		<string>OpenSans-Light</string>
+		<key>OpenSans Light Italic</key>
+		<string>OpenSansLight-Italic</string>
+		<key>OpenSans Regular</key>
+		<string>OpenSans</string>
+	</dict>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-	<key>UIRequiredDeviceCapabilities</key>
-	<array>
-		<string>armv7</string>
-	</array>
 	<key>NSLocationUsageDescription</key>
 	<string>Heresay uses your location to find nearby chats and people.</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>OpenSans-Light.ttf</string>
+		<string>OpenSans-LightItalic.ttf</string>
+		<string>OpenSans-Regular.ttf</string>
+		<string>Overlock-Italic.ttf</string>
+		<string>Overlock-Regular.ttf</string>
+	</array>
+	<key>UIRequiredDeviceCapabilities</key>
+	<array/>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

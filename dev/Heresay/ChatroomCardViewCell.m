@@ -28,12 +28,14 @@
 
 - (void)awakeFromNib
 {
-	/*
     // Initialization code
-	self.titleLabel.font = [UIFont fontWithName:@"Aller-Bold" size:20];
-	self.synopsisLabel.font = [UIFont fontWithName:@"Aller-Light" size:13];
-	self.castLabel.font = [UIFont fontWithName:@"Aller-LightItalic" size:13];
-	 */
+	self.nameLabel.font = [UIFont fontWithName:@"OpenSans" size:17];
+	self.nameInputTitle.font = [UIFont fontWithName:@"OpenSans-Light" size:17];
+	self.nameInput.font = [UIFont fontWithName:@"OpenSans-Light" size:14];
+	self.topicInputTitle.font = [UIFont fontWithName:@"OpenSans-Light" size:17];
+	self.topicInput.font = [UIFont fontWithName:@"OpenSans-Light" size:14];
+	self.submitButton.titleLabel.font = [UIFont fontWithName:@"Overlock-Regular" size:30];
+	self.cancelButton.titleLabel.font = [UIFont fontWithName:@"Overlock-Regular" size:14];
 }
 
 - (id)initWithFrame:(CGRect)frame

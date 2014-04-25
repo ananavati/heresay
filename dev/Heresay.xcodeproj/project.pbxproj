@@ -30,6 +30,11 @@
 		CA5EDADB18F7B6CE00C3A09B /* IntroViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA5EDAD918F7B6CE00C3A09B /* IntroViewController.xib */; };
 		CA5EDAE218F7CC9F00C3A09B /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA5EDAE018F7CC9F00C3A09B /* LoginViewController.m */; };
 		CA5EDAE318F7CC9F00C3A09B /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA5EDAE118F7CC9F00C3A09B /* LoginViewController.xib */; };
+		CA77FA60190A277C00D8F60C /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CA77FA5D190A277C00D8F60C /* OpenSans-Light.ttf */; };
+		CA77FA61190A277C00D8F60C /* OpenSans-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CA77FA5E190A277C00D8F60C /* OpenSans-LightItalic.ttf */; };
+		CA77FA62190A277C00D8F60C /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CA77FA5F190A277C00D8F60C /* OpenSans-Regular.ttf */; };
+		CA77FA65190A2C3D00D8F60C /* Overlock-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CA77FA63190A2C3D00D8F60C /* Overlock-Italic.ttf */; };
+		CA77FA66190A2C3D00D8F60C /* Overlock-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CA77FA64190A2C3D00D8F60C /* Overlock-Regular.ttf */; };
 		CABEA505190A147300B132C3 /* UIColor+HeresayColor.m in Sources */ = {isa = PBXBuildFile; fileRef = CABEA504190A147300B132C3 /* UIColor+HeresayColor.m */; };
 		CAD8814018F9B09F00FC3646 /* DummyDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = CAD8813F18F9B09F00FC3646 /* DummyDataProvider.m */; };
 		CAD8814218F9C55000FC3646 /* dummyData.json in Resources */ = {isa = PBXBuildFile; fileRef = CAD8814118F9C55000FC3646 /* dummyData.json */; };
@@ -113,6 +118,11 @@
 		CA5EDADF18F7CC9F00C3A09B /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		CA5EDAE018F7CC9F00C3A09B /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		CA5EDAE118F7CC9F00C3A09B /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+		CA77FA5D190A277C00D8F60C /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Light.ttf"; sourceTree = "<group>"; };
+		CA77FA5E190A277C00D8F60C /* OpenSans-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-LightItalic.ttf"; sourceTree = "<group>"; };
+		CA77FA5F190A277C00D8F60C /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
+		CA77FA63190A2C3D00D8F60C /* Overlock-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Overlock-Italic.ttf"; sourceTree = "<group>"; };
+		CA77FA64190A2C3D00D8F60C /* Overlock-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Overlock-Regular.ttf"; sourceTree = "<group>"; };
 		CABEA503190A147300B132C3 /* UIColor+HeresayColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+HeresayColor.h"; sourceTree = "<group>"; };
 		CABEA504190A147300B132C3 /* UIColor+HeresayColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+HeresayColor.m"; sourceTree = "<group>"; };
 		CAD8813E18F9B09F00FC3646 /* DummyDataProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DummyDataProvider.h; sourceTree = "<group>"; };
@@ -244,6 +254,7 @@
 		CA105B4F18ECFA6300F78D28 /* Heresay */ = {
 			isa = PBXGroup;
 			children = (
+				CA77FA59190A229300D8F60C /* Resources */,
 				17602A8918FA41350048B9E0 /* api */,
 				E9DB5C2918EE8145007B2C84 /* Models */,
 				CA5EDAD318F7B1D100C3A09B /* Controllers */,
@@ -302,6 +313,19 @@
 				CABEA504190A147300B132C3 /* UIColor+HeresayColor.m */,
 			);
 			name = Controllers;
+			sourceTree = "<group>";
+		};
+		CA77FA59190A229300D8F60C /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				CA77FA63190A2C3D00D8F60C /* Overlock-Italic.ttf */,
+				CA77FA64190A2C3D00D8F60C /* Overlock-Regular.ttf */,
+				CA77FA5D190A277C00D8F60C /* OpenSans-Light.ttf */,
+				CA77FA5E190A277C00D8F60C /* OpenSans-LightItalic.ttf */,
+				CA77FA5F190A277C00D8F60C /* OpenSans-Regular.ttf */,
+			);
+			name = Resources;
+			path = resources;
 			sourceTree = "<group>";
 		};
 		CAD8816618FE4EF900FC3646 /* ChatroomMap */ = {
@@ -467,14 +491,19 @@
 				CA105B5418ECFA6300F78D28 /* InfoPlist.strings in Resources */,
 				CA105B5C18ECFA6300F78D28 /* Images.xcassets in Resources */,
 				E9DB5C5C18EE84BA007B2C84 /* InviteListAccountViewCell.xib in Resources */,
+				CA77FA60190A277C00D8F60C /* OpenSans-Light.ttf in Resources */,
+				CA77FA65190A2C3D00D8F60C /* Overlock-Italic.ttf in Resources */,
+				CA77FA66190A2C3D00D8F60C /* Overlock-Regular.ttf in Resources */,
 				CA5EDAE318F7CC9F00C3A09B /* LoginViewController.xib in Resources */,
 				E9DB5C4818EE82EE007B2C84 /* InviteUserViewController.xib in Resources */,
 				E9DB5C6618EE8680007B2C84 /* MessageViewCell.xib in Resources */,
+				CA77FA62190A277C00D8F60C /* OpenSans-Regular.ttf in Resources */,
 				CAD881CF1903217E00FC3646 /* ChatroomCardViewCell.xib in Resources */,
 				17602A9618FB52180048B9E0 /* MainSettingsViewController.xib in Resources */,
 				CAD8814218F9C55000FC3646 /* dummyData.json in Resources */,
 				CAD881BE1902F44D00FC3646 /* ChatroomContainerViewController.xib in Resources */,
 				CA5EDADB18F7B6CE00C3A09B /* IntroViewController.xib in Resources */,
+				CA77FA61190A277C00D8F60C /* OpenSans-LightItalic.ttf in Resources */,
 				E9DB5C5718EE8435007B2C84 /* InviteUserViewCell.xib in Resources */,
 				E99EA19C18FAFD9A0020F8EE /* ChatroomViewController.xib in Resources */,
 				E9DB5C5218EE83E8007B2C84 /* UserListView.xib in Resources */,

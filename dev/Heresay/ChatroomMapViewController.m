@@ -36,6 +36,10 @@ static Class MAPBOX_TILE_CLASS;
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
 	
 	if (self) {
+		CGRect frame = self.chatroomSizeControl.frame;
+		[self.chatroomSizeControl setFrame:CGRectMake(frame.origin.x, frame.origin.y, frame.size.width, 36)];
+//		[self.chatroomSizeControl.layer setCornerRadius:10.0];
+		
 		self.chatroomOverlays = [[NSMutableArray alloc] init];
 		self.chatroomMapOverlays = [[NSMutableArray alloc] init];
 		
@@ -218,6 +222,7 @@ static Class MAPBOX_TILE_CLASS;
 			// TODO: move into nib?
 			UIButton *addButton = [UIButton buttonWithType:UIButtonTypeContactAdd];
 			[addButton addTarget:self action:@selector(onNewChatTapped) forControlEvents:UIControlEventTouchUpInside];
+			addButton.tintColor = [UIColor orangeAccentColor];
 			annotationView.rightCalloutAccessoryView = addButton;
 			[((UIButton *)(annotationView.rightCalloutAccessoryView)) addTarget:self action:@selector(onNewChatTapped) forControlEvents:UIControlEventTouchUpInside];
 			
@@ -323,7 +328,6 @@ static Class MAPBOX_TILE_CLASS;
 											 circle.boundingMapRect.origin.y + 0.5*circle.boundingMapRect.size.height);
 	double distance = sqrt((circleCenter.x - point.x) * (circleCenter.x - point.x) +
 						   (circleCenter.y - point.y) * (circleCenter.y - point.y));
-	NSLog(@"distance:%f; radius:%f", distance, 0.5*circle.boundingMapRect.size.width);
 	
 	return distance <= 0.5 * circle.boundingMapRect.size.width;
 }
