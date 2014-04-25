@@ -14,6 +14,7 @@
 #import "LoginViewController.h"
 #import "LocationManager.h"
 #import "ChatRoomApi.h"
+#import "Chatroom.h"
 #import "UserApi.h"
 
 
@@ -192,19 +193,25 @@ static const double CARDS_VIEW_ANIMATE_CLOSE_DURATION = 0.75;
     NSString *uuid = [[UIDevice currentDevice] identifierForVendor].UUIDString;
     // TODO try to fetch an existing user and skip the login page if necessary
     
-//    [[UserApi fetchUserForUuid:(NSString *)uuid withSuccess:^(User *user){
-//        
-//        if (user!=nil){
-//            ChatroomViewController *chatroomViewController = [[ChatroomViewController alloc] initWithChatroom:self.chatroom userName:self.screenNameTextField.text avatarImage:self.avatarImage.image];
-//            [self.navigationController pushViewController:chatroomViewController animated:YES];
-//        } else {
+    NSLog(@"Fetch user");
+    
+    
+    [[UserApi instance ]fetchUserForUuid:(NSString *)uuid withSuccess:^(User *user){
+        
+        NSLog(@"%@",user.uuid);
+        
+        if (user!=nil){
+            ChatroomViewController *chatroomViewController = [[ChatroomViewController alloc] initWithChatroom:chatroom userName:user.name avatarImage:nil];
+            [self.navigationController pushViewController:chatroomViewController animated:YES];
+             self.navigationController.navigationBar.hidden = NO;
+        } else {
             LoginViewController *loginViewController = [[LoginViewController alloc] init];
             loginViewController.chatroom = chatroom;
             [self.navigationController pushViewController:loginViewController animated:YES];
             self.navigationController.navigationBar.hidden = NO;
-//        }
-//        
-//    }]];
+        }
+
+    }];
     
 }
 

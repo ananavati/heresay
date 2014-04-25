@@ -32,12 +32,33 @@
 	return instance;
 }
 
+- (UserApi *) init
+{
+    self = [super init];
+    self.query = [PFQuery queryWithClassName:[User parseClassName]];
+    return self;
+}
+
+
 #pragma mark - users api methods
 - (void)fetchUserForUuid:(NSString *)uuid withSuccess:(void (^)(User *user))success {
+    
+    NSLog(@"uuid: %@", uuid);
+    
     [self.query whereKey:@"uuid" equalTo:uuid];
     
+
+    NSLog(@"fetchUserForUuid");
     [self.query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        self.user = objects[0];
+        
+        NSLog(@"error %@" , [error description]);
+        
+        NSLog(@"objects %@" , [objects description]);
+        
+        if(objects!=nil && objects.count > 0){
+            self.user = [User initWithJSON:(User *)objects[0]];
+        }
+
         success(self.user);
     }];
 }

@@ -40,13 +40,17 @@
 		model = [[Message alloc] init];
         
 		model.text = message[@"text"];
-        model.author = message[@"author"];
+        
+        id authorObject = message[@"author"];
+        model.author = @{@"name": authorObject[@"name"],
+                         @"id": authorObject[@"id"]}; ;
 	}
     
     
     // TODO check user sending the messages
     // set self.sentFromCurrentUser = YES if needed
-	
+	model.sentFromCurrentUser = [model.author[@"id"] isEqualToString:[[[UIDevice currentDevice] identifierForVendor] UUIDString]];
+    
 	return model;
 }
 
@@ -62,12 +66,12 @@
 	return longDateFormatter;
 }
 
--(Message *)initWithMessageText:(NSString *)messageText authorId:(NSString *)authorName chatRoom:(NSString *)chatRoomId{
+-(Message *)initWithMessageText:(NSString *)messageText authorId:(NSString *)authorName uuid:(NSString *)uuid chatRoom:(NSString *)chatRoomId{
 
     // TODO set author ID
     self.sentFromCurrentUser = YES;
     self.author = @{@"name": authorName,
-                    @"id": @""};
+                    @"id": uuid};
     
     self.text = messageText;
     self.chat_room_id = chatRoomId;

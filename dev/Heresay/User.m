@@ -59,7 +59,7 @@
 }
 
 - (NSString *)description {
-	return [NSString stringWithFormat:@"<User [%@]>", self.name];
+	return [NSString stringWithFormat:@"<User [%@] [%@]>", self.name, self.uuid];
 }
 
 @end

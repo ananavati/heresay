@@ -13,6 +13,8 @@
 @interface User : PFObject<PFSubclassing>
 
 + (NSString *)parseClassName;
++ (User *)initWithJSON:(User *)user;
+
 
 @property (strong, nonatomic) NSString *name;
 @property (strong, nonatomic) NSString *profileImageURL;

@@ -105,7 +105,7 @@
     
     NSLog(@"didSendText: %@", text);
     
-    Message *message = [[Message alloc] initWithMessageText:text authorId:sender chatRoom:self.chartroom.objectId];
+    Message *message = [[Message alloc] initWithMessageText:text authorId:sender uuid:[[[UIDevice currentDevice] identifierForVendor] UUIDString] chatRoom:self.chartroom.objectId];
     
     [[MessageApi instance] saveMessage:message];
     
@@ -199,7 +199,7 @@
     UIImage *avatar;
     Message *currMessage = self.messageList[indexPath.row];
     
-    if (currMessage.sentFromCurrentUser) {
+    if (currMessage.sentFromCurrentUser && self.avatarImage!=nil) {
         avatar = [JSAvatarImageFactory avatarImage:self.avatarImage croppedToCircle:YES];
         
     } else {
