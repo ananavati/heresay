@@ -30,6 +30,7 @@
 		CA5EDADB18F7B6CE00C3A09B /* IntroViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA5EDAD918F7B6CE00C3A09B /* IntroViewController.xib */; };
 		CA5EDAE218F7CC9F00C3A09B /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA5EDAE018F7CC9F00C3A09B /* LoginViewController.m */; };
 		CA5EDAE318F7CC9F00C3A09B /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA5EDAE118F7CC9F00C3A09B /* LoginViewController.xib */; };
+		CABEA505190A147300B132C3 /* UIColor+HeresayColor.m in Sources */ = {isa = PBXBuildFile; fileRef = CABEA504190A147300B132C3 /* UIColor+HeresayColor.m */; };
 		CAD8814018F9B09F00FC3646 /* DummyDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = CAD8813F18F9B09F00FC3646 /* DummyDataProvider.m */; };
 		CAD8814218F9C55000FC3646 /* dummyData.json in Resources */ = {isa = PBXBuildFile; fileRef = CAD8814118F9C55000FC3646 /* dummyData.json */; };
 		CAD8816918FE4F2900FC3646 /* ChatroomMapOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = CAD8816818FE4F2900FC3646 /* ChatroomMapOverlay.m */; };
@@ -112,6 +113,8 @@
 		CA5EDADF18F7CC9F00C3A09B /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		CA5EDAE018F7CC9F00C3A09B /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		CA5EDAE118F7CC9F00C3A09B /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+		CABEA503190A147300B132C3 /* UIColor+HeresayColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+HeresayColor.h"; sourceTree = "<group>"; };
+		CABEA504190A147300B132C3 /* UIColor+HeresayColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+HeresayColor.m"; sourceTree = "<group>"; };
 		CAD8813E18F9B09F00FC3646 /* DummyDataProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DummyDataProvider.h; sourceTree = "<group>"; };
 		CAD8813F18F9B09F00FC3646 /* DummyDataProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DummyDataProvider.m; sourceTree = "<group>"; };
 		CAD8814118F9C55000FC3646 /* dummyData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = dummyData.json; sourceTree = "<group>"; };
@@ -295,6 +298,8 @@
 				CAD8813F18F9B09F00FC3646 /* DummyDataProvider.m */,
 				CAD881D81904D30700FC3646 /* AppConstants.h */,
 				CAD881D91904D30700FC3646 /* AppConstants.m */,
+				CABEA503190A147300B132C3 /* UIColor+HeresayColor.h */,
+				CABEA504190A147300B132C3 /* UIColor+HeresayColor.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -512,6 +517,7 @@
 				CA5EDADA18F7B6CE00C3A09B /* IntroViewController.m in Sources */,
 				E9DB5C5A18EE8490007B2C84 /* InviteListAccountViewCell.m in Sources */,
 				E9DB5C6418EE8674007B2C84 /* MessageViewCell.m in Sources */,
+				CABEA505190A147300B132C3 /* UIColor+HeresayColor.m in Sources */,
 				E99EA19B18FAFD9A0020F8EE /* ChatroomViewController.m in Sources */,
 				E9CE0B9C1904B02800EB51DC /* IntroSlide.m in Sources */,
 				CA105B5A18ECFA6300F78D28 /* AppDelegate.m in Sources */,

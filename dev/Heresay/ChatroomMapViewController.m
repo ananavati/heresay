@@ -11,6 +11,7 @@
 #import "ChatRoomApi.h"
 #import "ChatroomMapOverlay.h"
 #import "AppConstants.h"
+#import "UIColor+HeresayColor.h"
 
 @interface ChatroomMapViewController ()
 
@@ -47,8 +48,7 @@ static Class MAPBOX_TILE_CLASS;
 - (void)viewDidLoad {
 	[super viewDidLoad];
 	
-	// app bounds - cards view closed y
-	CGRect mapViewFrame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height-120.0);
+	CGRect mapViewFrame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
 	
 	self.mapView = [[MBXMapView alloc] initWithFrame:mapViewFrame mapID:@"ericsoco.i1e8759o"];
 	self.mapView.delegate = self;
@@ -212,6 +212,8 @@ static Class MAPBOX_TILE_CLASS;
 	for (MKAnnotationView *annotationView in views) {
 		if (annotationView.annotation == mapView.userLocation) {
 			
+			annotationView.tintColor = [UIColor blueHighlightColor];
+			
 			// custom user location annotation
 			// TODO: move into nib?
 			UIButton *addButton = [UIButton buttonWithType:UIButtonTypeContactAdd];
@@ -297,26 +299,53 @@ static Class MAPBOX_TILE_CLASS;
 	CLLocationCoordinate2D tapCoordinate = [self.mapView convertPoint:tapPoint toCoordinateFromView:self.mapView];
 	MKMapPoint mapCoordinate = MKMapPointForCoordinate(tapCoordinate);
 	CGPoint mapPoint = CGPointMake(mapCoordinate.x, mapCoordinate.y);
-	
+	ChatroomMapOverlay *smallestTappedOverlay;
 	for (ChatroomMapOverlay *chatroomMapOverlay in self.chatroomMapOverlays) {
-		MKPolygon *polygon = chatroomMapOverlay.overlay;
-		CGMutablePathRef pathRef = CGPathCreateMutable();
-		MKMapPoint *polygonPoints = polygon.points;
-		
-		for (int i=0; i<polygon.pointCount; i++) {
-			MKMapPoint pt = polygonPoints[i];
-			if (i == 0) {
-				CGPathMoveToPoint(pathRef, NULL, pt.x, pt.y);
-			} else {
-				CGPathAddLineToPoint(pathRef, NULL, pt.x, pt.y);
-			}
-			
-			if (CGPathContainsPoint(pathRef, NULL, mapPoint, FALSE)) {
-				[self highlightChatroom:chatroomMapOverlay.chatroom];
-				[self.delegate chatroomSelector:self didHighlightChatroom:chatroomMapOverlay.chatroom];
+//		if ([self hitTestPoint:mapPoint inPolygon:chatroomMapOverlay.overlay]) {
+		if ([self hitTestPoint:mapPoint inCircle:chatroomMapOverlay.overlay]) {
+			if (!smallestTappedOverlay ||
+				chatroomMapOverlay.overlay.boundingMapRect.size.width < smallestTappedOverlay.overlay.boundingMapRect.size.width) {
+					smallestTappedOverlay = chatroomMapOverlay;
 			}
 		}
 	}
+
+	if (smallestTappedOverlay) {
+		[self highlightChatroom:smallestTappedOverlay.chatroom];
+		[self.delegate chatroomSelector:self didHighlightChatroom:smallestTappedOverlay.chatroom];
+	} else {
+		[self highlightChatroom:nil];
+	}
+}
+
+- (BOOL)hitTestPoint:(CGPoint)point inCircle:(MKCircle *)circle {
+	MKMapPoint circleCenter = MKMapPointMake(circle.boundingMapRect.origin.x + 0.5*circle.boundingMapRect.size.width,
+											 circle.boundingMapRect.origin.y + 0.5*circle.boundingMapRect.size.height);
+	double distance = sqrt((circleCenter.x - point.x) * (circleCenter.x - point.x) +
+						   (circleCenter.y - point.y) * (circleCenter.y - point.y));
+	NSLog(@"distance:%f; radius:%f", distance, 0.5*circle.boundingMapRect.size.width);
+	
+	return distance <= 0.5 * circle.boundingMapRect.size.width;
+}
+
+- (BOOL)hitTestPoint:(CGPoint)point inPolygon:(MKPolygon *)polygon {
+	CGMutablePathRef pathRef = CGPathCreateMutable();
+	MKMapPoint *polygonPoints = polygon.points;
+	
+	for (int i=0; i<polygon.pointCount; i++) {
+		MKMapPoint pt = polygonPoints[i];
+		if (i == 0) {
+			CGPathMoveToPoint(pathRef, NULL, pt.x, pt.y);
+		} else {
+			CGPathAddLineToPoint(pathRef, NULL, pt.x, pt.y);
+		}
+		
+		if (CGPathContainsPoint(pathRef, NULL, point, FALSE)) {
+			return YES;
+		}
+	}
+	
+	return NO;
 }
 
 /*

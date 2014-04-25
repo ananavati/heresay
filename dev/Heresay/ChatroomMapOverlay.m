@@ -8,6 +8,7 @@
 
 #import "ChatroomMapOverlay.h"
 #import "ChatroomMapOverlayRenderer.h"
+#import "UIColor+HeresayColor.h"
 
 @implementation ChatroomMapOverlay
 
@@ -22,8 +23,12 @@
 
 - (void)setChatroom:(Chatroom *)chatroom {
 	_chatroom = chatroom;
-	self.overlay = [self createOverlayWithChatroom:chatroom];
-	self.overlayRenderer = [self createOverlayRendererWithOverlay:self.overlay];
+//	self.overlay = [self createPolygonOverlayWithChatroom:chatroom];
+	self.overlay = [self createCircleOverlayWithChatroom:chatroom];
+	
+//	self.overlayRenderer = [self createPolygonOverlayRendererWithChatroom:self.overlay];
+	self.overlayRenderer = [self createCircleOverlayRendererWithOverlay:self.overlay];
+	
 	if (!self.style) {
 		self.style = ChatroomMapOverlayStyleExisting;
 	} else {
@@ -33,6 +38,27 @@
 
 - (void)setStyle:(ChatroomMapOverlayStyle)style {
 	switch (style) {
+		case ChatroomMapOverlayStyleExisting:
+			self.overlayRenderer.lineWidth = 1;
+			self.overlayRenderer.strokeColor = [UIColor lightBackgroundColor];
+			self.overlayRenderer.fillColor = [UIColor blueOverlayWeakColor];
+			break;
+		case ChatroomMapOverlayStyleNew:
+			self.overlayRenderer.lineWidth = 2;
+			self.overlayRenderer.strokeColor = [UIColor lightBackgroundColor];
+			self.overlayRenderer.fillColor = [UIColor blueOverlayWeakColor];
+			break;
+		case ChatroomMapOverlayStyleHighlighted:
+			self.overlayRenderer.lineWidth = 2;
+			self.overlayRenderer.strokeColor = [UIColor lightBackgroundColor];
+			self.overlayRenderer.fillColor = [UIColor blueOverlayStrongColor];
+			break;
+		case ChatroomMapOverlayStyleGhosted:
+			self.overlayRenderer.lineWidth = 1;
+			self.overlayRenderer.strokeColor = [UIColor lightBackgroundColor];
+			self.overlayRenderer.fillColor = [UIColor blueOverlayWeakColor];
+			break;
+			/*
 		case ChatroomMapOverlayStyleExisting:
 			self.overlayRenderer.lineWidth = 1;
 			self.overlayRenderer.strokeColor = [UIColor colorWithRed:104.0/255.0 green:185.0/255.0 blue:199.0/255.0 alpha:1.0];
@@ -53,13 +79,25 @@
 			self.overlayRenderer.strokeColor = [UIColor colorWithRed:142.0/255.0 green:170.0/255.0 blue:168.0/255.0 alpha:0.75];
 			self.overlayRenderer.fillColor = [UIColor colorWithRed:193.0/255.0 green:211.0/255.0 blue:209.0/255.0 alpha:0.35];
 			break;
+			 */
 	}
 
 //	[self.overlayRenderer setNeedsDisplayInMapRect:self.overlay.boundingMapRect];
 	
 }
 
-- (MKPolygon *)createOverlayWithChatroom:(Chatroom *)chatroom {
+- (MKCircle *)createCircleOverlayWithChatroom:(Chatroom *)chatroom {
+	CLLocationCoordinate2D centerCoordinate = CLLocationCoordinate2DMake(chatroom.geolocation.latitude, chatroom.geolocation.longitude);
+	MKCircle *overlay = [MKCircle circleWithCenterCoordinate:centerCoordinate radius:[chatroom.radius doubleValue]];
+	return overlay;
+}
+
+- (MKCircleRenderer *)createCircleOverlayRendererWithOverlay:(MKCircle *)overlay {
+	MKCircleRenderer *overlayRenderer = [[MKCircleRenderer alloc] initWithCircle:overlay];
+	return overlayRenderer;
+}
+
+- (MKPolygon *)createPolygonOverlayWithChatroom:(Chatroom *)chatroom {
 	CLLocationCoordinate2D centerCoordinate = CLLocationCoordinate2DMake(chatroom.geolocation.latitude, chatroom.geolocation.longitude);
 	MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(centerCoordinate, [chatroom.radius doubleValue], [chatroom.radius doubleValue]);
 	
@@ -77,7 +115,7 @@
 	return overlay;
 }
 
-- (ChatroomMapOverlayRenderer *)createOverlayRendererWithOverlay:(MKPolygon *)overlay {
+- (ChatroomMapOverlayRenderer *)createPolygonOverlayRendererWithChatroom:(MKPolygon *)overlay {
 	ChatroomMapOverlayRenderer *overlayRenderer = [[ChatroomMapOverlayRenderer alloc] initWithPolygon:overlay];
 	return overlayRenderer;
 }

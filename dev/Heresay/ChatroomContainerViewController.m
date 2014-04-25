@@ -47,16 +47,10 @@ static const double CARDS_VIEW_ANIMATE_CLOSE_DURATION = 0.75;
 		// set up chatroom view controllers
 		self.chatroomMapViewController = [[ChatroomMapViewController alloc] init];
 		self.chatroomMapViewController.delegate = self;
-//		self.chatroomMapViewController.title = @"Map";
-//		self.chatroomMapViewController.modalTransitionStyle = UIModalPresentationCustom;
-//		self.chatroomMapViewController.transitioningDelegate = self;
 		[self.view addSubview:self.chatroomMapViewController.view];
 		
 		self.chatroomCardsViewController = [[ChatroomCardsViewController alloc] init];
 		self.chatroomCardsViewController.delegate = self;
-//		self.chatroomCardsViewController.title = @"List";
-//		self.chatroomCardsViewController.modalTransitionStyle = UIModalPresentationCustom;
-//		self.chatroomCardsViewController.transitioningDelegate = self;
 		[self.view addSubview:self.chatroomCardsViewController.view];
 		
 		
