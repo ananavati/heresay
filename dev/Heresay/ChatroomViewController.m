@@ -21,6 +21,8 @@
 @property (strong, nonatomic) NSString *userName;
 @property (strong, nonatomic) Chatroom *chartroom;
 @property (strong, nonatomic) UIImage *avatarImage;
+@property (strong, nonatomic) NSTimer *nsTimer;
+
 
 @end
 
@@ -45,14 +47,17 @@
     return self;
 }
 
-- (void) initialize
-{
-    [self fetchMessages:self.chartroom.objectId];
-
+- (void) initialize{
+  [self fetchMessages];
+    
+  self.nsTimer = [NSTimer scheduledTimerWithTimeInterval:30
+                                     target:self
+                                   selector:@selector(fetchMessages)
+                                   userInfo:nil
+                                    repeats:YES];
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad{
     [super viewDidLoad];
     
     // Init message list array
@@ -73,18 +78,27 @@
     
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning{
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
+- (void)viewWillDisappear:(BOOL)animated{
+    [self.nsTimer invalidate];
+    self.nsTimer = nil;
+}
+
+
+
+
 #pragma mark - messages api
 
-- (void)fetchMessages:(NSString*)chatRoomId {
-    [[MessageApi instance] fetchMessagesForChatroomWithId:chatRoomId withSuccess:^(NSArray *messages) {
+- (void)fetchMessages {
+    [[MessageApi instance] fetchMessagesForChatroomWithId:self.chartroom.objectId withSuccess:^(NSArray *messages) {
         
-        NSLog(@"messages:%@" , messages);
+        NSLog(@"messages: %@", messages);
+        
+        [self.messageList removeAllObjects];
         
         [self.messageList addObjectsFromArray:messages];
         [self.tableView reloadData];
@@ -102,8 +116,6 @@
  *  @param date   The date and time at which the message was sent.
  */
 - (void)didSendText:(NSString *)text fromSender:(NSString *)sender onDate:(NSDate *)date{
-    
-    NSLog(@"didSendText: %@", text);
     
     Message *message = [[Message alloc] initWithMessageText:text authorId:sender uuid:[[[UIDevice currentDevice] identifierForVendor] UUIDString] chatRoom:self.chartroom.objectId];
     
