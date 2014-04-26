@@ -54,7 +54,7 @@ static Class MAPBOX_TILE_CLASS;
 	
 	CGRect mapViewFrame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
 	
-	self.mapView = [[MBXMapView alloc] initWithFrame:mapViewFrame mapID:@"ericsoco.i1e8759o"];
+	self.mapView = [[MBXMapView alloc] initWithFrame:mapViewFrame mapID:@"ericsoco.i3636pba"];
 	self.mapView.delegate = self;
 	self.mapView.showsBuildings = YES;
 	self.mapView.pitchEnabled = NO;
