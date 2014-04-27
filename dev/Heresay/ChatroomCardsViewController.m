@@ -6,6 +6,8 @@
 //  Copyright (c) 2014 Heresay Industries, Ltd. All rights reserved.
 //
 
+#import "CSAnimationView.h"
+
 #import "ChatroomCardsViewController.h"
 #import "ChatRoomApi.h"
 #import "Chatroom.h"
@@ -45,6 +47,8 @@ static double CARD_HEIGHT;
 
         self.collectionView.backgroundColor = [UIColor clearColor];
         self.collectionView.opaque = YES;
+        
+        [self.collectionView startCanvasAnimation];
 		
 		CARD_HEIGHT = [UIScreen mainScreen].bounds.size.height - 20*2;
 	}

@@ -18,8 +18,8 @@ PODS:
   - AFNetworking/UIKit (2.2.3):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - Canvas (0.1.1)
   - Facebook-iOS-SDK (3.13.1)
-  - FXBlurView (1.6)
   - JSMessagesViewController (4.0.3):
     - JSQSystemSoundPlayer
   - JSQSystemSoundPlayer (1.4.0)
@@ -31,7 +31,7 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking (~> 2.0)
-  - FXBlurView
+  - Canvas
   - JSMessagesViewController
   - MBXMapKit (~> 0.2)
   - MHPrettyDate
@@ -40,8 +40,8 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   AFNetworking: ae513199cca79e9d7af2708ccabe2ed075550c42
+  Canvas: f1911025fc9ec9c7339df6e4399c90c87ce6b631
   Facebook-iOS-SDK: 47ae9e54684c84f93d75d4e6ab47cd031abdf406
-  FXBlurView: 06f9f602d529c8e2d87648293d73a618621d3d81
   JSMessagesViewController: aa0f3f34f70c39ec0a6ded219636b8bd945f5fe2
   JSQSystemSoundPlayer: 28ccd01a92a0cebc6de6361e8499011b4cb6dab7
   MBXMapKit: ddbf1945d8f640f6db3411a41ffcfe1b132497a5
