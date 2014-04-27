@@ -59,6 +59,13 @@
 
 - (void)viewDidLoad{
     [super viewDidLoad];
+
+    // Set the status bar style white
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+
+    //
+    self.navigationController.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObject:[UIColor whiteColor] forKey:NSForegroundColorAttributeName];
+
     
     // Init message list array
     self.messageList = [[NSMutableArray alloc] init];
@@ -86,6 +93,10 @@
 - (void)viewWillDisappear:(BOOL)animated{
     [self.nsTimer invalidate];
     self.nsTimer = nil;
+    
+    
+    // Set the status bar style black
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
 }
 
 

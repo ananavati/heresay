@@ -128,6 +128,10 @@ static Class MAPBOX_TILE_CLASS;
 		[self.chatroomMapOverlays addObject:chatroomOverlay];
 		
 		[self.mapView addOverlay:chatroomOverlay.overlay];
+		
+		MKPointAnnotation *chatroomAnnotation = [[MKPointAnnotation alloc] init];
+		chatroomAnnotation.coordinate = CLLocationCoordinate2DMake(chatroom.geolocation.latitude, chatroom.geolocation.longitude);
+		[self.mapView addAnnotation:chatroomAnnotation];
 	}
 }
 
@@ -229,9 +233,6 @@ static Class MAPBOX_TILE_CLASS;
 			// Zoom into current location once it's obtained
 			MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(self.mapView.userLocation.location.coordinate, 1.1*CHATROOM_SIZE_LARGE, 1.1*CHATROOM_SIZE_LARGE);
 			[self.mapView setRegion:region animated:YES];
-		} else {
-			// hide MapBox HQ annotation
-			annotationView.hidden = YES;
 		}
 	}
 }
@@ -240,17 +241,22 @@ static Class MAPBOX_TILE_CLASS;
 	if (annotation == mapView.userLocation) {
 		mapView.userLocation.title = @"New Chat"; // @"Create New Chat Here";
 		mapView.userLocation.subtitle = @"200m";
+		
+		// Let iOS determine the view for user location
+		return nil;
 	}
-	return nil;
 	
-	// TODO: customize annotations
-	/*
-	 MKAnnotationView *customAnnotationView=[[[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:nil] autorelease];
-	 UIImage *pinImage = [UIImage imageNamed:@"ReplacementPinImage.png"];
-	 [customAnnotationView setImage:pinImage];
-	 customAnnotationView.canShowCallout = YES;
-	 return customAnnotationView;
-	 */
+	// Custom annotation for chatrooms (currently just using MKPointAnnotations)
+	MKAnnotationView *chatAnnotationView = (MKAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:@"ChatAnnotationView"];
+	if (!chatAnnotationView) {
+		chatAnnotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"ChatAnnotationView"];
+		chatAnnotationView.canShowCallout = NO;
+		chatAnnotationView.image = [UIImage imageNamed:@"icon-sm.png"];
+		chatAnnotationView.centerOffset = CGPointMake(2, -7.0);
+	} else {
+		chatAnnotationView.annotation = annotation;
+	}
+	return chatAnnotationView;
 }
 
 - (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view {
