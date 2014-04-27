@@ -42,6 +42,9 @@ static double CARD_HEIGHT;
 		
 		UINib *cellNib = [UINib nibWithNibName:@"ChatroomCardViewCell" bundle:nil];
 		[self.collectionView registerNib:cellNib forCellWithReuseIdentifier:@"ChatroomCardViewCell"];
+
+        self.collectionView.backgroundColor = [UIColor clearColor];
+        self.collectionView.opaque = YES;
 		
 		CARD_HEIGHT = [UIScreen mainScreen].bounds.size.height - 20*2;
 	}
@@ -51,7 +54,6 @@ static double CARD_HEIGHT;
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
-	// Do any additional setup after loading the view from its nib.
 }
 
 - (void)didReceiveMemoryWarning {
