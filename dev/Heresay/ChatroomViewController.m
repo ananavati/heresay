@@ -50,7 +50,7 @@
 - (void) initialize{
   [self fetchMessages];
     
-  self.nsTimer = [NSTimer scheduledTimerWithTimeInterval:30
+  self.nsTimer = [NSTimer scheduledTimerWithTimeInterval:10
                                      target:self
                                    selector:@selector(fetchMessages)
                                    userInfo:nil
@@ -65,7 +65,6 @@
 
     //
     self.navigationController.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObject:[UIColor whiteColor] forKey:NSForegroundColorAttributeName];
-
     
     // Init message list array
     self.messageList = [[NSMutableArray alloc] init];
@@ -114,6 +113,7 @@
         [self.messageList addObjectsFromArray:messages];
         [self.tableView reloadData];
         
+        [self scrollToBottomAnimated:YES];
     }];
 }
 

@@ -52,6 +52,9 @@ static Class MAPBOX_TILE_CLASS;
 - (void)viewDidLoad {
 	[super viewDidLoad];
 	
+    // Set the status bar style black
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
+    
 	CGRect mapViewFrame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
 	
 	self.mapView = [[MBXMapView alloc] initWithFrame:mapViewFrame mapID:@"ericsoco.i3636pba"];
@@ -83,11 +86,9 @@ static Class MAPBOX_TILE_CLASS;
 	UILabel *attributionLabel = [self.mapView.subviews objectAtIndex:1];
 	attributionLabel.center = CGPointMake(attributionLabel.center.x, [UIScreen mainScreen].bounds.size.width - 50.0);
 	 */
+    
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-	//
-}
 
 - (void)didReceiveMemoryWarning
 {

@@ -19,6 +19,10 @@
 @property (weak, nonatomic) IBOutlet UITextField *screenNameTextField;
 @property (assign, nonatomic) UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UIImageView *avatarImage;
+@property (weak, nonatomic) IBOutlet UILabel *chooseScreenNameLabel;
+@property (weak, nonatomic) IBOutlet UIButton *goLabel;
+@property (weak, nonatomic) IBOutlet UIButton *takeAPictureLabel;
+@property (weak, nonatomic) IBOutlet UIButton *pickAPictureLabel;
 
 
 @end
@@ -35,7 +39,19 @@
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
-	// Do any additional setup after loading the view from its nib.
+	
+    // Set the status bar style white
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+
+    self.chooseScreenNameLabel.font = [UIFont fontWithName:@"OpenSans" size:17];
+    
+    
+    self.goLabel.font = [UIFont fontWithName:@"OpenSans" size:17];
+    
+    self.takeAPictureLabel.font = [UIFont fontWithName:@"OpenSans" size:17];
+    
+    self.pickAPictureLabel.font = [UIFont fontWithName:@"OpenSans" size:17];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -46,6 +62,12 @@
 	}
     
     self.avatarImage.image = [JSAvatarImageFactory avatarImageNamed:@"avatar" croppedToCircle:YES];
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+    // Set the status bar style black
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
+    
 }
 
 - (void)didReceiveMemoryWarning {
