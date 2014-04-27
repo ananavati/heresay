@@ -21,11 +21,12 @@ typedef NS_ENUM(NSInteger, ChatroomMapOverlayStyle) {
 };
 
 @property (strong, nonatomic) Chatroom *chatroom;
-//@property (strong, nonatomic) MKPolygon *overlay;
-//@property (strong, nonatomic) ChatroomMapOverlayRenderer *overlayRenderer;
 @property (strong, nonatomic) MKCircle *overlay;
 @property (strong, nonatomic) MKCircleRenderer *overlayRenderer;
 @property (assign, nonatomic) ChatroomMapOverlayStyle style;
+
+//@property (strong, nonatomic) MKPolygon *overlay;
+//@property (strong, nonatomic) ChatroomMapOverlayRenderer *overlayRenderer;
 
 
 - (instancetype)initWithChatroom:(Chatroom *)chatroom style:(NSInteger)style;
