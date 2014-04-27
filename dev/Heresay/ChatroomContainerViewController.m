@@ -48,6 +48,7 @@ static const double CARDS_VIEW_ANIMATE_CLOSE_DURATION = 0.75;
 		// set up chatroom view controllers
 		self.chatroomMapViewController = [[ChatroomMapViewController alloc] init];
 		self.chatroomMapViewController.delegate = self;
+		self.chatroomMapViewController.mapUpdateDelegate = self;
 		[self.view addSubview:self.chatroomMapViewController.view];
 		
 		self.chatroomCardsViewController = [[ChatroomCardsViewController alloc] init];
@@ -74,18 +75,23 @@ static const double CARDS_VIEW_ANIMATE_CLOSE_DURATION = 0.75;
     return self;
 }
 
+- (void)map:(id)mapViewController didStopAtBounds:(GeoQueryBounds)bounds {
+	NSLog(@"ARPAN: call [self refreshNearbyChatrooms] with these bounds:");
+	NSLog(@"got bounds: center:(%f, %f), NE:(%f, %f), SW:(%f, %f)", bounds.center.latitude, bounds.center.longitude, bounds.ne.latitude, bounds.ne.longitude, bounds.sw.latitude, bounds.sw.longitude);
+}
+
 - (void)viewDidLoad {
 	[super viewDidLoad];
 	// Do any additional setup after loading the view from its nib.
 	
 	self.introComplete = NO;	// TODO: read from NSUserDefaults
 	self.cardsViewOpen = NO;
-	
-	[self refreshNearbyChatrooms];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
 	self.navigationController.navigationBar.hidden = YES;
+	
+	[self refreshNearbyChatrooms];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -117,6 +123,19 @@ static const double CARDS_VIEW_ANIMATE_CLOSE_DURATION = 0.75;
 	[super didReceiveMemoryWarning];
 	// Dispose of any resources that can be recreated.
 }
+
+
+/*
+// No landscape support for now
+- (NSUInteger)supportedInterfaceOrientations {
+	return UIInterfaceOrientationMaskPortrait;
+}
+
+- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation {
+	return UIInterfaceOrientationPortrait;
+}
+*/
+
 
 - (void)refreshNearbyChatrooms {
 	[[ChatRoomApi instance] fetchChatroomsNearUserLocationWithSuccess:^(NSMutableArray *chatrooms) {

@@ -282,6 +282,21 @@ static Class MAPBOX_TILE_CLASS;
 	}
 }
 
+- (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated {
+	CGRect mapBounds = self.mapView.bounds;
+	CGPoint centerPoint = CGPointMake(mapBounds.origin.x + 0.5*mapBounds.size.width, mapBounds.origin.y + 0.5*mapBounds.size.height);
+	CGPoint nePoint = CGPointMake(mapBounds.origin.x + mapBounds.size.width, mapBounds.origin.y);
+	CGPoint swPoint = CGPointMake(mapBounds.origin.x, mapBounds.origin.y + mapBounds.size.height);
+	
+	CLLocationCoordinate2D centerCoord = [self.mapView convertPoint:centerPoint toCoordinateFromView:self.mapView];
+	CLLocationCoordinate2D neCoord = [self.mapView convertPoint:nePoint toCoordinateFromView:self.mapView];
+	CLLocationCoordinate2D swCoord = [self.mapView convertPoint:swPoint toCoordinateFromView:self.mapView];
+	GeoQueryBounds geoQueryBounds = { centerCoord, neCoord, swCoord };
+	
+	self.stationaryMapBounds = geoQueryBounds;
+	[self.mapUpdateDelegate map:self didStopAtBounds:self.stationaryMapBounds];
+}
+
 - (MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id<MKOverlay>)overlay {
 	
 	// return nil for MapBox tile overlays
