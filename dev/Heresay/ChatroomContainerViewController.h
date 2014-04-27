@@ -10,13 +10,15 @@
 #import "IntroViewController.h"
 #import "ChatroomSelectorDelegate.h"
 #import "ModalViewControllerDelegate.h"
+#import "ChatroomMapViewController.h"
 
 @interface ChatroomContainerViewController : UIViewController <	/*UIViewControllerTransitioningDelegate,
 																UIViewControllerAnimatedTransitioning,
 																UIViewControllerInteractiveTransitioning,*/
 																UIGestureRecognizerDelegate,
 																ModalViewControllerDelegate,
-																ChatroomSelectorDelegate >
+																ChatroomSelectorDelegate,
+																MapUpdateDelegate>
 
 /*
 - (id <UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source;
