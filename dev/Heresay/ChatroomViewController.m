@@ -83,7 +83,7 @@
     
     
     //
-//    self.win.navigationBar.tintColor = [UIColor orangeColor];
+    self.win.navigationBar.tintColor = [UIColor orangeColor];
   
 }
 
