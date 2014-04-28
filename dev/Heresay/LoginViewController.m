@@ -44,13 +44,11 @@
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
 
     self.chooseScreenNameLabel.font = [UIFont fontWithName:@"OpenSans" size:17];
-    
-    
     self.goLabel.font = [UIFont fontWithName:@"OpenSans" size:17];
-    
     self.takeAPictureLabel.font = [UIFont fontWithName:@"OpenSans" size:17];
-    
     self.pickAPictureLabel.font = [UIFont fontWithName:@"OpenSans" size:17];
+    
+    self.navigationController.navigationBar.tintColor = [UIColor orangeColor];
     
 }
 
@@ -62,6 +60,10 @@
 	}
     
     self.avatarImage.image = [JSAvatarImageFactory avatarImageNamed:@"avatar" croppedToCircle:YES];
+}
+
+-(void)viewDidAppear:(BOOL)animated{
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
@@ -145,7 +147,6 @@
     newUser.uuid = [[UIDevice currentDevice] identifierForVendor].UUIDString;
     
     [[UserApi instance] saveUser:newUser];
-    
 }
 
 
@@ -158,10 +159,56 @@
     
     self.avatarImage.image = [JSAvatarImageFactory avatarImage:chosenImage croppedToCircle:YES];
  
+    // TODO fix: *** Terminating app due to uncaught exception 'NSInvalidArgumentException', reason: 'cannot setReadAccess for unsaved user'
+    //[self uploadImage:chosenImage];
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker{
     
+}
+
+
+#pragma - Image Management Methods
+
+- (void)uploadImage:(UIImage *)image{
+    // Resize image
+    UIGraphicsBeginImageContext(CGSizeMake(640, 960));
+    [image drawInRect: CGRectMake(0, 0, 640, 960)];
+    
+    // Upload image
+    NSData *imageData = UIImageJPEGRepresentation(image, 0.05f);
+    PFFile *imageFile = [PFFile fileWithName:@"Image.jpg" data:imageData];
+    
+    // Save PFFile
+    [imageFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (!error) {
+            // Hide old HUD, show completed HUD (see example for code)
+            
+            // Create a PFObject around a PFFile and associate it with the current user
+            PFObject *userPhoto = [PFObject objectWithClassName:@"UserPhoto"];
+            [userPhoto setObject:imageFile forKey:@"imageFile"];
+            
+            // Set the access control list to current user for security purposes
+            userPhoto.ACL = [PFACL ACLWithUser:[PFUser currentUser]];
+            
+            PFUser *user = [PFUser currentUser];
+            [userPhoto setObject:user forKey:@"user"];
+            
+            [userPhoto saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                if (!error) {
+                    NSLog(@"image saved in background wiht no error");
+                } else {
+                    // Log details of the failure
+                    NSLog(@"Error: %@ %@", error, [error userInfo]);
+                }
+            }];
+        } else {
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+    } progressBlock:^(int percentDone) {
+        // Update your progress spinner here. percentDone will be between 0 and 100.
+        NSLog(@"progress: %f", (float)percentDone/100);
+    }];
 }
 
 @end

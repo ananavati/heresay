@@ -50,7 +50,7 @@
 - (void) initialize{
   [self fetchMessages];
     
-  self.nsTimer = [NSTimer scheduledTimerWithTimeInterval:10
+  self.nsTimer = [NSTimer scheduledTimerWithTimeInterval:5
                                      target:self
                                    selector:@selector(fetchMessages)
                                    userInfo:nil
@@ -82,6 +82,9 @@
     self.sender = self.userName;
     
     
+    //
+//    self.win.navigationBar.tintColor = [UIColor orangeColor];
+  
 }
 
 - (void)didReceiveMemoryWarning{

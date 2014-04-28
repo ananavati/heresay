@@ -12,6 +12,7 @@
 
 @property (strong, nonatomic) NSMutableArray *messages;
 @property (strong, nonatomic) PFQuery *query;
+@property (assign, nonatomic) BOOL isFetching;
 
 @end
 
@@ -36,6 +37,7 @@
     self = [super init];
     self.messages = [[NSMutableArray alloc] init];
     self.query = [PFQuery queryWithClassName:[Message parseClassName]];
+    self.isFetching = NO;
     return self;
 }
 
@@ -52,12 +54,18 @@
 #pragma mark - message api methods
 
 - (void)fetchMessagesForChatroomWithId:(NSString *)chatroomId withSuccess:(void (^)(NSArray *messages))success {
-    [self.query whereKey:@"chat_room_id" equalTo:chatroomId];
-    
-    [self.query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        [self appendMessages:objects];
-        success(self.messages);
-    }];
+    if (!self.isFetching) {
+        self.isFetching = YES;
+        [self.query whereKey:@"chat_room_id" equalTo:chatroomId];
+        
+        [self.query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+            [self appendMessages:objects];
+            success(self.messages);
+        }];
+        self.isFetching = NO;
+    } else {
+        NSLog(@"is currently already fetching the messages... be patient!");
+    }
 }
 
 - (void)saveMessage:(Message *)message {
