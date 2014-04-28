@@ -24,6 +24,13 @@
 		CA105B6518ECFA6400F78D28 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA105B4D18ECFA6300F78D28 /* UIKit.framework */; };
 		CA105B6D18ECFA6400F78D28 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CA105B6B18ECFA6400F78D28 /* InfoPlist.strings */; };
 		CA105B6F18ECFA6400F78D28 /* HeresayTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CA105B6E18ECFA6400F78D28 /* HeresayTests.m */; };
+		CA42FE56190E0BB400C15502 /* Aller_Lt.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CA42FE53190E098000C15502 /* Aller_Lt.ttf */; };
+		CA42FE57190E0BB400C15502 /* Aller_LtIt.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CA42FE54190E098000C15502 /* Aller_LtIt.ttf */; };
+		CA42FE58190E0BB400C15502 /* Aller_Rg.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CA42FE55190E0A4000C15502 /* Aller_Rg.ttf */; };
+		CA42FE5B190E0E0000C15502 /* Oxygen-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = CA42FE59190E0E0000C15502 /* Oxygen-Bold.otf */; };
+		CA42FE5C190E0E0000C15502 /* Oxygen.otf in Resources */ = {isa = PBXBuildFile; fileRef = CA42FE5A190E0E0000C15502 /* Oxygen.otf */; };
+		CA42FE5F190E112900C15502 /* Rosario-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = CA42FE5D190E112900C15502 /* Rosario-Bold.otf */; };
+		CA42FE60190E112900C15502 /* Rosario-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = CA42FE5E190E112900C15502 /* Rosario-Regular.otf */; };
 		CA5EDAD218F7AEF000C3A09B /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA5EDAD118F7AEF000C3A09B /* MapKit.framework */; };
 		CA5EDAD618F7B1E800C3A09B /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CA5EDAD518F7B1E800C3A09B /* LocationManager.m */; };
 		CA5EDADA18F7B6CE00C3A09B /* IntroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA5EDAD818F7B6CE00C3A09B /* IntroViewController.m */; };
@@ -109,6 +116,13 @@
 		CA105B6A18ECFA6400F78D28 /* HeresayTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "HeresayTests-Info.plist"; sourceTree = "<group>"; };
 		CA105B6C18ECFA6400F78D28 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		CA105B6E18ECFA6400F78D28 /* HeresayTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HeresayTests.m; sourceTree = "<group>"; };
+		CA42FE53190E098000C15502 /* Aller_Lt.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Aller_Lt.ttf; path = fonts/Aller_Lt.ttf; sourceTree = "<group>"; };
+		CA42FE54190E098000C15502 /* Aller_LtIt.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Aller_LtIt.ttf; path = fonts/Aller_LtIt.ttf; sourceTree = "<group>"; };
+		CA42FE55190E0A4000C15502 /* Aller_Rg.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Aller_Rg.ttf; path = fonts/Aller_Rg.ttf; sourceTree = "<group>"; };
+		CA42FE59190E0E0000C15502 /* Oxygen-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Oxygen-Bold.otf"; path = "fonts/Oxygen-Bold.otf"; sourceTree = "<group>"; };
+		CA42FE5A190E0E0000C15502 /* Oxygen.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Oxygen.otf; path = fonts/Oxygen.otf; sourceTree = "<group>"; };
+		CA42FE5D190E112900C15502 /* Rosario-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Rosario-Bold.otf"; path = "fonts/Rosario-Bold.otf"; sourceTree = "<group>"; };
+		CA42FE5E190E112900C15502 /* Rosario-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Rosario-Regular.otf"; path = "fonts/Rosario-Regular.otf"; sourceTree = "<group>"; };
 		CA5EDAD118F7AEF000C3A09B /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		CA5EDAD418F7B1E800C3A09B /* LocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationManager.h; sourceTree = "<group>"; };
 		CA5EDAD518F7B1E800C3A09B /* LocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationManager.m; sourceTree = "<group>"; };
@@ -320,6 +334,13 @@
 		CA77FA59190A229300D8F60C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				CA42FE5D190E112900C15502 /* Rosario-Bold.otf */,
+				CA42FE5E190E112900C15502 /* Rosario-Regular.otf */,
+				CA42FE59190E0E0000C15502 /* Oxygen-Bold.otf */,
+				CA42FE5A190E0E0000C15502 /* Oxygen.otf */,
+				CA42FE53190E098000C15502 /* Aller_Lt.ttf */,
+				CA42FE54190E098000C15502 /* Aller_LtIt.ttf */,
+				CA42FE55190E0A4000C15502 /* Aller_Rg.ttf */,
 				CA77FA67190A423400D8F60C /* chatroomCard.png */,
 				CA77FA63190A2C3D00D8F60C /* Overlock-Italic.ttf */,
 				CA77FA64190A2C3D00D8F60C /* OpenSans-Regular.ttf */,
@@ -460,6 +481,9 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Heresay Industries, Ltd.";
 				TargetAttributes = {
+					CA105B4518ECFA6300F78D28 = {
+						DevelopmentTeam = D8QP5L59SQ;
+					};
 					CA105B6018ECFA6400F78D28 = {
 						TestTargetID = CA105B4518ECFA6300F78D28;
 					};
@@ -488,18 +512,25 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA42FE56190E0BB400C15502 /* Aller_Lt.ttf in Resources */,
+				CA42FE57190E0BB400C15502 /* Aller_LtIt.ttf in Resources */,
+				CA42FE58190E0BB400C15502 /* Aller_Rg.ttf in Resources */,
 				E9CE0BA11904B18700EB51DC /* IntroSlideViewController.xib in Resources */,
 				CAD881C31902FBBF00FC3646 /* ChatroomCardsViewController.xib in Resources */,
 				E9DB5C3E18EE82B9007B2C84 /* ChatroomMapViewController.xib in Resources */,
 				CA105B5418ECFA6300F78D28 /* InfoPlist.strings in Resources */,
+				CA42FE5C190E0E0000C15502 /* Oxygen.otf in Resources */,
 				CA105B5C18ECFA6300F78D28 /* Images.xcassets in Resources */,
 				E9DB5C5C18EE84BA007B2C84 /* InviteListAccountViewCell.xib in Resources */,
+				CA42FE5B190E0E0000C15502 /* Oxygen-Bold.otf in Resources */,
 				CA77FA60190A277C00D8F60C /* OpenSans-Light.ttf in Resources */,
+				CA42FE5F190E112900C15502 /* Rosario-Bold.otf in Resources */,
 				CA77FA65190A2C3D00D8F60C /* Overlock-Italic.ttf in Resources */,
 				CA77FA66190A2C3D00D8F60C /* OpenSans-Regular.ttf in Resources */,
 				CA5EDAE318F7CC9F00C3A09B /* LoginViewController.xib in Resources */,
 				E9DB5C4818EE82EE007B2C84 /* InviteUserViewController.xib in Resources */,
 				CA77FA68190A423400D8F60C /* chatroomCard.png in Resources */,
+				CA42FE60190E112900C15502 /* Rosario-Regular.otf in Resources */,
 				E9DB5C6618EE8680007B2C84 /* MessageViewCell.xib in Resources */,
 				CA77FA62190A277C00D8F60C /* Overlock-Regular.ttf in Resources */,
 				CAD881CF1903217E00FC3646 /* ChatroomCardViewCell.xib in Resources */,
@@ -675,6 +706,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Heresay/Heresay-Prefix.pch";
 				INFOPLIST_FILE = "Heresay/Heresay-Info.plist";
@@ -693,6 +725,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Heresay/Heresay-Prefix.pch";
 				INFOPLIST_FILE = "Heresay/Heresay-Info.plist";
