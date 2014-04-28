@@ -14,6 +14,8 @@
 @property (strong, nonatomic) NSMutableArray *nearbyChatrooms;
 @property (strong, nonatomic) PFQuery *query;
 @property (strong, nonatomic) NSMutableArray *pendingUserLocationSuccessBlocks;
+@property (assign, nonatomic) BOOL isFetching;
+
 
 @end
 
@@ -22,7 +24,7 @@
 + (ChatRoomApi *)instance {
 	static ChatRoomApi *instance = nil;
 	static dispatch_once_t pred;
-	
+    
 	if (instance) return instance;
 	
 	dispatch_once(&pred, ^{
@@ -38,6 +40,9 @@
     self = [super init];
     self.nearbyChatrooms = [[NSMutableArray alloc] init];
     self.query = [PFQuery queryWithClassName:[Chatroom parseClassName]];
+    
+    self.isFetching = NO;
+    
     return self;
 }
 
@@ -52,26 +57,44 @@
 }
 
 - (void)fetchChatroomsNearUserLocationWithSuccess:(void (^)(NSMutableArray *chatrooms))success {
-	LocationManager *locationManager = [LocationManager instance];
-	CLLocation *userLocation = locationManager.userLocation;
-	if (!userLocation) {
-		// user location not yet available; process fetch request once it is
-		if (!self.pendingUserLocationSuccessBlocks) {
-			self.pendingUserLocationSuccessBlocks = [NSMutableArray new];
-		}
-		[self.pendingUserLocationSuccessBlocks addObject:success];
-		[locationManager addObserver:self forKeyPath:@"userLocation" options:NSKeyValueObservingOptionNew context:NULL];
-		
-	} else {
-		[self fetchChatroomsNearLocation:userLocation withSuccess:success];
-	}
+    NSLog(@"Trying to fetch");
+    if (!self.isFetching) {
+        self.isFetching = YES;
+        LocationManager *locationManager = [LocationManager instance];
+        CLLocation *userLocation = locationManager.userLocation;
+        if (!userLocation) {
+            // user location not yet available; process fetch request once it is
+            if (!self.pendingUserLocationSuccessBlocks) {
+                self.pendingUserLocationSuccessBlocks = [NSMutableArray new];
+            }
+            [self.pendingUserLocationSuccessBlocks addObject:success];
+            [locationManager addObserver:self forKeyPath:@"userLocation" options:NSKeyValueObservingOptionNew context:NULL];
+            
+        } else {
+            [self fetchChatroomsNearLocation:userLocation withSuccess:success];
+        }
+        self.isFetching = NO;
+        NSLog(@"Done fetching");
+    } else {
+        NSLog(@"---- Currently fetching already!!!! ");
+    }
 }
 
 - (void)fetchChatroomsNearLocation:(CLLocation *)location withSuccess:(void (^)(NSMutableArray *chatrooms))success {
-    [self.query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        [self appendChatRooms:objects];
-        success(self.nearbyChatrooms);
-    }];
+    NSLog(@"Trying to fetch [near]");
+    if (!self.isFetching) {
+        self.isFetching = YES;
+        [self.query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+            [self appendChatRooms:objects];
+            success(self.nearbyChatrooms);
+        }];
+        self.isFetching = NO;
+        NSLog(@"Done fetching [near]");
+    } else {
+        NSLog(@"---- Currently fetching already!!!! [near]");
+    }
+    
+    
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
