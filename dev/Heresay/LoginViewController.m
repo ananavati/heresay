@@ -160,7 +160,7 @@
     self.avatarImage.image = [JSAvatarImageFactory avatarImage:chosenImage croppedToCircle:YES];
  
     // TODO fix: *** Terminating app due to uncaught exception 'NSInvalidArgumentException', reason: 'cannot setReadAccess for unsaved user'
-    //[self uploadImage:chosenImage];
+    [self createDummyUserAndUploadImage:chosenImage];
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker{
@@ -170,7 +170,32 @@
 
 #pragma - Image Management Methods
 
+-(void) createDummyUserAndUploadImage:(UIImage *)image{
+    PFUser *currentUser = [PFUser currentUser];
+    if (currentUser) {
+        [self uploadImage:image];
+    } else {
+        // Dummy username and password
+        PFUser *user = [PFUser user];
+        user.username = @"Matt";
+        user.password = @"password";
+        user.email = @"Matt@example.com";
+        
+        [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            if (!error) {
+                NSLog(@"Error creating dummy user");
+            } else {
+                [PFUser logInWithUsername:@"Matt" password:@"password"];
+                NSLog(@"Error creating dummy user");
+                [self uploadImage:image];
+            }
+        }];
+    }
+}
+
+
 - (void)uploadImage:(UIImage *)image{
+    
     // Resize image
     UIGraphicsBeginImageContext(CGSizeMake(640, 960));
     [image drawInRect: CGRectMake(0, 0, 640, 960)];
