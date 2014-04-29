@@ -61,8 +61,8 @@
         [self.query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
             [self appendMessages:objects];
             success(self.messages);
+            self.isFetching = NO;
         }];
-        self.isFetching = NO;
     } else {
         NSLog(@"is currently already fetching the messages... be patient!");
     }

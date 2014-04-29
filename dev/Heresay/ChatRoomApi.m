@@ -59,7 +59,6 @@
 - (void)fetchChatroomsNearUserLocationWithSuccess:(void (^)(NSMutableArray *chatrooms))success {
     NSLog(@"Trying to fetch");
     if (!self.isFetching) {
-        self.isFetching = YES;
         LocationManager *locationManager = [LocationManager instance];
         CLLocation *userLocation = locationManager.userLocation;
         if (!userLocation) {
@@ -73,8 +72,6 @@
         } else {
             [self fetchChatroomsNearLocation:userLocation withSuccess:success];
         }
-        self.isFetching = NO;
-        NSLog(@"Done fetching");
     } else {
         NSLog(@"---- Currently fetching already!!!! ");
     }
@@ -87,8 +84,8 @@
         [self.query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
             [self appendChatRooms:objects];
             success(self.nearbyChatrooms);
+            self.isFetching = NO;
         }];
-        self.isFetching = NO;
         NSLog(@"Done fetching [near]");
     } else {
         NSLog(@"---- Currently fetching already!!!! [near]");
