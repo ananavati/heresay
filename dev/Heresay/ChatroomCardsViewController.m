@@ -179,6 +179,7 @@ static double CARD_HEIGHT;
 	CGFloat pageWidth = self.collectionView.frame.size.width;
 	int pageNum = self.collectionView.contentOffset.x / pageWidth;
 	if (pageNum < 0 || pageNum > self.chatroomModels.count) { return; }
+    if (!self.chatroomModels.count > 0) { return; }
 	
 	if (pageNum > self.chatroomModels.count - 1 && self.stagedChatroom) {
 		[self.delegate chatroomSelector:self didHighlightChatroom:self.stagedChatroom];
