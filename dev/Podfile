@@ -7,7 +7,6 @@ pod 'Parse'
 pod 'AFNetworking', '~> 2.0'
 pod 'SGNavigationProgress'
 pod 'MHPrettyDate'
-pod 'JSMessagesViewController'
 pod 'MBXMapKit', '~> 0.2'
 pod 'Canvas'
-
+pod 'JSQSystemSoundPlayer'
