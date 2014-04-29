@@ -67,7 +67,9 @@
 - (void)saveUser:(User *)user {
     PFObject *u = [PFObject objectWithClassName:@"users"];
     u[@"name"] = user.name;
-    u[@"profileImageURL"] = user.profileImageURL;
+    if (user.profileImageURL!=nil) {
+        u[@"profileImageURL"] = user.profileImageURL;
+    }
     u[@"uuid"] = user.uuid;
     
     [u saveInBackground];

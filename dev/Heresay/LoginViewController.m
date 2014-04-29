@@ -11,6 +11,7 @@
 #import "User.h"
 #import "UserApi.h"
 #import "ChatRoomApi.h"
+#import "UIColor+HeresayColor.h"
 
 @interface LoginViewController ()
 
@@ -48,7 +49,8 @@
     self.takeAPictureLabel.font = [UIFont fontWithName:@"OpenSans" size:17];
     self.pickAPictureLabel.font = [UIFont fontWithName:@"OpenSans" size:17];
     
-    self.navigationController.navigationBar.tintColor = [UIColor orangeColor];
+    self.navigationController.navigationBar.tintColor = [UIColor blueHighlightColor];
+
     
 }
 
@@ -140,6 +142,7 @@
     
     newUser.profileImageURL = @"";
     newUser.avatarImage = image;
+    newUser.profileImageId = @"";
     
     
     // TODO send the UIImage on the internet somewhere to store it and let's
@@ -196,6 +199,8 @@
 
 - (void)uploadImage:(UIImage *)image{
     
+    NSLog(@"uploadImage");
+    
     // Resize image
     UIGraphicsBeginImageContext(CGSizeMake(640, 960));
     [image drawInRect: CGRectMake(0, 0, 640, 960)];
@@ -221,7 +226,8 @@
             
             [userPhoto saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                 if (!error) {
-                    NSLog(@"image saved in background wiht no error");
+                    NSLog(@"image saved in background with no error: %@", userPhoto.objectId);
+                
                 } else {
                     // Log details of the failure
                     NSLog(@"Error: %@ %@", error, [error userInfo]);

@@ -88,6 +88,25 @@
   
 }
 
+
+//-(void)downloadImages{
+//    PFQuery *query = [PFQuery queryWithClassName:@"UserPhoto"];
+//    PFUser *user = [PFUser currentUser];
+//    [query whereKey:@"user" equalTo:user];
+//    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+//        // If there are photos, we start extracting the data
+//        // Save a list of object IDs while extracting this data
+//        
+//       self.newObjectIDArray = [NSMutableArray array];
+//        
+//        if (objects.count > 0) {
+//            for (PFObject *eachObject in objects) {
+//                [self.newObjectIDArray addObject:[eachObject objectId]];
+//            }
+//        }
+//    }];
+//}
+
 - (void)didReceiveMemoryWarning{
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

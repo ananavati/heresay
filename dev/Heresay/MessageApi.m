@@ -74,6 +74,7 @@
     m[@"chat_room_id"] = message.chat_room_id;
     m[@"author"] = message.author;
     
+    
     [m saveInBackground];
 }
 
