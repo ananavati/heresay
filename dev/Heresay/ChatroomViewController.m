@@ -63,9 +63,6 @@
 
     // Set the status bar style white
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
-
-    //
-    self.navigationController.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObject:[UIColor whiteColor] forKey:NSForegroundColorAttributeName];
     
     // Init message list array
     self.messageList = [[NSMutableArray alloc] init];
@@ -76,15 +73,16 @@
     [super viewDidLoad];
     
     //Init JSBubbleView UI
-    [[JSBubbleView appearance] setFont:[UIFont systemFontOfSize:16.0f]];
-    [self setBackgroundColor:[UIColor whiteColor]];
+    [[JSBubbleView appearance] setFont:[UIFont fontWithName:@"OpenSans" size:16]];
+    [self setBackgroundColor:[UIColor lightBackgroundColor]];
     self.title = self.chatroomName;
     self.messageInputView.textView.placeHolder = @"Message";
+	self.messageInputView.textView.font = [UIFont fontWithName:@"OpenSans" size:16];
     self.sender = self.userName;
     
     
     //
-    self.navigationController.navigationBar.tintColor = [UIColor blueHighlightColor];
+    self.navigationController.navigationBar.tintColor = [UIColor orangeAccentColor];
   
 }
 

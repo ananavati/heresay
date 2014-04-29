@@ -11,6 +11,7 @@
 @interface UIColor (HeresayColor)
 
 + (UIColor *)lightBackgroundColor;
++ (UIColor *)medDarkBackgroundColor;
 + (UIColor *)darkBackgroundColor;
 + (UIColor *)orangeAccentColor;
 + (UIColor *)orangeOverlayWeakColor;

@@ -43,10 +43,11 @@
     // Set the status bar style white
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
 
-    self.chooseScreenNameLabel.font = [UIFont fontWithName:@"OpenSans" size:17];
-    self.goLabel.font = [UIFont fontWithName:@"OpenSans" size:17];
-    self.takeAPictureLabel.font = [UIFont fontWithName:@"OpenSans" size:17];
-    self.pickAPictureLabel.font = [UIFont fontWithName:@"OpenSans" size:17];
+    self.chooseScreenNameLabel.font = [UIFont fontWithName:@"Oxygen" size:17];
+    self.goLabel.titleLabel.font = [UIFont fontWithName:@"Oxygen" size:17];
+    self.takeAPictureLabel.titleLabel.font = [UIFont fontWithName:@"Oxygen" size:17];
+    self.pickAPictureLabel.titleLabel.font = [UIFont fontWithName:@"Oxygen" size:17];
+	self.screenNameTextField.font = [UIFont fontWithName:@"Oxygen" size:17];
     
     self.navigationController.navigationBar.tintColor = [UIColor orangeColor];
     

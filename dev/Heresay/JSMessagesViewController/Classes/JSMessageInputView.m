@@ -103,7 +103,8 @@
         [sendButton setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
         [sendButton setTitleColor:[UIColor colorWithWhite:1.0f alpha:0.5f] forState:UIControlStateDisabled];
         
-        sendButton.titleLabel.font = [UIFont boldSystemFontOfSize:16.0f];
+//        sendButton.titleLabel.font = [UIFont boldSystemFontOfSize:16.0f];
+		sendButton.titleLabel.font = [UIFont fontWithName:@"Oxygen" size:16];
     }
     else {
         sendButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -113,7 +114,8 @@
         [sendButton setTitleColor:[UIColor js_bubbleBlueColor] forState:UIControlStateHighlighted];
         [sendButton setTitleColor:[UIColor js_bubbleLightGrayColor] forState:UIControlStateDisabled];
         
-        sendButton.titleLabel.font = [UIFont boldSystemFontOfSize:18.0f];
+//        sendButton.titleLabel.font = [UIFont boldSystemFontOfSize:18.0f];
+		sendButton.titleLabel.font = [UIFont fontWithName:@"Oxygen" size:18];
     }
     
     NSString *title = NSLocalizedString(@"Send", nil);
