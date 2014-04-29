@@ -46,7 +46,6 @@ static double CARD_HEIGHT;
 		[self.collectionView registerNib:cellNib forCellWithReuseIdentifier:@"ChatroomCardViewCell"];
 
         self.collectionView.backgroundColor = [UIColor clearColor];
-        [self.collectionView startCanvasAnimation];
 		
 		CARD_HEIGHT = [UIScreen mainScreen].bounds.size.height - 20*2;
 	}
@@ -70,6 +69,7 @@ static double CARD_HEIGHT;
 - (void)setChatroomModels:(NSMutableArray *)chatroomModels {
 	_chatroomModels = chatroomModels;
 	[self.collectionView reloadData];
+    [self.view startCanvasAnimation];
 }
 
 - (void)setStagedChatroom:(Chatroom *)stagedChatroom {
