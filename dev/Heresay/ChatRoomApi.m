@@ -14,7 +14,10 @@
 @property (strong, nonatomic) NSMutableArray *nearbyChatrooms;
 @property (strong, nonatomic) PFQuery *query;
 @property (strong, nonatomic) NSMutableArray *pendingUserLocationSuccessBlocks;
+
 @property (assign, nonatomic) BOOL isFetching;
+@property (strong, nonatomic) NSMutableArray *pendingBoundsQuerySuccessBlocks;
+
 
 
 @end
@@ -75,6 +78,9 @@
 }
 
 - (void)fetchChatroomsNearLocation:(CLLocation *)location withSuccess:(void (^)(NSMutableArray *chatrooms))success {
+	
+	// TODO: use location for Parse query
+	
 	[self.query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
 		[self appendChatRooms:objects];
 		
@@ -90,6 +96,10 @@
 }
 
 - (void)fetchChatroomsInBoundingBoxWithSuccess:(GeoQueryBounds)geoBounds withSuccess:(void (^)(NSMutableArray *chatrooms))success {
+	// For now, just bail if there's already a query in-flight
+	if (self.isFetching) { return; }
+	self.isFetching = YES;
+	
     PFGeoPoint *sw = [PFGeoPoint geoPointWithLatitude:geoBounds.sw.latitude longitude:geoBounds.sw.longitude];
     PFGeoPoint *ne = [PFGeoPoint geoPointWithLatitude:geoBounds.ne.latitude longitude:geoBounds.ne.longitude];
 
@@ -97,6 +107,7 @@
     [self.query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         [self appendChatRooms:objects];
         success(self.nearbyChatrooms);
+		self.isFetching = NO;
     }];
 
 }
