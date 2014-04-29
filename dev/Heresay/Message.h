@@ -26,5 +26,5 @@
 + (Message *)initWithJSON:(Message *)json;
 + (NSDateFormatter *)longDateFormatter;
 - (NSString *)description;
--(Message *)initWithMessageText:(NSString *)messageText authorId:(NSString *)authorName uuid:(NSString *)uuid chatRoom:(NSString *)chatRoomId;
+-(Message *)initWithMessageText:(NSString *)messageText authorId:(NSString *)authorName authorProfileId:(NSString *)profileId uuid:(NSString *)uuid chatRoom:(NSString *)chatRoomId;
 @end

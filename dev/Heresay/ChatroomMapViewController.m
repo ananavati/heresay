@@ -12,6 +12,7 @@
 #import "ChatroomMapOverlay.h"
 #import "AppConstants.h"
 #import "UIColor+HeresayColor.h"
+#import "NewChatAnnotationView.h"
 
 @interface ChatroomMapViewController ()
 
@@ -39,6 +40,11 @@ static Class MAPBOX_TILE_CLASS;
 		CGRect frame = self.chatroomSizeControl.frame;
 		[self.chatroomSizeControl setFrame:CGRectMake(frame.origin.x, frame.origin.y, frame.size.width, 36)];
 //		[self.chatroomSizeControl.layer setCornerRadius:10.0];
+		[[UISegmentedControl appearance] setTintColor:[UIColor orangeAccentColor]];
+		[[UISegmentedControl appearance] setTitleTextAttributes:@{
+																  NSForegroundColorAttributeName: [UIColor whiteColor],
+																  NSFontAttributeName: [UIFont fontWithName:@"Oxygen" size:15]
+																 } forState:UIControlStateNormal];
 		
 		self.chatroomOverlays = [[NSMutableArray alloc] init];
 		self.chatroomMapOverlays = [[NSMutableArray alloc] init];
@@ -117,6 +123,9 @@ static Class MAPBOX_TILE_CLASS;
 
 - (void)setChatroomModels:(NSMutableArray *)chatroomModels {
 	_chatroomModels = chatroomModels;
+    [self.mapView removeOverlays:self.chatroomOverlays];
+	self.chatroomOverlays = [[NSMutableArray alloc] init];
+	self.chatroomMapOverlays = [[NSMutableArray alloc] init];
 	
 	for (Chatroom *chatroom in chatroomModels) {
 		ChatroomMapOverlay *chatroomOverlay = [[ChatroomMapOverlay alloc] initWithChatroom:chatroom style:ChatroomMapOverlayStyleExisting];
@@ -232,31 +241,44 @@ static Class MAPBOX_TILE_CLASS;
 			[((UIButton *)(annotationView.rightCalloutAccessoryView)) addTarget:self action:@selector(onNewChatTapped) forControlEvents:UIControlEventTouchUpInside];
 			
 			// Zoom into current location once it's obtained
-			MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(self.mapView.userLocation.location.coordinate, 1.1*CHATROOM_SIZE_LARGE, 1.1*CHATROOM_SIZE_LARGE);
+			MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(self.mapView.userLocation.location.coordinate, 2*CHATROOM_SIZE_LARGE, 2*CHATROOM_SIZE_LARGE);
 			[self.mapView setRegion:region animated:YES];
 		}
 	}
 }
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
+	MKAnnotationView *chatAnnotationView;
+	
 	if (annotation == mapView.userLocation) {
-		mapView.userLocation.title = @"New Chat"; // @"Create New Chat Here";
-		mapView.userLocation.subtitle = @"200m";
+		mapView.userLocation.title = @"Create New Chat";
 		
 		// Let iOS determine the view for user location
-		return nil;
+//		return nil;
+		
+		NewChatAnnotationView *newChatAnnotationView = (NewChatAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:@"NewChatAnnotationView"];
+		if (!chatAnnotationView) {
+			chatAnnotationView = [[NewChatAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"NewChatAnnotationView"];
+			chatAnnotationView.canShowCallout = YES;
+		} else {
+			chatAnnotationView.annotation = annotation;
+		}
+		
+		chatAnnotationView = newChatAnnotationView;
+		
+	} else {
+		// Custom annotation for existing chatrooms (currently just using MKPointAnnotations)
+		chatAnnotationView = (MKAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:@"ChatAnnotationView"];
+		if (!chatAnnotationView) {
+			chatAnnotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"ChatAnnotationView"];
+			chatAnnotationView.canShowCallout = NO;
+			chatAnnotationView.image = [UIImage imageNamed:@"icon-sm.png"];
+			chatAnnotationView.centerOffset = CGPointMake(2, -7.0);
+		} else {
+			chatAnnotationView.annotation = annotation;
+		}
 	}
 	
-	// Custom annotation for chatrooms (currently just using MKPointAnnotations)
-	MKAnnotationView *chatAnnotationView = (MKAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:@"ChatAnnotationView"];
-	if (!chatAnnotationView) {
-		chatAnnotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"ChatAnnotationView"];
-		chatAnnotationView.canShowCallout = NO;
-		chatAnnotationView.image = [UIImage imageNamed:@"icon-sm.png"];
-		chatAnnotationView.centerOffset = CGPointMake(2, -7.0);
-	} else {
-		chatAnnotationView.annotation = annotation;
-	}
 	return chatAnnotationView;
 }
 

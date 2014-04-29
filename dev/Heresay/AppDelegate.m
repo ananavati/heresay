@@ -38,9 +38,21 @@
 	UINavigationController *mainNavigationController = [[UINavigationController alloc] initWithRootViewController:self.chatroomContainerViewController];
 	
 	[UINavigationBar appearance].tintColor = [UIColor lightBackgroundColor];
-	mainNavigationController.navigationBar.barTintColor = [UIColor darkBackgroundColor];
+	mainNavigationController.navigationBar.barTintColor = [UIColor medDarkBackgroundColor];
 	mainNavigationController.navigationBar.translucent = NO;
-	[[UIView appearance] setTintColor:[UIColor whiteColor]];
+	[mainNavigationController.navigationBar setTintColor:[UIColor orangeAccentColor]];
+	
+	// Set font for all UINavigationBar titles
+	NSMutableDictionary *titleBarAttributes = [NSMutableDictionary dictionaryWithDictionary: [[UINavigationBar appearance] titleTextAttributes]];
+	[titleBarAttributes setValue:[UIFont fontWithName:@"Oxygen" size:18] forKey:NSFontAttributeName];
+	[titleBarAttributes setValue:[UIColor lightBackgroundColor] forKey:NSForegroundColorAttributeName];
+	[[UINavigationBar appearance] setTitleTextAttributes:titleBarAttributes];
+	
+	// Set font for all UINavigationBar buttons
+	NSMutableDictionary *attributes = [NSMutableDictionary dictionaryWithDictionary: [[UIBarButtonItem appearance] titleTextAttributesForState:UIControlStateNormal]];
+	[attributes setValue:[UIFont fontWithName:@"Oxygen" size:16] forKey:NSFontAttributeName];
+	[[UIBarButtonItem appearance] setTitleTextAttributes:attributes forState:UIControlStateNormal];
+	
 	
 	self.window.rootViewController = mainNavigationController;
 	

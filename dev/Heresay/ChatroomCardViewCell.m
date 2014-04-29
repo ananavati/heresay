@@ -29,24 +29,6 @@
 - (void)awakeFromNib
 {
     // Initialization code
-	/*
-	self.nameLabel.font = [UIFont fontWithName:@"OpenSans" size:17];
-	self.nameInputTitle.font = [UIFont fontWithName:@"OpenSans-Light" size:17];
-	self.nameInput.font = [UIFont fontWithName:@"OpenSans-Light" size:14];
-	self.topicInputTitle.font = [UIFont fontWithName:@"OpenSans-Light" size:17];
-	self.topicInput.font = [UIFont fontWithName:@"OpenSans-Light" size:14];
-	self.submitButton.titleLabel.font = [UIFont fontWithName:@"Overlock-Regular" size:30];
-	self.cancelButton.titleLabel.font = [UIFont fontWithName:@"Overlock-Regular" size:14];
-	*/
-	/*
-	self.nameLabel.font = [UIFont fontWithName:@"Aller-Light" size:17];
-	self.nameInputTitle.font = [UIFont fontWithName:@"Aller-Light" size:17];
-	self.nameInput.font = [UIFont fontWithName:@"Aller-Light" size:14];
-	self.topicInputTitle.font = [UIFont fontWithName:@"Aller-Light" size:17];
-	self.topicInput.font = [UIFont fontWithName:@"Aller-Light" size:14];
-	self.submitButton.titleLabel.font = [UIFont fontWithName:@"Aller" size:30];
-	self.cancelButton.titleLabel.font = [UIFont fontWithName:@"Aller" size:14];
-	*/
 	self.nameLabel.font = [UIFont fontWithName:@"Oxygen" size:20];
 	self.nameInputTitle.font = [UIFont fontWithName:@"Oxygen" size:17];
 	self.nameInput.font = [UIFont fontWithName:@"Oxygen" size:14];
@@ -54,15 +36,6 @@
 	self.topicInput.font = [UIFont fontWithName:@"Oxygen" size:14];
 	self.submitButton.titleLabel.font = [UIFont fontWithName:@"Oxygen" size:30];
 	self.cancelButton.titleLabel.font = [UIFont fontWithName:@"Oxygen" size:14];
-	/*
-	self.nameLabel.font = [UIFont fontWithName:@"Rosario-Regular" size:17];
-	self.nameInputTitle.font = [UIFont fontWithName:@"Rosario-Regular" size:17];
-	self.nameInput.font = [UIFont fontWithName:@"Rosario-Regular" size:14];
-	self.topicInputTitle.font = [UIFont fontWithName:@"Rosario-Regular" size:17];
-	self.topicInput.font = [UIFont fontWithName:@"Rosario-Regular" size:14];
-	self.submitButton.titleLabel.font = [UIFont fontWithName:@"Rosario-Bold" size:30];
-	self.cancelButton.titleLabel.font = [UIFont fontWithName:@"Rosario-Bold" size:14];
-	*/
 }
 
 - (id)initWithFrame:(CGRect)frame
