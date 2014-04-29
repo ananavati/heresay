@@ -35,7 +35,7 @@
                         </connections>
                     </textField>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Chatroom name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BAT-9X-a1R">
-                        <rect key="frame" x="14" y="43" width="240" height="21"/>
+                        <rect key="frame" x="14" y="40" width="240" height="28"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" red="0.21176470588235294" green="0.21176470588235294" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
