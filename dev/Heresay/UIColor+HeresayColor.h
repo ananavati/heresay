@@ -13,6 +13,8 @@
 + (UIColor *)lightBackgroundColor;
 + (UIColor *)darkBackgroundColor;
 + (UIColor *)orangeAccentColor;
++ (UIColor *)orangeOverlayWeakColor;
++ (UIColor *)orangeOverlayStrongColor;
 + (UIColor *)blueHighlightColor;
 + (UIColor *)blueOverlayWeakColor;
 + (UIColor *)blueOverlayStrongColor;

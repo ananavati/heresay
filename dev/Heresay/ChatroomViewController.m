@@ -11,6 +11,7 @@
 #import "Message.h"
 #import "MessageApi.h"
 #import "Chatroom.h"
+#import "UIColor+HeresayColor.h"
 
 
 @interface ChatroomViewController ()
@@ -83,7 +84,7 @@
     
     
     //
-    self.navigationController.navigationBar.tintColor = [UIColor orangeColor];
+    self.navigationController.navigationBar.tintColor = [UIColor blueHighlightColor];
   
 }
 
@@ -179,7 +180,7 @@
     
     if (type==JSBubbleMessageTypeOutgoing) {
         return [JSBubbleImageViewFactory bubbleImageViewForType:JSBubbleMessageTypeOutgoing
-                                                          color:[UIColor orangeColor]];
+                                                          color:[UIColor blueHighlightColor]];
     } else {
         return [JSBubbleImageViewFactory bubbleImageViewForType:JSBubbleMessageTypeIncoming
                                                           color:[UIColor lightGrayColor]];

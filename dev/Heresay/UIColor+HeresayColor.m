@@ -22,6 +22,14 @@
 	return [UIColor colorWithRed:255.0/255.0 green:148.0/255.0 blue:51.0/255.0 alpha:1.0];
 }
 
++ (UIColor *)orangeOverlayWeakColor {
+	return [UIColor colorWithRed:255.0/255.0 green:148.0/255.0 blue:51.0/255.0 alpha:0.4];
+}
+
++ (UIColor *)orangeOverlayStrongColor {
+	return [UIColor colorWithRed:255.0/255.0 green:148.0/255.0 blue:51.0/255.0 alpha:0.8];
+}
+
 + (UIColor *)blueHighlightColor {
 	return [UIColor colorWithRed:74.0/255.0 green:170.0/255.0 blue:224.0/255.0 alpha:1.0];
 }
