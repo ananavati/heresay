@@ -76,14 +76,9 @@ static const double CARDS_VIEW_ANIMATE_CLOSE_DURATION = 0.75;
 }
 
 - (void)map:(id)mapViewController didStopAtBounds:(GeoQueryBounds)bounds {
-	NSLog(@"ARPAN: call [self refreshNearbyChatrooms] with these bounds:");
-	NSLog(@"got bounds: center:(%f, %f), NE:(%f, %f), SW:(%f, %f)", bounds.center.latitude, bounds.center.longitude, bounds.ne.latitude, bounds.ne.longitude, bounds.sw.latitude, bounds.sw.longitude);
-//    if (self.chatroomMapViewController.chatroomModels.count > 0) {
-//        [[ChatRoomApi instance] fetchChatroomsInBoundingBoxWithSuccess:bounds withSuccess:^(NSMutableArray *chatrooms) {
-//            self.chatroomMapViewController.chatroomModels = chatrooms;
-//            self.chatroomCardsViewController.chatroomModels = chatrooms;
-//        }];
-//    }
+//	NSLog(@"ARPAN: call [self refreshNearbyChatrooms] with these bounds:");
+//	NSLog(@"got bounds: center:(%f, %f), NE:(%f, %f), SW:(%f, %f)", bounds.center.latitude, bounds.center.longitude, bounds.ne.latitude, bounds.ne.longitude, bounds.sw.latitude, bounds.sw.longitude);
+    [self refreshNearbyChatrooms:bounds];
 }
 
 - (void)viewDidLoad {
@@ -96,8 +91,6 @@ static const double CARDS_VIEW_ANIMATE_CLOSE_DURATION = 0.75;
 
 - (void)viewWillAppear:(BOOL)animated {
 	self.navigationController.navigationBar.hidden = YES;
-	
-	[self refreshNearbyChatrooms];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -143,11 +136,17 @@ static const double CARDS_VIEW_ANIMATE_CLOSE_DURATION = 0.75;
 */
 
 
-- (void)refreshNearbyChatrooms {
-	[[ChatRoomApi instance] fetchChatroomsNearUserLocationWithSuccess:^(NSMutableArray *chatrooms) {
-		self.chatroomMapViewController.chatroomModels = chatrooms;
-		self.chatroomCardsViewController.chatroomModels = chatrooms;
-	}];
+- (void)refreshNearbyChatrooms:(GeoQueryBounds)bounds {
+    [[ChatRoomApi instance] fetchChatroomsInBoundingBoxWithSuccess:bounds withSuccess:^(NSMutableArray *chatrooms) {
+        self.chatroomMapViewController.chatroomModels = chatrooms;
+        self.chatroomCardsViewController.chatroomModels = chatrooms;
+    }];
+    
+    // uncomment the below code if shit starts blowing up
+//	[[ChatRoomApi instance] fetchChatroomsNearUserLocationWithSuccess:^(NSMutableArray *chatrooms) {
+//		self.chatroomMapViewController.chatroomModels = chatrooms;
+//		self.chatroomCardsViewController.chatroomModels = chatrooms;
+//	}];
 }
 
 - (void)presentIntro {

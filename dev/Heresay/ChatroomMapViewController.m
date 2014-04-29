@@ -117,6 +117,7 @@ static Class MAPBOX_TILE_CLASS;
 
 - (void)setChatroomModels:(NSMutableArray *)chatroomModels {
 	_chatroomModels = chatroomModels;
+    [self.mapView removeOverlays:self.chatroomOverlays];
 	
 	for (Chatroom *chatroom in chatroomModels) {
 		ChatroomMapOverlay *chatroomOverlay = [[ChatroomMapOverlay alloc] initWithChatroom:chatroom style:ChatroomMapOverlayStyleExisting];
