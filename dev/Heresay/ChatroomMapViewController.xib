@@ -16,7 +16,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="vKT-yN-HNX">
-                    <rect key="frame" x="20" y="400" width="280" height="29"/>
+                    <rect key="frame" x="20" y="425" width="280" height="29"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.99712586402893066" green="0.87168115377426147" blue="0.75825691223144531" alpha="0.65000000000000002" colorSpace="calibratedRGB"/>
                     <segments>

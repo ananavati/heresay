@@ -17,26 +17,26 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0</string>
+	<string>0.0.1</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>1.0</string>
-	<key>IBCustomFonts</key>
-	<dict>
-		<key>OpenSans Light</key>
-		<string>OpenSans-Light</string>
-		<key>OpenSans Light Italic</key>
-		<string>OpenSansLight-Italic</string>
-		<key>OpenSans Regular</key>
-		<string>OpenSans</string>
-	</dict>
+	<string>0.0.1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSHumanReadableCopyright</key>
+	<string>Heresay Industries, Ltd.</string>
 	<key>NSLocationUsageDescription</key>
 	<string>Heresay uses your location to find nearby chats and people.</string>
 	<key>UIAppFonts</key>
 	<array>
+		<string>Rosario-Regular.otf</string>
+		<string>Rosario-Bold.otf</string>
+		<string>Oxygen.otf</string>
+		<string>Oxygen-Bold.otf</string>
+		<string>Aller_Lt.ttf</string>
+		<string>Aller_LtIt.ttf</string>
+		<string>Aller_Rg.ttf</string>
 		<string>OpenSans-Light.ttf</string>
 		<string>OpenSans-LightItalic.ttf</string>
 		<string>OpenSans-Regular.ttf</string>
