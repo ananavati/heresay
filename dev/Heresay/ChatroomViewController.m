@@ -179,10 +179,10 @@
     
     if (type==JSBubbleMessageTypeOutgoing) {
         return [JSBubbleImageViewFactory bubbleImageViewForType:JSBubbleMessageTypeOutgoing
-                                                          color:[UIColor js_bubbleLightGrayColor]];
+                                                          color:[UIColor orangeColor]];
     } else {
         return [JSBubbleImageViewFactory bubbleImageViewForType:JSBubbleMessageTypeIncoming
-                                                          color:[UIColor js_bubbleBlueColor]];
+                                                          color:[UIColor lightGrayColor]];
     
     }
     
@@ -239,11 +239,11 @@
 //
 //  *** Implement to customize cell further
 //
-//- (void)configureCell:(JSBubbleMessageCell *)cell atIndexPath:(NSIndexPath *)indexPath
-//{
+- (void)configureCell:(JSBubbleMessageCell *)cell atIndexPath:(NSIndexPath *)indexPath
+{
 //    if ([cell messageType] == JSBubbleMessageTypeOutgoing) {
-//        cell.bubbleView.textView.textColor = [UIColor whiteColor];
-//        
+        cell.bubbleView.textView.textColor = [UIColor whiteColor];
+        
 //        if ([cell.bubbleView.textView respondsToSelector:@selector(linkTextAttributes)]) {
 //            NSMutableDictionary *attrs = [cell.bubbleView.textView.linkTextAttributes mutableCopy];
 //            [attrs setValue:[UIColor blueColor] forKey:UITextAttributeTextColor];
@@ -251,22 +251,21 @@
 //            cell.bubbleView.textView.linkTextAttributes = attrs;
 //        }
 //    }
-//    
+    
 //    if (cell.timestampLabel) {
 //        cell.timestampLabel.textColor = [UIColor lightGrayColor];
 //        cell.timestampLabel.shadowOffset = CGSizeZero;
 //    }
-//    
 //    if (cell.subtitleLabel) {
 //        cell.subtitleLabel.textColor = [UIColor lightGrayColor];
 //    }
-//    
+    
 //#if TARGET_IPHONE_SIMULATOR
 //    cell.bubbleView.textView.dataDetectorTypes = UIDataDetectorTypeNone;
 //#else
 //    cell.bubbleView.textView.dataDetectorTypes = UIDataDetectorTypeAll;
 //#endif
-//}
+}
 
 
 #pragma - UITableViewDelegate
