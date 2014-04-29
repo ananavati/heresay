@@ -10,6 +10,7 @@
 #import <Parse/Parse.h>
 
 #import "Chatroom.h"
+#import "ChatroomMapViewController.h"
 
 @interface ChatRoomApi : NSObject
 
@@ -26,6 +27,7 @@
  * Fetch chatrooms near a specified location.
  */
 - (void)fetchChatroomsNearLocation:(CLLocation *)location withSuccess:(void (^)(NSMutableArray *chatrooms))success;
+- (void)fetchChatroomsInBoundingBoxWithSuccess:(GeoQueryBounds)geoBounds withSuccess:(void (^)(NSMutableArray *chatrooms))success;
 
 - (PFObject *)saveChatRoom:(Chatroom *)chatRoom;
 

@@ -89,6 +89,18 @@
 	}];
 }
 
+- (void)fetchChatroomsInBoundingBoxWithSuccess:(GeoQueryBounds)geoBounds withSuccess:(void (^)(NSMutableArray *chatrooms))success {
+    PFGeoPoint *sw = [PFGeoPoint geoPointWithLatitude:geoBounds.sw.latitude longitude:geoBounds.sw.longitude];
+    PFGeoPoint *ne = [PFGeoPoint geoPointWithLatitude:geoBounds.ne.latitude longitude:geoBounds.ne.longitude];
+
+    [self.query whereKey:@"geolocation" withinGeoBoxFromSouthwest:sw toNortheast:ne];
+    [self.query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        [self appendChatRooms:objects];
+        success(self.nearbyChatrooms);
+    }];
+
+}
+
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
 	if (object == [LocationManager instance] && [keyPath isEqual: @"userLocation"]) {
 		// LocationManager has resolved userLocation,
