@@ -80,11 +80,9 @@
 		
 		if (!success && self.pendingUserLocationSuccessBlocks) {
 			for (void (^ successBlock)(NSArray *chatrooms) in self.pendingUserLocationSuccessBlocks) {
-				NSLog(@"one of multiple successes");
 				successBlock(self.nearbyChatrooms);
 			}
 		} else {
-			NSLog(@"one success");
 			success(self.nearbyChatrooms);
 		}
 		

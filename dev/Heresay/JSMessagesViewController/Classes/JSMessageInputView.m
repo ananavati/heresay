@@ -104,6 +104,7 @@
         [sendButton setTitleColor:[UIColor colorWithWhite:1.0f alpha:0.5f] forState:UIControlStateDisabled];
         
 //        sendButton.titleLabel.font = [UIFont boldSystemFontOfSize:16.0f];
+		// ericsoco: custom font
 		sendButton.titleLabel.font = [UIFont fontWithName:@"Oxygen" size:16];
     }
     else {
@@ -115,6 +116,7 @@
         [sendButton setTitleColor:[UIColor js_bubbleLightGrayColor] forState:UIControlStateDisabled];
         
 //        sendButton.titleLabel.font = [UIFont boldSystemFontOfSize:18.0f];
+		// ericsoco: custom font
 		sendButton.titleLabel.font = [UIFont fontWithName:@"Oxygen" size:18];
     }
     
