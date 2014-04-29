@@ -10,6 +10,7 @@
 #import "LocationManager.h"
 #import "IntroSlide.h"
 #import "IntroSlideViewController.h"
+#import "UIColor+HeresayColor.h"
 
 @interface IntroViewController ()
 
@@ -66,6 +67,9 @@
     self.pageViewController.view.frame = pageViewRect;
     
     self.view.gestureRecognizers = _pageViewController.gestureRecognizers;
+	
+	self.enableLocationButton.titleLabel.font = [UIFont fontWithName:@"Oxygen" size:20];
+	self.enableLocationButton.tintColor = [UIColor orangeAccentColor];
     
 }
 
