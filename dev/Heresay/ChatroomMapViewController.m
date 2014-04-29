@@ -124,6 +124,8 @@ static Class MAPBOX_TILE_CLASS;
 - (void)setChatroomModels:(NSMutableArray *)chatroomModels {
 	_chatroomModels = chatroomModels;
     [self.mapView removeOverlays:self.chatroomOverlays];
+	self.chatroomOverlays = [[NSMutableArray alloc] init];
+	self.chatroomMapOverlays = [[NSMutableArray alloc] init];
 	
 	for (Chatroom *chatroom in chatroomModels) {
 		ChatroomMapOverlay *chatroomOverlay = [[ChatroomMapOverlay alloc] initWithChatroom:chatroom style:ChatroomMapOverlayStyleExisting];
@@ -239,7 +241,7 @@ static Class MAPBOX_TILE_CLASS;
 			[((UIButton *)(annotationView.rightCalloutAccessoryView)) addTarget:self action:@selector(onNewChatTapped) forControlEvents:UIControlEventTouchUpInside];
 			
 			// Zoom into current location once it's obtained
-			MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(self.mapView.userLocation.location.coordinate, 1.1*CHATROOM_SIZE_LARGE, 1.1*CHATROOM_SIZE_LARGE);
+			MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(self.mapView.userLocation.location.coordinate, 2*CHATROOM_SIZE_LARGE, 2*CHATROOM_SIZE_LARGE);
 			[self.mapView setRegion:region animated:YES];
 		}
 	}

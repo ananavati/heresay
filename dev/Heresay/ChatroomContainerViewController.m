@@ -124,18 +124,6 @@ static const double CARDS_VIEW_ANIMATE_CLOSE_DURATION = 0.75;
 }
 
 
-/*
-// No landscape support for now
-- (NSUInteger)supportedInterfaceOrientations {
-	return UIInterfaceOrientationMaskPortrait;
-}
-
-- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation {
-	return UIInterfaceOrientationPortrait;
-}
-*/
-
-
 - (void)refreshNearbyChatrooms:(GeoQueryBounds)bounds {
     [[ChatRoomApi instance] fetchChatroomsInBoundingBoxWithSuccess:bounds withSuccess:^(NSMutableArray *chatrooms) {
         self.chatroomMapViewController.chatroomModels = chatrooms;
