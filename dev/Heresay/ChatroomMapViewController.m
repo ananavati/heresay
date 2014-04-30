@@ -26,6 +26,8 @@
 @property (weak, nonatomic) IBOutlet UISegmentedControl *chatroomSizeControl;
 - (IBAction)chatroomSizeControlValueChanged:(id)sender;
 
+@property (assign, nonatomic) BOOL didZoomToUserOnInit;
+
 @end
 
 // MBXMapViewTileOverlay is not recognized at compile time, so doing this instead...
@@ -150,6 +152,11 @@ static Class MAPBOX_TILE_CLASS;
 	[self.mapView setRegion:worldRegion animated:NO];
 }
 
+- (void)zoomToUserLocation {
+	MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(self.mapView.userLocation.location.coordinate, 2*CHATROOM_SIZE_LARGE, 2*CHATROOM_SIZE_LARGE);
+	[self.mapView setRegion:region animated:YES];
+}
+
 
 
 #pragma mark - New Chat UI
@@ -246,9 +253,10 @@ static Class MAPBOX_TILE_CLASS;
 			[((UIButton *)(annotationView.rightCalloutAccessoryView)) addTarget:self action:@selector(onNewChatTapped) forControlEvents:UIControlEventTouchUpInside];
 			
 			// Zoom into current location once it's obtained
-			NSLog(@"zoom into user location");
-			MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(self.mapView.userLocation.location.coordinate, 2*CHATROOM_SIZE_LARGE, 2*CHATROOM_SIZE_LARGE);
-			[self.mapView setRegion:region animated:YES];
+			if (!self.didZoomToUserOnInit) {
+				[self zoomToUserLocation];
+				self.didZoomToUserOnInit = YES;
+			}
 		}
 	}
 }
