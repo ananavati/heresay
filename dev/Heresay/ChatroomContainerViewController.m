@@ -76,8 +76,21 @@ static const double CARDS_VIEW_ANIMATE_CLOSE_DURATION = 0.75;
 }
 
 - (void)map:(id)mapViewController didStopAtBounds:(GeoQueryBounds)bounds {
-//	NSLog(@"ARPAN: call [self refreshNearbyChatrooms] with these bounds:");
 //	NSLog(@"got bounds: center:(%f, %f), NE:(%f, %f), SW:(%f, %f)", bounds.center.latitude, bounds.center.longitude, bounds.ne.latitude, bounds.ne.longitude, bounds.sw.latitude, bounds.sw.longitude);
+	
+	double height = fabs(bounds.ne.latitude - bounds.sw.latitude);
+	double width = fabs(bounds.ne.longitude - bounds.sw.longitude);
+	
+	// For now, don't bother fetching for such a big area
+	if (height > 90 || width > 90) { return; }
+	
+	// Expand bounds a bit wider than visible screen
+	// TODO: this math is only valid for western northern hemisphere!
+	bounds.ne.latitude += 0.2 * height;
+	bounds.sw.latitude -= 0.2 * height;
+	bounds.ne.longitude += 0.2 * height;
+	bounds.sw.longitude -= 0.2 * height;
+	
     [self refreshNearbyChatrooms:bounds];
 }
 
@@ -94,16 +107,6 @@ static const double CARDS_VIEW_ANIMATE_CLOSE_DURATION = 0.75;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-	/*
-	// navigation bar setup
-	self.title = @"Nearby Chats";
-	
-	UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"gear.png"] style:UIBarButtonItemStylePlain target:self action:@selector(settingsTapped:)];
-	rightButton.tintColor = [UIColor colorWithRed:0.0f green:0.0f blue:0.0f alpha:1.0f];
-	self.navigationItem.rightBarButtonItem = rightButton;
-	*/
-	
-	
 	// display the intro only if the user has not already enabled location services for the app.
 	// NOTE: should be checking NSUserDefaults (for introComplete) to see if user has gone through intro,
 	//		 as that's more explicit than checking for location services enabled.

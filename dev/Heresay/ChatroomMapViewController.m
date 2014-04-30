@@ -20,6 +20,7 @@
 
 @property (strong, nonatomic) NSMutableArray *chatroomOverlays;
 @property (strong, nonatomic) NSMutableArray *chatroomMapOverlays;
+
 @property (strong, nonatomic) id<MKOverlay> stagedChatroomOverlay;
 @property (strong, nonatomic) ChatroomMapOverlay *stagedChatroomMapOverlay;
 
@@ -266,9 +267,6 @@ static Class MAPBOX_TILE_CLASS;
 	
 	if (annotation == mapView.userLocation) {
 		mapView.userLocation.title = @"Create New Chat";
-		
-		// Let iOS determine the view for user location
-//		return nil;
 		
 		NewChatAnnotationView *newChatAnnotationView = (NewChatAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:@"NewChatAnnotationView"];
 		if (!chatAnnotationView) {
