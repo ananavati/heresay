@@ -84,6 +84,11 @@
 - (IBAction)startChatroom:(id)sender {    
     [self.screenNameTextField endEditing:YES];
     
+    
+    if (self.currentAvatarUrl==nil) {
+        self.currentAvatarUrl=@"";
+    }
+    
     if (self.chatroom.objectId) {
         NSLog(@"Start chatroom with %@", [self.chatroom description]);
         
