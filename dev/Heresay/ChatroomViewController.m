@@ -83,9 +83,7 @@
     self.sender = self.userName;
     
     
-    //
-    self.navigationController.navigationBar.tintColor = [UIColor orangeAccentColor];
-  
+    self.navigationController.navigationBar.tintColor = [UIColor blueHighlightColor];
 }
 
 

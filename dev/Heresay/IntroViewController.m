@@ -35,7 +35,7 @@
 {
     [super viewDidLoad];
     
-    _modelArray = [NSMutableArray arrayWithObjects:[[IntroSlide alloc] initWithImageName:@"introLocation" text:@"Welcome! Heresay let you find people around you to chat with."],
+    _modelArray = [NSMutableArray arrayWithObjects:[[IntroSlide alloc] initWithImageName:@"introChats" text:@"Welcome! Heresay let you find people around you to chat with."],
                    [[IntroSlide alloc] initWithImageName:@"introChatrooms" text:@"Discover chatrooms around and start chating with the people."],
                    [[IntroSlide alloc] initWithImageName:@"introLocation" text:@"Heresay is about place, so enable your location services."],
                    nil];
@@ -69,7 +69,7 @@
     self.view.gestureRecognizers = _pageViewController.gestureRecognizers;
 	
 	self.enableLocationButton.titleLabel.font = [UIFont fontWithName:@"Oxygen" size:20];
-	self.enableLocationButton.tintColor = [UIColor orangeAccentColor];
+	self.enableLocationButton.tintColor = [UIColor blueOverlayStrongColor];
     
 }
 
