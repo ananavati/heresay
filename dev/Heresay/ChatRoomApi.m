@@ -143,8 +143,11 @@
 - (PFObject *) saveChatRoom:(Chatroom *)chatRoom {
     PFObject *c = [PFObject objectWithClassName:@"chat_rooms"];
     
+	// TODO: validate these fields and ensure no nil values
     c[@"chatRoomName"] = chatRoom.chatRoomName;
-    c[@"topic"] = chatRoom.topic;
+	if (chatRoom.topic != nil) {
+		c[@"topic"] = chatRoom.topic;
+	}
     c[@"radius"] = chatRoom.radius;
     c[@"geolocation"] = chatRoom.geolocation;
 

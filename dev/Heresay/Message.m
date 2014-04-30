@@ -78,8 +78,14 @@
 
     // TODO set author ID
     self.sentFromCurrentUser = YES;
-    self.author = @{@"name": authorName,
-                    @"id": uuid, @"profileImageUrl": profileUrl};
+	
+	NSMutableDictionary *authorProps = [[NSMutableDictionary alloc] init];
+	[authorProps setObject:authorName forKey:@"name"];
+	[authorProps setObject:uuid forKey:@"id"];
+	if (profileUrl != nil) {
+		[authorProps setObject:profileUrl forKey:@"profileImageUrl"];
+	}
+	self.author = [[NSDictionary alloc] initWithDictionary:authorProps];
     
     self.text = messageText;
     self.chat_room_id = chatRoomId;
