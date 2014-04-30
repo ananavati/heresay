@@ -85,7 +85,7 @@
 
 - (IBAction)submitButtonTapped:(id)sender {
     self.chatRoom.chatRoomName = self.nameInput.text;
-    self.chatRoom.placeName = self.topicInput.text;
+    self.chatRoom.topic = self.topicInput.text;
     self.chatRoom.latitude = [NSNumber numberWithDouble:self.chatRoom.geolocation.latitude];
     self.chatRoom.longitude = [NSNumber numberWithDouble: self.chatRoom.geolocation.longitude];
     

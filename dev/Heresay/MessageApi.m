@@ -54,7 +54,7 @@
 #pragma mark - message api methods
 
 - (void)fetchMessagesForChatroomWithId:(NSString *)chatroomId withSuccess:(void (^)(NSArray *messages))success {
-    if (!self.isFetching) {
+    if (!self.isFetching && chatroomId) {
         self.isFetching = YES;
         [self.query whereKey:@"chat_room_id" equalTo:chatroomId];
         
