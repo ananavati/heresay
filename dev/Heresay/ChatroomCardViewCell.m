@@ -31,7 +31,7 @@
 {
     // Initialization code
 	self.nameLabel.font = [UIFont fontWithName:@"Oxygen" size:20];
-	self.topicLabel.font = [UIFont fontWithName:@"Oxygen" size:15];
+	self.topicLabel.font = [UIFont fontWithName:@"Oxygen" size:14];
 	self.nameInputTitle.font = [UIFont fontWithName:@"Oxygen" size:17];
 	self.nameInput.font = [UIFont fontWithName:@"Oxygen" size:14];
 	self.topicInputTitle.font = [UIFont fontWithName:@"Oxygen" size:17];
@@ -52,7 +52,13 @@
 - (void)initWithModel:(Chatroom *)model {
 	if(!self.isNewChatroom) {
         self.nameLabel.text = model.chatRoomName;
+		
 		NSLog(@"model topic:%@", model.topic);
+		/*
+		if (((double)arc4random() / 0x100000000) < 0.5) {
+			model.topic = @"ABC Test Topic";
+		}
+		*/
 		
 		CGRect nameLabelFrame = self.nameLabel.frame;
 		if (model.topic) {
