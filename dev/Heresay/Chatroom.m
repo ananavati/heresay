@@ -15,7 +15,8 @@
             placeName,
             geolocation,
             latitude,
-            longitude;
+            longitude,
+            topic;
 
 // this is the collection/table_name
 + (NSString *)parseClassName {

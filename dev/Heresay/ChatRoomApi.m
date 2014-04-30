@@ -145,6 +145,7 @@
     
     c[@"chatRoomName"] = chatRoom.chatRoomName;
     c[@"placeName"] = chatRoom.placeName;
+    c[@"topic"] = chatRoom.topic;
     c[@"radius"] = chatRoom.radius;
     c[@"geolocation"] = chatRoom.geolocation;
 

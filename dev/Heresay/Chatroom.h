@@ -22,6 +22,7 @@
 #pragma mark - Location-related properties
 @property (strong, nonatomic) NSNumber *radius;
 @property (strong, nonatomic) NSString *placeName;
+@property (strong, nonatomic) NSString *topic;
 
 // TODO: Will need to convert to PFGeoPoint for de/serialization.
 @property (strong, nonatomic) PFGeoPoint *geolocation;
