@@ -11,6 +11,7 @@
 @interface ChatroomCardViewCell ()
 
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *topicLabel;
 @property (weak, nonatomic) IBOutlet UILabel *nameInputTitle;
 @property (weak, nonatomic) IBOutlet UITextField *nameInput;
 @property (weak, nonatomic) IBOutlet UILabel *topicInputTitle;
@@ -30,6 +31,7 @@
 {
     // Initialization code
 	self.nameLabel.font = [UIFont fontWithName:@"Oxygen" size:20];
+	self.topicLabel.font = [UIFont fontWithName:@"Oxygen" size:15];
 	self.nameInputTitle.font = [UIFont fontWithName:@"Oxygen" size:17];
 	self.nameInput.font = [UIFont fontWithName:@"Oxygen" size:14];
 	self.topicInputTitle.font = [UIFont fontWithName:@"Oxygen" size:17];
@@ -50,6 +52,19 @@
 - (void)initWithModel:(Chatroom *)model {
 	if(!self.isNewChatroom) {
         self.nameLabel.text = model.chatRoomName;
+		NSLog(@"model topic:%@", model.topic);
+		
+		CGRect nameLabelFrame = self.nameLabel.frame;
+		if (model.topic) {
+			self.topicLabel.text = model.topic;
+			self.topicLabel.hidden = NO;
+			nameLabelFrame.origin.y = 30;
+		} else {
+			self.topicLabel.hidden = YES;
+			nameLabelFrame.origin.y = 40;
+		}
+		self.nameLabel.frame = nameLabelFrame;
+		
         self.chatRoom = model;
     }
 }
