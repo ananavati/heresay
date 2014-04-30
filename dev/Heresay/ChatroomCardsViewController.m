@@ -69,6 +69,15 @@ static double CARD_HEIGHT;
 - (void)setChatroomModels:(NSMutableArray *)chatroomModels {
 	_chatroomModels = chatroomModels;
 	[self.collectionView reloadData];
+	
+	if (!chatroomModels.count) {
+		self.collectionView.bounces = NO;
+		self.collectionView.scrollEnabled = NO;
+	} else {
+		self.collectionView.bounces = YES;
+		self.collectionView.scrollEnabled = YES;
+	}
+	
     [self.view startCanvasAnimation];
 }
 
