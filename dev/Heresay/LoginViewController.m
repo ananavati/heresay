@@ -85,9 +85,11 @@
     [self.screenNameTextField endEditing:YES];
     
     
-    if (self.currentAvatarUrl==nil) {
-        self.currentAvatarUrl=@"";
-    }
+	// removing this as we now have a nil check in UserApi,
+	// and this keeps avatar placeholder from appearing.
+//    if (self.currentAvatarUrl==nil) {
+//        self.currentAvatarUrl=@"";
+//    }
     
     if (self.chatroom.objectId) {
         NSLog(@"Start chatroom with %@", [self.chatroom description]);
