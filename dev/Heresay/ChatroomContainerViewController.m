@@ -223,7 +223,7 @@ static const double CARDS_VIEW_ANIMATE_CLOSE_DURATION = 0.75;
         NSLog(@"%@",user.uuid);
         
         if (user!=nil){
-            ChatroomViewController *chatroomViewController = [[ChatroomViewController alloc] initWithChatroom:chatroom userName:user.name avatarImage:nil];
+            ChatroomViewController *chatroomViewController = [[ChatroomViewController alloc] initWithChatroom:chatroom userName:user.name avatarImage:nil avatarUrl:user.profileImageURL];
             [self.navigationController pushViewController:chatroomViewController animated:YES];
              self.navigationController.navigationBar.hidden = NO;
         } else {

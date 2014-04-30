@@ -42,12 +42,12 @@
 		model.text = message[@"text"];
 
         id authorObject = message[@"author"];
-        if (authorObject[@"profileImageId"]==nil) {
+        if (authorObject[@"profileImageUrl"]==nil) {
             model.author = @{@"name": authorObject[@"name"],
                             @"id": authorObject[@"id"]}; ;
         } else {
             model.author = @{@"name": authorObject[@"name"],
-                             @"id": authorObject[@"id"], @"profileImageId": authorObject[@"profileImageId"]}; ;
+                             @"id": authorObject[@"id"], @"profileImageUrl": authorObject[@"profileImageUrl"]}; ;
         }
             
         
@@ -74,12 +74,12 @@
 	return longDateFormatter;
 }
 
--(Message *)initWithMessageText:(NSString *)messageText authorId:(NSString *)authorName authorProfileId:(NSString *)profileId uuid:(NSString *)uuid chatRoom:(NSString *)chatRoomId{
+-(Message *)initWithMessageText:(NSString *)messageText authorId:(NSString *)authorName authorProfileUrl:(NSString *)profileUrl uuid:(NSString *)uuid chatRoom:(NSString *)chatRoomId{
 
     // TODO set author ID
     self.sentFromCurrentUser = YES;
     self.author = @{@"name": authorName,
-                    @"id": uuid, @"profileImageId": profileId};
+                    @"id": uuid, @"profileImageUrl": profileUrl};
     
     self.text = messageText;
     self.chat_room_id = chatRoomId;
@@ -88,7 +88,7 @@
 }
 
 - (NSString *)description {
-	return [NSString stringWithFormat:@"<Message [%@:%@]>", self.author[@"name"], self.text];
+	return [NSString stringWithFormat:@"<Message [%@:%@]|%@ >", self.author[@"name"], self.text, self.author[@"profileImageUrl"]];
 }
 
 #pragma - JSMessageData

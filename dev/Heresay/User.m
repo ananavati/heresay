@@ -13,8 +13,7 @@
 @synthesize name,
             profileImageURL,
             uuid,
-            avatarImage,
-            profileImageId;
+            avatarImage;
 
 // this is the collection/table_name
 + (NSString *)parseClassName {
@@ -41,9 +40,7 @@
 		model.name = user[@"name"];
 		model.profileImageURL = user[@"profileImageURL"];
         model.uuid = user[@"uuid"];
-        model.profileImageId = user[@"profileImageId"];
-        
-	}
+   }
 	
 	return model;
 }
@@ -61,7 +58,7 @@
 }
 
 - (NSString *)description {
-	return [NSString stringWithFormat:@"<User [%@] [%@]>", self.name, self.uuid];
+	return [NSString stringWithFormat:@"<User [%@] [%@] [%@]>", self.name, self.uuid, self.profileImageURL];
 }
 
 @end

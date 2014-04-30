@@ -24,6 +24,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *goLabel;
 @property (weak, nonatomic) IBOutlet UIButton *takeAPictureLabel;
 @property (weak, nonatomic) IBOutlet UIButton *pickAPictureLabel;
+@property (strong, nonatomic) NSString *currentAvatarUrl;
 
 
 @end
@@ -88,7 +89,7 @@
         
         [self createUserWithName:self.screenNameTextField.text avatar:self.avatarImage.image];
         
-        ChatroomViewController *chatroomViewController = [[ChatroomViewController alloc] initWithChatroom:self.chatroom userName:self.screenNameTextField.text avatarImage:self.avatarImage.image];
+        ChatroomViewController *chatroomViewController = [[ChatroomViewController alloc] initWithChatroom:self.chatroom userName:self.screenNameTextField.text avatarImage:self.avatarImage.image avatarUrl:self.currentAvatarUrl];
         [self.navigationController pushViewController:chatroomViewController animated:YES];
     } else {
         // save the chat room on parse
@@ -105,7 +106,7 @@
                     
                     [self createUserWithName:self.screenNameTextField.text avatar:self.avatarImage.image];
                     
-                    ChatroomViewController *chatroomViewController = [[ChatroomViewController alloc] initWithChatroom:self.chatroom userName:self.screenNameTextField.text avatarImage:self.avatarImage.image];
+                    ChatroomViewController *chatroomViewController = [[ChatroomViewController alloc] initWithChatroom:self.chatroom userName:self.screenNameTextField.text avatarImage:self.avatarImage.image avatarUrl:self.currentAvatarUrl];
                     [self.navigationController pushViewController:chatroomViewController animated:YES];
                 }];
             }
@@ -141,10 +142,10 @@
     User *newUser = [[User alloc] init];
     newUser.name = userName;
     
-    newUser.profileImageURL = @"";
-    newUser.avatarImage = image;
-    newUser.profileImageId = @"";
+    NSLog(@"currentAvatarUrl %@", self.currentAvatarUrl);
     
+    newUser.profileImageURL = self.currentAvatarUrl;
+    newUser.avatarImage = image;
     
     // TODO send the UIImage on the internet somewhere to store it and let's
     // persit the URL of the image
@@ -227,8 +228,10 @@
             
             [userPhoto saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                 if (!error) {
-                    NSLog(@"image saved in background with no error: %@", userPhoto.objectId);
-                
+                    NSLog(@"image saved in background with no error: %@|%@", userPhoto.objectId, imageFile.url);
+                    self.currentAvatarUrl = imageFile.url;
+                    
+                    NSLog(@"just saved self.currentAvatarUrl: %@", self.currentAvatarUrl);
                 } else {
                     // Log details of the failure
                     NSLog(@"Error: %@ %@", error, [error userInfo]);

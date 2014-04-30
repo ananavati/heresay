@@ -20,7 +20,6 @@
 @property (strong, nonatomic) NSString *profileImageURL;
 @property (strong, nonatomic) NSString *uuid;
 @property (strong, nonatomic) UIImage *avatarImage;
-@property (strong, nonatomic) NSString *profileImageId;
 
 
 @end

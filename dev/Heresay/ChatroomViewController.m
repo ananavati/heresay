@@ -22,6 +22,7 @@
 @property (strong, nonatomic) NSString *userName;
 @property (strong, nonatomic) Chatroom *chartroom;
 @property (strong, nonatomic) UIImage *avatarImage;
+@property (strong, nonatomic) NSString *avatarUrl;
 @property (strong, nonatomic) NSTimer *nsTimer;
 
 
@@ -38,11 +39,12 @@
     return self;
 }
 
--(id)initWithChatroom:(Chatroom *)chatroom userName:(NSString *)userName avatarImage:(UIImage*)image{
+-(id)initWithChatroom:(Chatroom *)chatroom userName:(NSString *)userName avatarImage:(UIImage*)image avatarUrl:(NSString *)avatarUrl{
     self.chartroom = chatroom;
     self.chatroomName = chatroom.chatRoomName;
     self.userName = userName;
     self.avatarImage = image;
+    self.avatarUrl = avatarUrl;
     
     [self initialize];
     return self;
@@ -149,7 +151,7 @@
  */
 - (void)didSendText:(NSString *)text fromSender:(NSString *)sender onDate:(NSDate *)date{
     
-    Message *message = [[Message alloc] initWithMessageText:text authorId:sender authorProfileId:@"" uuid:[[[UIDevice currentDevice] identifierForVendor] UUIDString] chatRoom:self.chartroom.objectId];
+    Message *message = [[Message alloc] initWithMessageText:text authorId:sender authorProfileUrl:self.avatarUrl  uuid:[[[UIDevice currentDevice] identifierForVendor] UUIDString] chatRoom:self.chartroom.objectId];
     
     [[MessageApi instance] saveMessage:message];
     
@@ -245,7 +247,12 @@
     
     if (currMessage.sentFromCurrentUser && self.avatarImage!=nil) {
         avatar = [JSAvatarImageFactory avatarImage:self.avatarImage croppedToCircle:YES];
+    } else if([self.avatarUrl isEqualToString:@""]==NO) {
         
+        UIImage* remoteImage = [UIImage imageWithData:
+                            [NSData dataWithContentsOfURL:
+                             [NSURL URLWithString: self.avatarUrl]]];
+        avatar = [JSAvatarImageFactory avatarImage:remoteImage croppedToCircle:YES];
     } else {
             avatar = [JSAvatarImageFactory avatarImageNamed:@"avatar" croppedToCircle:YES];
     }
