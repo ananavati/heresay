@@ -243,21 +243,24 @@
 - (UIImageView *)avatarImageViewForRowAtIndexPath:(NSIndexPath *)indexPath sender:(NSString *)sender{
     
     UIImage *avatar;
+    UIImageView *resImage;
     Message *currMessage = self.messageList[indexPath.row];
+    NSString *profileImageUrl = [[NSString alloc] initWithFormat:@"%@", currMessage.author[@"profileImageUrl"]];
     
     if (currMessage.sentFromCurrentUser && self.avatarImage!=nil) {
-        avatar = [JSAvatarImageFactory avatarImage:self.avatarImage croppedToCircle:YES];
-    } else if([self.avatarUrl isEqualToString:@""]==NO) {
-        
-        UIImage* remoteImage = [UIImage imageWithData:
+       avatar = [JSAvatarImageFactory avatarImage:self.avatarImage croppedToCircle:YES];
+    } else if(profileImageUrl!=nil && [profileImageUrl isEqualToString:@"(null)"]==NO) {
+       UIImage* remoteImage = [UIImage imageWithData:
                             [NSData dataWithContentsOfURL:
-                             [NSURL URLWithString: self.avatarUrl]]];
-        avatar = [JSAvatarImageFactory avatarImage:remoteImage croppedToCircle:YES];
+                             [NSURL URLWithString: profileImageUrl]]];
+       avatar = [JSAvatarImageFactory avatarImage:remoteImage croppedToCircle:YES];
     } else {
-            avatar = [JSAvatarImageFactory avatarImageNamed:@"avatar" croppedToCircle:YES];
+       avatar = [JSAvatarImageFactory avatarImageNamed:@"avatar" croppedToCircle:YES];
     }
     
-    return [[UIImageView alloc] initWithImage:avatar];
+    resImage = [[UIImageView alloc] initWithImage:avatar];
+    
+    return resImage;
 }
 
 
@@ -268,7 +271,7 @@
 {
 //    if ([cell messageType] == JSBubbleMessageTypeOutgoing) {
         cell.bubbleView.textView.textColor = [UIColor whiteColor];
-        
+    
 //        if ([cell.bubbleView.textView respondsToSelector:@selector(linkTextAttributes)]) {
 //            NSMutableDictionary *attrs = [cell.bubbleView.textView.linkTextAttributes mutableCopy];
 //            [attrs setValue:[UIColor blueColor] forKey:UITextAttributeTextColor];
