@@ -2,6 +2,12 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:OuterSunset.gpx">
+   </FileRef>
+   <FileRef
+      location = "group:Zynga.gpx">
+   </FileRef>
+   <FileRef
       location = "group:Heresay.xcodeproj">
    </FileRef>
    <FileRef

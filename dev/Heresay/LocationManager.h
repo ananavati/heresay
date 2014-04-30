@@ -22,6 +22,11 @@
 - (BOOL)locationServicesEnabled;
 
 /**
+ * Check if we have a non-zero user location.
+ */
+- (BOOL)hasValidUserLocation;
+
+/**
  * Enables location services for this app;
  * Prompt the user to allow location services.
  */

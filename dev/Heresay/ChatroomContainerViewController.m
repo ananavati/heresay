@@ -113,6 +113,13 @@ static const double CARDS_VIEW_ANIMATE_CLOSE_DURATION = 0.75;
 		[self performSelector:@selector(presentIntro) withObject:nil afterDelay:0];
 	} else {
 		[[LocationManager instance] enableLocationServicesWithResult:nil];
+		
+		if (![[LocationManager instance] hasValidUserLocation]) {
+			// if no valid user location yet, zoom out to world to force one to appear.
+			// I think this is mostly a problem with debug locations not appearing on init, not sure.
+			[self.chatroomMapViewController zoomToWorld];
+		}
+		
 		[self.chatroomMapViewController showUserLocation];
 		[self openChatroomMapViewAnimated:NO];
 	}

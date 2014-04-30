@@ -32,5 +32,6 @@ typedef struct {
 
 - (void)showUserLocation;
 - (void)highlightChatroom:(Chatroom *)chatroom;
+- (void)zoomToWorld;
 
 @end

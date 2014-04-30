@@ -51,11 +51,15 @@
 			[CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorized);
 }
 
+- (BOOL)hasValidUserLocation {
+	return self.userLocation.coordinate.latitude != 0.0 && self.userLocation.coordinate.longitude != 0.0;
+}
+
 - (void)enableLocationServicesWithResult:(void (^)(BOOL allowed))result {
 	self.locationEnabledResult = result;
 	
-	if ([self locationServicesEnabled]) {
-		// already enabled
+	if ([self locationServicesEnabled] && [self hasValidUserLocation]) {
+		// Location Services are enabled and we have a valid user location
 		self.userLocation = self.locationManager.location;
 		return;
 	}
